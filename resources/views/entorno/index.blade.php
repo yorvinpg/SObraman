@@ -27,8 +27,8 @@
             <td>{{$item->idsolicitudOT }}</td>
             <td>{{$item->solicitante }}</td>
             <td>{{$item->email }}</td>
-            <td>{{$item->idTipo }}</td>
-            <td>{{$item->idCriti }}</td>
+            <td>{{$item->t_trabajo->nom_trab }}</td>
+            <td>{{$item->criticidad->tipoC }}</td>
             <td>
                 <a class="btn btn-info">Editar</a>
             </td>

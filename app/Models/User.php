@@ -57,5 +57,18 @@ class User extends Authenticatable
 		'current_team_id',
 		'profile_photo_path'
 	];
+
+    protected $appends = [
+        'profile_photo_url',
+    ];
+
+    public function adminlte_image(){
+        return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzBpnouxDuF063trW5gZOyXtyuQaExCQVMYA&usqp=CAU';
+    }
+    public function adminlte_desc(){
+        return 'SuperAdministrador';
+    }
+    public function adminlte_profile_url(){
+        return'profile/username';
+    }
 }
- 
