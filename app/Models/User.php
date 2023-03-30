@@ -6,6 +6,7 @@
 
 namespace App\Models;
 
+
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -26,6 +27,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string|null $profile_photo_path
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property string|null $username
  *
  * @package App\Models
  */
@@ -55,10 +57,10 @@ class User extends Authenticatable
 		'two_factor_confirmed_at',
 		'remember_token',
 		'current_team_id',
-		'profile_photo_path'
+		'profile_photo_path',
+		'username'
 	];
-
-    protected $appends = [
+        protected $appends = [
         'profile_photo_url',
     ];
 
