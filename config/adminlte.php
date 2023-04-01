@@ -331,12 +331,12 @@ return [
                 [
                     'text' => 'Nuevo Aviso',
                     'icon' =>'nav-icon fas fa-file',
-                    'url'  => 'admin/entorno',
+                    'url'  => 'admin/entorno/create  ',
                 ],
                 [
                     'text' => 'Consulta Avisa',
                     'icon' => 'nav-icon fas fa-book',
-                    'url'  => '#',
+                    'url'  => 'admin/entorno/consulta',
                 ],
                 [
                     'text' => 'Anular Aviso',

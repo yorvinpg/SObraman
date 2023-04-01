@@ -14,7 +14,10 @@ use App\Http\Controllers\OTController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('admin/entorno',[OTController::class, 'index'])->name('entorno.index');
+// Route::get('admin/entorno',[OTController::class, 'index'])->name('entorno.index');
+
+Route::get('admin/entorno/consulta',[OTController::class, 'index'])->name('entorno.index');
+
 Route::get('admin/entorno/create',[OTController::class, 'create'])->name('entorno.create');
 
 Route::get('/', function () {

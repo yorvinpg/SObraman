@@ -29,7 +29,8 @@
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Solicitante</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="solic" placeholder="Yorvin Palacios" disabled="true">
+                <input type="text" class="form-control" id="nameU" value="{{$user->name}}" disabled="true"/>
+
             </div>
         </div>
         <div class="form-group row">
@@ -48,11 +49,10 @@
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Area</label>
             <div class="col-sm-6">
-                <select class="form-select form-control" aria-label="Default select example">
-                    <option selected>Elija Responsable</option>
-                    <option value="1">Miguel Rubio</option>
-                    <option value="2">Javier Mattos</option>
-                    <option value="3">Raul</option>
+                <select class="form-select form-control" aria-label="Default select example" id="area">
+                    @foreach ($areas as $area )
+                    <option value="{{$area['idarea'] }}">{{$area['nombreA']}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
@@ -60,19 +60,20 @@
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Tipo Trabajo</label>
             <div class="col-sm-6">
-                <select class="form-select form-control" aria-label="Default select example">
-                    <option value="1">Mantenimiento Correctivo</option>
-                    <option value="2">Mantenimiento Preventivo</option>
+                <select class="form-select form-control" aria-label="Default select example" id="tt">
+                    @foreach ($tts as $tt )
+                    <option value="{{$tt['idtrabajo'] }}">{{$tt['nom_trab']}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Especialidad</label>
             <div class="col-sm-6">
-                <select class="form-select form-control" aria-label="Default select example">
-                    <option value="1">Albañileria</option>
-                    <option value="2">Ascensor</option>
-                    <option value="3">Raul</option>
+                <select class="form-select form-control" aria-label="Default select example" id="esp">
+                    @foreach ($espes as $espe )
+                    <option value="{{$espe['idespecialidad'] }}">{{$espe['nom_espe']}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
@@ -81,22 +82,20 @@
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Criticidad</label>
             <div class="col-sm-6">
-                <select class="form-select form-control" aria-label="Default select example">
-                    <option value="1">Baja</option>
-                    <option value="2">Normal</option>
-                    <option value="3">Prioritario</option>
-                    <option value="4">Urgente</option>
+                <select class="form-select form-control" aria-label="Default select example" id="crit">
+                    @foreach ($crits as $crit )
+                    <option value="{{$crit['idcriticidad'] }}">{{$crit['tipoC']}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Ubicación</label>
             <div class="col-sm-6">
-                <select class="form-select form-control" aria-label="Default select example">
-                    <option selected>Elija Ubicación</option>
-                    <option value="1">Miguel Rubio</option>
-                    <option value="2">Javier Mattos</option>
-                    <option value="3">Raul</option>
+                <select class="form-select form-control" aria-label="Default select example" id="ubi">
+                    @foreach ($ubis as $ubi )
+                    <option value="{{$ubi['idubicacion'] }}">{{$ubi['nom_ubi']}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
