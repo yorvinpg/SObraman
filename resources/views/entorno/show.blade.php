@@ -5,7 +5,9 @@
 @section('content_header')
 <h1 class="bg-primary text white text-center">Vista de Listado - Avisos</h1>
 @stop
+
 @section('content')
+    <a href="{{route('entorno.create')}}" class="btn btn-primary">Solicitar </a>
 <table class="table table-dark table-striped mt-4">
     <thead>
         <tr>
@@ -14,9 +16,8 @@
             <th scope="col">EMAIL</th>
             <th scope="col">TIPO</th>
             <th scope="col">CRITICIDAD</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th scope="col">EDITAR</th>
+            <th scope="col">ANULAR</th>
 
         </tr>
     </thead>
@@ -28,10 +29,6 @@
             <td>{{$item->email }}</td>
             <td>{{$item->t_trabajo->nom_trab }}</td>
             <td>{{$item->criticidad->tipoC }}</td>
-            <td>
-                <a class="btn btn-success"><i
-                    class="fa fa-eye" aria-hidden="true"></i></a>
-            </td>
             <td>
                 <a class="btn btn-info">Editar</a>
             </td>
@@ -50,4 +47,7 @@
 @stop
 
 @section('js')
+<script>
+    console.log('Hi!');
+</script>
 @stop

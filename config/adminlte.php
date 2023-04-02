@@ -334,7 +334,7 @@ return [
                     'url'  => 'admin/entorno/create  ',
                 ],
                 [
-                    'text' => 'Consulta Avisa',
+                    'text' => 'Consulta Aviso',
                     'icon' => 'nav-icon fas fa-book',
                     'url'  => 'admin/entorno/consulta',
                 ],

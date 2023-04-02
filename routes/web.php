@@ -17,8 +17,9 @@ use App\Http\Controllers\OTController;
 // Route::get('admin/entorno',[OTController::class, 'index'])->name('entorno.index');
 
 Route::get('admin/entorno/consulta',[OTController::class, 'index'])->name('entorno.index');
-
+Route::post('admin/entorno/consulta',[OTController::class, 'store'])->name('entorno.store');
 Route::get('admin/entorno/create',[OTController::class, 'create'])->name('entorno.create');
+Route::get('admin/entorno/{sol}',[OTController::class, 'show'])->name('entorno.show');
 
 Route::get('/', function () {
     return view('auth.login');

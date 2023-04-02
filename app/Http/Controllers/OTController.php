@@ -9,6 +9,8 @@ use App\Models\Solicitudot;
 use App\Models\TTrabajo;
 use App\Models\Ubicacion;
 use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class OTController extends Controller
@@ -16,7 +18,7 @@ class OTController extends Controller
 
     public function index()
     {
-        $solicitudes = Solicitudot::paginate(5); // te trae todo la data de solicitud
+        $solicitudes = Solicitudot::orderBy('idsolicitudOT', 'desc')->paginate(5); // te trae todo la data de solicitud en 5, de manera descendente
 
         return view('entorno.consulta', compact('solicitudes'));
     }
@@ -24,23 +26,46 @@ class OTController extends Controller
 
     public function create()
     {
+        // Primero obtenemos la información del usuario que está autentificado...
+        $user = Auth::user();
+        // Para obtener el ID:
+        $user->id;
         $areas = Area::all();
         $tts = TTrabajo::all();
         $espes = Especialidad::all();
         $crits = Criticidad::all();
         $ubis =  Ubicacion::all();
-        $user = User::all();
+        //mostrar solo la hora
+        $date = Carbon::now();
+        $date = $date->format('Y-m-d');
 
-        return view('entorno.nuevo', compact('areas', 'tts', 'espes', 'crits', 'ubis', 'user'));
+
+        return view('entorno.nuevo', compact('areas', 'tts', 'espes', 'crits', 'ubis', 'user', 'date'));
     }
 
     public function store(Request $request)
     {
-        //
+        $entornos = new Solicitudot();
+        $entornos->fecha = $request->get('fecha');
+        $entornos->solicitante = $request->get('solicitante');
+        $entornos->email = $request->get('email');
+        $entornos->telefono = $request->get('telefono');
+        $entornos->idTipo = $request->get('tt');
+        $entornos->idEsp = $request->get('esp');
+        $entornos->idCriti = $request->get('crit');
+        $entornos->idUbi = $request->get('ubi');
+        $entornos->referencia = $request->get('referencia');
+        $entornos->descripcion = $request->get('descripcion');
+        $entornos->detalle = $request->get('detalle');
+
+        $entornos->save();
+        return redirect()->route('entorno.index');
     }
     public function show($id)
     {
-        //
+        $sol = Solicitudot::find($id);
+        dd($sol);
+        return view('entorno.show',compact('sol'));
     }
     public function edit($id)
     {
