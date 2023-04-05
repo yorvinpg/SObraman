@@ -17,9 +17,9 @@
             <div class="form-group row">
                 <label for="fechA" class="col-sm-2 col-form-label">Fecha de Aviso</label>
                 <div class="col-sm-6">
-                    <div class="input-group date"  data-target-input="nearest">
+                    <div class="input-group date" data-target-input="nearest">
                         <input type="text" class="form-control datetimepicker-input" value="{{$date}}"
-                            data-target="#datepicker" id="fecha" name="fecha"/>
+                            data-target="#datepicker" id="fecha" name="fecha" />
                         <div class="input-group-append" data-target="#datepicker" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
@@ -56,6 +56,16 @@
                 </div>
             </div>
 
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Responsable</label>
+                <div class="col-sm-6">
+                    <select class="form-select form-control" name="responsable" aria-label="Default select example" id="responsable">
+                        @foreach ($respon as $respo )
+                        <option value="{{$respo['idencargado'] }}">{{$respo['nom_E']}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Tipo Trabajo</label>
                 <div class="col-sm-6">

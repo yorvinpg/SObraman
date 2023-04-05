@@ -24,9 +24,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $referencia
  * @property string $descripcion
  * @property string $detalle
+ * @property int $idEstado
+ * @property int $idArea
+ * @property int $idEncarg
  * 
+ * @property Area $area
  * @property Criticidad $criticidad
+ * @property Encargado $encargado
  * @property Especialidad $especialidad
+ * @property Estado $estado
  * @property TTrabajo $t_trabajo
  * @property Ubicacion $ubicacion
  *
@@ -44,7 +50,10 @@ class Solicitudot extends Model
 		'idTipo' => 'int',
 		'idEsp' => 'int',
 		'idCriti' => 'int',
-		'idUbi' => 'int'
+		'idUbi' => 'int',
+		'idEstado' => 'int',
+		'idArea' => 'int',
+		'idEncarg' => 'int'
 	];
 
 	protected $fillable = [
@@ -58,17 +67,35 @@ class Solicitudot extends Model
 		'idUbi',
 		'referencia',
 		'descripcion',
-		'detalle'
+		'detalle',
+		'idEstado',
+		'idArea',
+		'idEncarg'
 	];
+
+	public function area()
+	{
+		return $this->belongsTo(Area::class, 'idArea');
+	}
 
 	public function criticidad()
 	{
 		return $this->belongsTo(Criticidad::class, 'idCriti');
 	}
 
+	public function encargado()
+	{
+		return $this->belongsTo(Encargado::class, 'idEncarg');
+	}
+
 	public function especialidad()
 	{
 		return $this->belongsTo(Especialidad::class, 'idEsp');
+	}
+
+	public function estado()
+	{
+		return $this->belongsTo(Estado::class, 'idEstado');
 	}
 
 	public function t_trabajo()

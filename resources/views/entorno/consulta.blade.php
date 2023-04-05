@@ -6,6 +6,11 @@
 <h1 class="bg-primary text white text-center">Vista de Listado - Avisos</h1>
 @stop
 @section('content')
+<tr>
+    <th colspan="3">
+        <a class="btn btn-success float-end" href="{{ route('entorno.exportExcel') }}" >Exportar</a>
+    </th>
+</tr>
 <table class="table table-dark table-striped mt-4">
     <thead>
         <tr>
@@ -29,20 +34,21 @@
             <td>{{$item->t_trabajo->nom_trab }}</td>
             <td>{{$item->criticidad->tipoC }}</td>
             <td>
-                <a class="btn btn-success"><i
-                    class="fa fa-eye" aria-hidden="true"></i></a>
+                <button data-toggle="modal" data-target="#Modal" class="btn btn-success"><i class="fa fa-eye"
+                        aria-hidden="true"></i></button>
             </td>
             <td>
-                <a class="btn btn-info">Editar</a>
+                <button class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></button>
             </td>
             <td>
-                <button class="btn btn-danger">Anular</button>
+                <button class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
 {{$solicitudes->links()}}
+@include('entorno.modal.showm')
 @stop
 
 @section('css')

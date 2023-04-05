@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SolictExport;
 use App\Models\Area;
 use App\Models\Criticidad;
+use App\Models\Encargado;
 use App\Models\Especialidad;
 use App\Models\Solicitudot;
 use App\Models\TTrabajo;
 use App\Models\Ubicacion;
 use App\Models\User;
 use Carbon\Carbon;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OTController extends Controller
 {
@@ -31,6 +35,7 @@ class OTController extends Controller
         // Para obtener el ID:
         $user->id;
         $areas = Area::all();
+        $respon = Encargado::all();
         $tts = TTrabajo::all();
         $espes = Especialidad::all();
         $crits = Criticidad::all();
@@ -40,7 +45,7 @@ class OTController extends Controller
         $date = $date->format('Y-m-d');
 
 
-        return view('entorno.nuevo', compact('areas', 'tts', 'espes', 'crits', 'ubis', 'user', 'date'));
+        return view('entorno.nuevo', compact('areas', 'respon', 'tts', 'espes', 'crits', 'ubis', 'user', 'date'));
     }
 
     public function store(Request $request)
@@ -57,15 +62,17 @@ class OTController extends Controller
         $entornos->referencia = $request->get('referencia');
         $entornos->descripcion = $request->get('descripcion');
         $entornos->detalle = $request->get('detalle');
+        $entornos->idEstado = 1;
+        $entornos->idArea = $request->get('area');
+        $entornos->idEncarg = $request->get('responsable');
 
         $entornos->save();
         return redirect()->route('entorno.index');
     }
     public function show($id)
     {
-        $sol = Solicitudot::find($id);
-        dd($sol);
-        return view('entorno.show',compact('sol'));
+        $sol = Solicitudot::findOrFail($id);
+        return view('entorno.show', compact('sol'));
     }
     public function edit($id)
     {
@@ -80,5 +87,10 @@ class OTController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function exportExcel(){
+     
+        return Excel::download(new SolictExport, 'solicitud.xlsx');
     }
 }

@@ -10,27 +10,27 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Area
+ * Class Encargado
  * 
- * @property int $idarea
- * @property string $nombreA
+ * @property int $idencargado
+ * @property string $nom_E
  * 
  * @property Collection|Solicitudot[] $solicitudots
  *
  * @package App\Models
  */
-class Area extends Model
+class Encargado extends Model
 {
-	protected $table = 'area';
-	protected $primaryKey = 'idarea';
+	protected $table = 'encargado';
+	protected $primaryKey = 'idencargado';
 	public $timestamps = false;
 
 	protected $fillable = [
-		'nombreA'
+		'nom_E'
 	];
 
 	public function solicitudots()
 	{
-		return $this->hasMany(Solicitudot::class, 'idArea');
+		return $this->hasMany(Solicitudot::class, 'idEncarg');
 	}
 }

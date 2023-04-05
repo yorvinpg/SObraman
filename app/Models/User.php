@@ -6,11 +6,9 @@
 
 namespace App\Models;
 
-
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
 /**
  * Class User
  *
@@ -60,7 +58,7 @@ class User extends Authenticatable
 		'profile_photo_path',
 		'username'
 	];
-        protected $appends = [
+    protected $appends = [
         'profile_photo_url',
     ];
 

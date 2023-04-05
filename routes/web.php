@@ -20,6 +20,7 @@ Route::get('admin/entorno/consulta',[OTController::class, 'index'])->name('entor
 Route::post('admin/entorno/consulta',[OTController::class, 'store'])->name('entorno.store');
 Route::get('admin/entorno/create',[OTController::class, 'create'])->name('entorno.create');
 Route::get('admin/entorno/{sol}',[OTController::class, 'show'])->name('entorno.show');
+Route::get('export-entorno',[OTController::class, 'exportExcel'])->name('entorno.exportExcel');
 
 Route::get('/', function () {
     return view('auth.login');
