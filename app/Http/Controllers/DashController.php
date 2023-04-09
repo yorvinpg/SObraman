@@ -15,6 +15,14 @@ class DashController extends Controller
      */
     public function index()
     {
+        $orderC = Solicitudot::orderBy('idsolicitudOT', 'desc')
+            ->where('idEstado', '5')
+            ->get();
+
+        $orderP = Solicitudot::orderBy('idsolicitudOT', 'desc')
+            ->where('idEstado', '2')
+            ->get();
+
         $total = Solicitudot::count();
         $count = Solicitudot::count(); // te trae todo la data de solicitud en 5, de manera descendente
         $countA = Solicitudot::where('idEstado', '6')
@@ -35,7 +43,7 @@ class DashController extends Controller
         } else {
             $porcentajeC = 0;
         }
-        return view('entorno.Dash', compact('count', 'countA', 'porcentaje','porcentajeC'));
+        return view('entorno.Dash', compact('orderC', 'orderP', 'count', 'countA', 'porcentaje', 'porcentajeC'));
     }
 
     /**

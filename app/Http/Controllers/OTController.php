@@ -121,7 +121,27 @@ class OTController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $solicitud = Solicitudot::find($id);
+
+        // Verificar si se encontró la solicitud
+        if (!$solicitud) {
+            return back()->with('error', 'La solicitud no existe');
+        }
+
+        // Validar los campos del formulario
+        $request->validate([
+            'campo1' => 'required',
+            'campo2' => 'required',
+            //...
+        ]);
+
+        // Actualizar la solicitud con los datos del formulario
+        $solicitud->campo1 = $request->campo1;
+        $solicitud->campo2 = $request->campo2;
+        //...
+        $solicitud->save();
+
+        return redirect()->route('ruta.de.regreso')->with('success', 'La solicitud ha sido actualizada exitosamente');
     }
 
     public function destroy($id)
