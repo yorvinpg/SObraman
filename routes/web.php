@@ -22,8 +22,8 @@ Route::post('admin/entorno/consulta',[OTController::class, 'store'])->name('ento
 Route::get('admin/entorno/create',[OTController::class, 'create'])->name('entorno.create');
 Route::get('admin/entorno/{sol}',[OTController::class, 'show'])->name('entorno.show');
 Route::get('export-entorno',[OTController::class, 'exportExcel'])->name('entorno.exportExcel');
-
 Route::get('admin/dashboard',[DashController::class, 'index'])->name('dash.index');
+Route::put('/solicitudot/{id}/cambiar-estado', [OTController::class, 'update'])->name('solicitudot.cambiarEstado');
 
 Route::get('/', function () {
     return view('auth.login');

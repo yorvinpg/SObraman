@@ -29,7 +29,8 @@ class OTController extends Controller
         $filtroEp = $request->get('esp');
         $filtroF = $request->get('fecha');
 
-        $solicitudes = Solicitudot::orderBy('idsolicitudOT', 'desc'); // te trae todo la data de solicitud en 5, de manera descendente
+        $solicitudes = Solicitudot::orderBy('idsolicitudOT', 'desc')
+            ->whereNotIn('idEstado', [6]); // te trae todo la data de solicitud en 5, de manera descendente, te muestra todo menos los anulados.
         //si devuelve null te muestra toda la data completa pero si no solo te muestra lo filtrado.
         if (isset($filtro) && !empty($filtro)) {
             $solicitudes = $solicitudes->where('idsolicitudOT', "=", $filtro);
@@ -63,6 +64,8 @@ class OTController extends Controller
             $solicitudes = $solicitudes
                 ->whereDate('fecha', 'like', '%' . $filtroF . '%');
         }
+
+
 
         $solicitudes = $solicitudes->paginate(5); // te trae todo la data de solicitud en 5, de manera descendente
         return view('entorno.consulta', compact('solicitudes', 'filtro', 'filtroE', 'filtroU', 'filtroT', 'filtroEp', 'filtroF'));
@@ -122,26 +125,14 @@ class OTController extends Controller
     public function update(Request $request, $id)
     {
         $solicitud = Solicitudot::find($id);
-
-        // Verificar si se encontró la solicitud
         if (!$solicitud) {
-            return back()->with('error', 'La solicitud no existe');
+            return redirect()->back()->with('error', 'Solicitud no encontrada');
         }
 
-        // Validar los campos del formulario
-        $request->validate([
-            'campo1' => 'required',
-            'campo2' => 'required',
-            //...
-        ]);
-
-        // Actualizar la solicitud con los datos del formulario
-        $solicitud->campo1 = $request->campo1;
-        $solicitud->campo2 = $request->campo2;
-        //...
+        $solicitud->idEstado = 6;
         $solicitud->save();
 
-        return redirect()->route('ruta.de.regreso')->with('success', 'La solicitud ha sido actualizada exitosamente');
+        return redirect()->back()->with('success', 'Estado de solicitud actualizado exitosamente');
     }
 
     public function destroy($id)

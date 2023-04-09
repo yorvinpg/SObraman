@@ -150,9 +150,15 @@
             <td>
                 <button class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></button>
             </td>
-            <td>
-                <button class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-            </td>
+            
+            <form action="{{ route('solicitudot.cambiarEstado', ['id' => $item->idsolicitudOT]) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <td>
+                    <button class="btn btn-danger" type="submit"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                </td>
+            </form>
+
         </tr>
         @endforeach
     </tbody>
