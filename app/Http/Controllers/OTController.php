@@ -20,13 +20,53 @@ use Maatwebsite\Excel\Facades\Excel;
 class OTController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $solicitudes = Solicitudot::orderBy('idsolicitudOT', 'desc')->paginate(5); // te trae todo la data de solicitud en 5, de manera descendente
+        $filtro = $request->get('ID');
+        $filtroE = $request->get('enc');
+        $filtroU = $request->get('ubi');
+        $filtroT = $request->get('ttrabajo');
+        $filtroEp = $request->get('esp');
+        $filtroF = $request->get('fecha');
 
-        return view('entorno.consulta', compact('solicitudes'));
+        $solicitudes = Solicitudot::orderBy('idsolicitudOT', 'desc'); // te trae todo la data de solicitud en 5, de manera descendente
+        //si devuelve null te muestra toda la data completa pero si no solo te muestra lo filtrado.
+        if (isset($filtro) && !empty($filtro)) {
+            $solicitudes = $solicitudes->where('idsolicitudOT', "=", $filtro);
+        }
+
+        if (isset($filtroE) && !empty($filtroE)) {
+            $solicitudes = $solicitudes
+                ->join('encargado', "encargado.idencargado", "=", "solicitudot.idEncarg")
+                ->where('encargado.nom_E', 'like', '%' . $filtroE . '%');
+        }
+
+        if (isset($filtroU) && !empty($filtroU)) {
+            $solicitudes = $solicitudes
+                ->join('ubicacion', "ubicacion.idubicacion", "=", "solicitudot.idUbi")
+                ->where('ubicacion.nom_ubi', 'like', '%' . $filtroU . '%');
+        }
+
+        if (isset($filtroT) && !empty($filtroT)) {
+            $solicitudes = $solicitudes
+                ->join('t_trabajo', "t_trabajo.idtrabajo", "=", "solicitudot.idTipo")
+                ->where('t_trabajo.nom_trab', 'like', '%' . $filtroT . '%');
+        }
+
+        if (isset($filtroEp) && !empty($filtroEp)) {
+            $solicitudes = $solicitudes
+                ->join('especialidad', "especialidad.idespecialidad", "=", "solicitudot.idEsp")
+                ->where('especialidad.nom_espe', 'like', '%' . $filtroEp . '%');
+        }
+
+        if (isset($filtroF) && !empty($filtroF)) {
+            $solicitudes = $solicitudes
+                ->whereDate('fecha', 'like', '%' . $filtroF . '%');
+        }
+
+        $solicitudes = $solicitudes->paginate(5); // te trae todo la data de solicitud en 5, de manera descendente
+        return view('entorno.consulta', compact('solicitudes', 'filtro', 'filtroE', 'filtroU', 'filtroT', 'filtroEp', 'filtroF'));
     }
-
 
     public function create()
     {
@@ -89,8 +129,34 @@ class OTController extends Controller
         //
     }
 
-    public function exportExcel(){
-     
-        return Excel::download(new SolictExport, 'solicitud.xlsx');
+    public function exportExcel(Request $request)
+    {
+        // Obtener los parámetros del filtro
+        $filtro = $request->input('filtro');
+        $filtroE = $request->input('filtroE');
+        $filtroU = $request->input('filtroU');
+
+        // Hacer la consulta a la base de datos con los filtros
+        $ret = Solicitudot::orderBy('idsolicitudOT', 'desc')
+            ->join('ubicacion', "ubicacion.idubicacion", "=", "solicitudot.idUbi")
+            ->join('encargado', "encargado.idencargado", "=", "solicitudot.idEncarg")
+            ->when($filtro, function ($query, $filtro) {
+                return $query->where('idsolicitudOT', $filtro);
+            })
+            ->when($filtroE, function ($query, $filtroE) {
+                return $query->where('encargado.nom_E', 'like', '%' . $filtroE . '%');
+            })
+            ->when($filtroU, function ($query, $filtroU) {
+                return $query->where('ubicacion.nom_ubi', 'like', '%' . $filtroU . '%');
+            })
+            ->get();
+        $array = $ret->toArray();
+        $solicitudes = new Solicitudot($array);
+
+        // Llamar la clase SolicitudesExport y pasar los datos de la consulta
+        $export = new Solicitudot($solicitudes->getCollection()); // Pasamos la colección obtenida del paginador
+
+        // Descargar el archivo Excel con un nombre y extensión específicos
+        return Excel::download($export, 'solicitudes.xlsx');
     }
 }

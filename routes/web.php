@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\OTController;
@@ -22,17 +23,19 @@ Route::get('admin/entorno/create',[OTController::class, 'create'])->name('entorn
 Route::get('admin/entorno/{sol}',[OTController::class, 'show'])->name('entorno.show');
 Route::get('export-entorno',[OTController::class, 'exportExcel'])->name('entorno.exportExcel');
 
+Route::get('admin/dashboard',[DashController::class, 'index'])->name('dash.index');
+
 Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/admin', function () {
-        return view('admin.index');
-    })->name('admin');
-});
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified'
+// ])->group(function () {
+//     Route::get('/admin', function () {
+//         return view('admin.index');
+//     })->name('admin');
+// });
 

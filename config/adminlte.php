@@ -15,7 +15,7 @@ return [
     */
 
     'title' => 'SIS - OBRAMAN │',
-    'title_prefix' => '',
+    'title_prefix' => 'SIS - OBRAMAN │ ',
     'title_postfix' => '',
 
     /*
@@ -319,9 +319,9 @@ return [
         //     'label_color' => 'success',
         // ],
         [
-            'text' => 'Dashboard',
+            'text' => 'Tablero Principal',
             'icon' => 'nav-icon fas fa-tachometer-alt',
-            'route'  => 'admin',
+            'url' => 'admin/dashboard'
         ],
         ['header' => 'ENTORNO'],
         [

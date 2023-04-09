@@ -3,137 +3,163 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-<script src="js/bootstrap-datetimepicker.min.js"></script>
-<h1 class="text-center bg-primary text white">SOLICITUD DE ORDEN DE TRABAJO (O.T)</h1>
+<!-- Agrega los estilos CSS de Flatpickr -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<!-- Agrega el archivo JavaScript de Flatpickr -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<h1 class="text-center bg-info text white">SOLICITUD DE ORDEN DE TRABAJO (O.T)</h1>
 @stop
 
 @section('content')
-<div class="card">
-    <h5 class="card-header bg-dark"></h5>
-    <div class="card-body">
-        <form action="{{route('entorno.store')}}" method="POST">
-            @csrf
-            <div class="form-group row">
-                <label for="fechA" class="col-sm-2 col-form-label">Fecha de Aviso</label>
-                <div class="col-sm-6">
-                    <div class="input-group date" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" value="{{$date}}"
-                            data-target="#datepicker" id="fecha" name="fecha" />
-                        <div class="input-group-append" data-target="#datepicker" data-toggle="datetimepicker">
-                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                        </div>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row justify-content-md-center">
+            <div class="card" style="width: 59%; background: #EAECEE">
+                <h5 class="card-header bg-info"></h5>
+                <div class="card-body">
+                    <div class="form-group">
+                        <form action="{{route('entorno.store')}}" method="POST">
+                            @csrf
+                            <div class="form-group row">
+                                <label for="fechA" class="col-sm-4 col-form-label">Fecha de Aviso</label>
+                                <div class="col-auto">
+                                    <div class="input-group date" data-target-input="nearest">
+                                        <input type="text" id="fecha" name="fecha" class="form-control"
+                                            value="{{$date}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-4 col-form-label">Solicitante</label>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" id="nameU" name="solicitante"
+                                        value="{{$user->name}}" style="width: 225px;" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" name="email" id="email" value=""
+                                        style="width: 225px;">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-4 col-form-label">Teléfono</label>
+                                <div class="col-auto">
+                                    <input type="number" class="form-control" name="telefono" id="telefono" value=""
+                                        style="width: 225px;">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-4 col-form-label">Area</label>
+                                <div class="col-auto">
+                                    <select class="form-select form-control" name="area"
+                                        aria-label="Default select example" id="area" style="width: 225px;">
+                                        @foreach ($areas as $area )
+                                        <option value="{{$area['idarea'] }}">{{$area['nombreA']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-4 col-form-label">Responsable</label>
+                                <div class="col-auto">
+                                    <select class="form-select form-control" name="responsable"
+                                        aria-label="Default select example" id="responsable" style="width: 225px;">
+                                        @foreach ($respon as $respo )
+                                        <option value="{{$respo['idencargado'] }}">{{$respo['nom_E']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-4 col-form-label">Tipo Trabajo</label>
+                                <div class="col-auto">
+                                    <select class="form-select form-control" name="tt"
+                                        aria-label="Default select example" id="tt" style="width: 225px;">
+                                        @foreach ($tts as $tt )
+                                        <option value="{{$tt['idtrabajo'] }}">{{$tt['nom_trab']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-4 col-form-label">Especialidad</label>
+                                <div class="col-auto">
+                                    <select class="form-select form-control" name="esp"
+                                        aria-label="Default select example" id="esp" style="width: 225px;">
+                                        @foreach ($espes as $espe )
+                                        <option value="{{$espe['idespecialidad'] }}">{{$espe['nom_espe']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-4 col-form-label">Criticidad</label>
+                                <div class="col-auto">
+                                    <select class="form-select form-control" name="crit"
+                                        aria-label="Default select example" id="crit" style="width: 225px;">
+                                        @foreach ($crits as $crit )
+                                        <option value="{{$crit['idcriticidad'] }}">{{$crit['tipoC']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-4 col-form-label">Ubicación</label>
+                                <div class="col-auto">
+                                    <select class="form-select form-control" name="ubi"
+                                        aria-label="Default select example" id="ubi" style="width: 225px;">
+                                        @foreach ($ubis as $ubi )
+                                        <option value="{{$ubi['idubicacion'] }}">{{$ubi['nom_ubi']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-4 col-form-label">Referencia</label>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" name="referencia" id="referencia" value=""
+                                        style="width: 225px;">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-4 col-form-label">Descripción</label>
+                                <div class="col-auto">
+                                    <textarea class="form-control" name="descripcion" id="descripcion" value=""
+                                        style="width: 225px;"> </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-4 col-form-label">Detalle</label>
+                                <div class="col-auto">
+                                    <textarea class="form-control" name="detalle" id="detalle" value=""
+                                        style="width: 225px;"> </textarea>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">GENERAR O.T</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Solicitante</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" id="nameU" name="solicitante" value="{{$user->name}}" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" name="email" id="email" value="">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Teléfono</label>
-                <div class="col-sm-6">
-                    <input type="number" class="form-control" name="telefono" id="telefono" value="">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Area</label>
-                <div class="col-sm-6">
-                    <select class="form-select form-control" name="area" aria-label="Default select example" id="area">
-                        @foreach ($areas as $area )
-                        <option value="{{$area['idarea'] }}">{{$area['nombreA']}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Responsable</label>
-                <div class="col-sm-6">
-                    <select class="form-select form-control" name="responsable" aria-label="Default select example" id="responsable">
-                        @foreach ($respon as $respo )
-                        <option value="{{$respo['idencargado'] }}">{{$respo['nom_E']}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Tipo Trabajo</label>
-                <div class="col-sm-6">
-                    <select class="form-select form-control" name="tt" aria-label="Default select example" id="tt">
-                        @foreach ($tts as $tt )
-                        <option value="{{$tt['idtrabajo'] }}">{{$tt['nom_trab']}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Especialidad</label>
-                <div class="col-sm-6">
-                    <select class="form-select form-control" name="esp" aria-label="Default select example" id="esp">
-                        @foreach ($espes as $espe )
-                        <option value="{{$espe['idespecialidad'] }}">{{$espe['nom_espe']}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Criticidad</label>
-                <div class="col-sm-6">
-                    <select class="form-select form-control" name="crit" aria-label="Default select example" id="crit">
-                        @foreach ($crits as $crit )
-                        <option value="{{$crit['idcriticidad'] }}">{{$crit['tipoC']}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Ubicación</label>
-                <div class="col-sm-6">
-                    <select class="form-select form-control" name="ubi" aria-label="Default select example" id="ubi">
-                        @foreach ($ubis as $ubi )
-                        <option value="{{$ubi['idubicacion'] }}">{{$ubi['nom_ubi']}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Referencia</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" name="referencia" id="referencia" value="">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Descripción</label>
-                <div class="col-sm-6">
-                    <textarea class="form-control" name="descripcion" id="descripcion" value=""> </textarea>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Detalle</label>
-                <div class="col-sm-6">
-                    <textarea class="form-control" name="detalle" id="detalle" value=""> </textarea>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">GENERAR O.T</button>
-        </form>
+        </div>
     </div>
-</div>
+</section>
 @stop
 @section('css')
 <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
 @section('js')
+<script>
+    flatpickr("#fecha", {
+        dateFormat: "Y-m-d" // Formato de fecha
+    });
+</script>
 
 @stop
