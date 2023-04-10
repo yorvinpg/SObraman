@@ -338,11 +338,11 @@ return [
                     'icon' => 'nav-icon fas fa-book',
                     'url'  => 'admin/entorno/consulta',
                 ],
-                [
-                    'text' => 'Anular Aviso',
-                    'icon' => 'nav-icon fas fa-trash',
-                    'url'  => '#',
-                ],
+                // [
+                //     'text' => 'Reporte Tecnico',
+                //     'icon' => 'nav-icon fas fa-trash',
+                //     'url'  => '#',
+                // ],
             ],
         ],
         // ['header' => 'account_settings'],

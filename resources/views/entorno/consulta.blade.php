@@ -144,13 +144,14 @@
             <td>{{$item->t_trabajo->nom_trab }}</td>
             <td>{{$item->criticidad->tipoC }}</td>
             <td>
-                <button data-toggle="modal" data-target="#Modal" class="btn btn-success"><i class="fa fa-eye"
-                        aria-hidden="true"></i></button>
+                <button data-toggle="modal" data-target="#Modal" class="btn btn-success btn-ver-detalle"
+                    data-id="{{$item->idsolicitudOT}}"><i class="fa fa-eye" aria-hidden="true"></i></button>
             </td>
             <td>
-                <button class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></button>
+                <button data-toggle="modal" data-target="#ModalE" class="btn btn-info"><i class="fa fa-check"
+                        aria-hidden="true"></i></button>
             </td>
-            
+
             <form action="{{ route('solicitudot.cambiarEstado', ['id' => $item->idsolicitudOT]) }}" method="POST">
                 @csrf
                 @method('PUT')
@@ -165,6 +166,7 @@
 </table>
 {{$solicitudes->links()}}
 @include('entorno.modal.showm')
+@include('entorno.modal.Edit')
 @stop
 
 @section('css')
@@ -172,6 +174,37 @@
 @stop
 
 @section('js')
+<script> //script modal view detalles.
+    $('.btn-ver-detalle').on('click', function() {
+        var id = $(this).closest('tr').find('td:eq(0)').text();// Obtener el id de la solicitud
+        var solicitante = $(this).closest('tr').find('td:eq(1)').text(); // Obtener el solicitante
+        var email = $(this).closest('tr').find('td:eq(2)').text(); // Obtener el email
+        var trabajo = $(this).closest('tr').find('td:eq(3)').text(); // Obtener el trabajo
+        var criticidad = $(this).closest('tr').find('td:eq(4)').text(); // Obtener la criticidad
+        var fecha = "{{$item->fecha->format('Y-m-d')}}"; // Obtener la criticidadid
+        var ubicacion = "{{$item->ubicacion->nom_ubi}}"; // Obtener el nombre de la ubicación
+        var esp = "{{$item->especialidad->nom_espe}}"; // Obtener el nombre de la especialidad
+        var area = "{{$item->area->nombreA}}"; // Obtener el nombre del area
+        var det = "{{$item->detalle}}"; // Obtener el nombre del detalle
+        var des = "{{$item->descripcion}}"; // Obtener descripcion
+        var est = "{{$item->estado->nombrE}}"; // Obtener estado
+
+        // Asignar los datos obtenidos a los campos del modal
+        $('#modal-id').text(id);
+        $('#modal-solicitante').text(solicitante);
+        $('#modal-email').text(email);
+        $('#modal-trabajo').text(trabajo);
+        $('#modal-criticidad').text(criticidad);
+        $('#modal-fecha').text(fecha);
+        $('#modal-ubicacion').text(ubicacion);
+        $('#modal-especialidad').text(esp);
+        $('#modal-area').text(area);
+        $('#modal-detalle').text(det);
+        $('#modal-descripcion').text(des);
+        $('#modal-estado').text(est);
+
+    });
+</script>
 <script>
     flatpickr("#fecha", {
         dateFormat: "Y-m-d" // Formato de fecha

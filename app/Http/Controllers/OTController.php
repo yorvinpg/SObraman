@@ -7,6 +7,7 @@ use App\Models\Area;
 use App\Models\Criticidad;
 use App\Models\Encargado;
 use App\Models\Especialidad;
+use App\Models\Estado;
 use App\Models\Solicitudot;
 use App\Models\TTrabajo;
 use App\Models\Ubicacion;
@@ -29,6 +30,7 @@ class OTController extends Controller
         $filtroEp = $request->get('esp');
         $filtroF = $request->get('fecha');
 
+        $est = Estado::all();
         $solicitudes = Solicitudot::orderBy('idsolicitudOT', 'desc')
             ->whereNotIn('idEstado', [6]); // te trae todo la data de solicitud en 5, de manera descendente, te muestra todo menos los anulados.
         //si devuelve null te muestra toda la data completa pero si no solo te muestra lo filtrado.
@@ -68,7 +70,7 @@ class OTController extends Controller
 
 
         $solicitudes = $solicitudes->paginate(5); // te trae todo la data de solicitud en 5, de manera descendente
-        return view('entorno.consulta', compact('solicitudes', 'filtro', 'filtroE', 'filtroU', 'filtroT', 'filtroEp', 'filtroF'));
+        return view('entorno.consulta', compact('solicitudes', 'est', 'filtro', 'filtroE', 'filtroU', 'filtroT', 'filtroEp', 'filtroF'));
     }
 
     public function create()
@@ -124,11 +126,10 @@ class OTController extends Controller
 
     public function update(Request $request, $id)
     {
-        $solicitud = Solicitudot::find($id);
+        $solicitud = Solicitudot::find($id); // cambiar  a estado anulado  6 = Anulado -> ojo
         if (!$solicitud) {
             return redirect()->back()->with('error', 'Solicitud no encontrada');
         }
-
         $solicitud->idEstado = 6;
         $solicitud->save();
 
