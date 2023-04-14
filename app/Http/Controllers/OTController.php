@@ -136,8 +136,8 @@ class OTController extends Controller
         $tecnico = $request->input('tecnico');
 
         // Actualizar fila correspondiente en la base de datos
-        Solicitudot::where('id', $id)
-        ->update(['estado' => $estado, 'tecnico' => $tecnico]);
+        Solicitudot::where('idsolicitudOT', $id)
+        ->update(['idEstado' => $estado, 'idTec' => $tecnico]);
 
         return redirect()->back();
     }
