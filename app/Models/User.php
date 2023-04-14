@@ -9,6 +9,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 /**
  * Class User
  *
@@ -31,44 +32,47 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
-	protected $table = 'users';
+    protected $table = 'users';
 
-	protected $casts = [
-		'email_verified_at' => 'date',
-		'two_factor_confirmed_at' => 'date',
-		'current_team_id' => 'int'
-	];
+    protected $casts = [
+        'email_verified_at' => 'date',
+        'two_factor_confirmed_at' => 'date',
+        'current_team_id' => 'int'
+    ];
 
-	protected $hidden = [
-		'password',
-		'two_factor_secret',
-		'remember_token'
-	];
+    protected $hidden = [
+        'password',
+        'two_factor_secret',
+        'remember_token'
+    ];
 
-	protected $fillable = [
-		'name',
-		'email',
-		'email_verified_at',
-		'password',
-		'two_factor_secret',
-		'two_factor_recovery_codes',
-		'two_factor_confirmed_at',
-		'remember_token',
-		'current_team_id',
-		'profile_photo_path',
-		'username'
-	];
+    protected $fillable = [
+        'name',
+        'email',
+        'email_verified_at',
+        'password',
+        'two_factor_secret',
+        'two_factor_recovery_codes',
+        'two_factor_confirmed_at',
+        'remember_token',
+        'current_team_id',
+        'profile_photo_path',
+        'username'
+    ];
     protected $appends = [
         'profile_photo_url',
     ];
 
-    public function adminlte_image(){
+    public function adminlte_image()
+    {
         return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzBpnouxDuF063trW5gZOyXtyuQaExCQVMYA&usqp=CAU';
     }
-    public function adminlte_desc(){
+    public function adminlte_desc()
+    {
         return 'SuperAdministrador';
     }
-    public function adminlte_profile_url(){
-        return'profile/username';
+    public function adminlte_profile_url()
+    {
+        return 'profile/username';
     }
 }

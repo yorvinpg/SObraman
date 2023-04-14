@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnulaController;
 use App\Http\Controllers\DashController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,8 @@ Route::get('admin/entorno/{sol}',[OTController::class, 'show'])->name('entorno.s
 Route::get('export-entorno',[OTController::class, 'exportExcel'])->name('entorno.exportExcel');
 Route::get('admin/dashboard',[DashController::class, 'index'])->name('dash.index');
 Route::put('/solicitudot/{id}/cambiar-estado', [OTController::class, 'update'])->name('solicitudot.cambiarEstado');
+
+Route::get('entorno/anulado',[AnulaController::class, 'index'])->name('entorno.anulado');
 
 Route::get('/', function () {
     return view('auth.login');

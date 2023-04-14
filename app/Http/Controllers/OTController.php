@@ -66,10 +66,8 @@ class OTController extends Controller
             $solicitudes = $solicitudes
                 ->whereDate('fecha', 'like', '%' . $filtroF . '%');
         }
-
-
-
         $solicitudes = $solicitudes->paginate(5); // te trae todo la data de solicitud en 5, de manera descendente
+
         return view('entorno.consulta', compact('solicitudes', 'est', 'filtro', 'filtroE', 'filtroU', 'filtroT', 'filtroEp', 'filtroF'));
     }
 

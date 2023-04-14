@@ -27,12 +27,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $idEstado
  * @property int $idArea
  * @property int $idEncarg
+ * @property int|null $idTec
+ * @property string|null $detallSP
  * 
  * @property Area $area
  * @property Criticidad $criticidad
  * @property Encargado $encargado
  * @property Especialidad $especialidad
  * @property Estado $estado
+ * @property Tecnico|null $tecnico
  * @property TTrabajo $t_trabajo
  * @property Ubicacion $ubicacion
  *
@@ -53,7 +56,8 @@ class Solicitudot extends Model
 		'idUbi' => 'int',
 		'idEstado' => 'int',
 		'idArea' => 'int',
-		'idEncarg' => 'int'
+		'idEncarg' => 'int',
+		'idTec' => 'int'
 	];
 
 	protected $fillable = [
@@ -70,7 +74,9 @@ class Solicitudot extends Model
 		'detalle',
 		'idEstado',
 		'idArea',
-		'idEncarg'
+		'idEncarg',
+		'idTec',
+		'detallSP'
 	];
 
 	public function area()
@@ -96,6 +102,11 @@ class Solicitudot extends Model
 	public function estado()
 	{
 		return $this->belongsTo(Estado::class, 'idEstado');
+	}
+
+	public function tecnico()
+	{
+		return $this->belongsTo(Tecnico::class, 'idTec');
 	}
 
 	public function t_trabajo()
