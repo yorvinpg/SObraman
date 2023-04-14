@@ -138,7 +138,11 @@
     <tbody class="table-dark">
         @foreach ($solicitudes as $item)
         <tr>
-    c
+            <td>{{$item->idsolicitudOT }}</td>
+            <td>{{$item->fecha->format('Y-m-d')}}</td>
+            <td>{{$item->encargado->nom_E }}</td>
+            <td>{{$item->ubicacion->nom_ubi }}</td>
+            <td>{{$item->estado->nombrE }}</td>
             <td>
                 <button data-toggle="modal" data-target="#Modal" class="btn btn-success btn-ver-detalle"
                     data-id="{{$item->idsolicitudOT}}" data-esp="{{$item->especialidad->nom_espe}}"
