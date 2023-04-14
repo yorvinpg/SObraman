@@ -9,6 +9,10 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 <h1 class="text-center bg-info text white">LISTA DE USUARIOS</h1>
+
+<div class="card-header">
+    <input wire:model='search' class="form-control" placeholder="Ingrese Usuario"/>
+</div>
 @stop
 @section('content')
 

@@ -7,14 +7,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public $search;
     public function index()
     {
-        $users = User::paginate();
+        $users = User::where('name', 'LIKE','%'.$this->search.'%')->paginate();
         return view('entorno.usuarios', compact('users'));
     }
 
