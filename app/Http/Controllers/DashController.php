@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Encargado;
 use App\Models\Solicitudot;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DashController extends Controller
@@ -24,7 +25,7 @@ class DashController extends Controller
             ->get();
 
         $total = Solicitudot::count();
-        $count = Solicitudot::count(); // te trae todo la data de solicitud en 5, de manera descendente
+        $count = Solicitudot::count();
         $countA = Solicitudot::where('idEstado', '6')
             ->count();
 
@@ -43,7 +44,20 @@ class DashController extends Controller
         } else {
             $porcentajeC = 0;
         }
-        return view('entorno.Dash', compact('orderC', 'orderP', 'count', 'countA', 'porcentaje', 'porcentajeC'));
+        $mes_anterior = Carbon::now()->subMonth()->format('m');
+        $año_actual = Carbon::now()->year;
+        $mesActual = Carbon::now()->month;
+
+        // Contar las solicitudes del estado 5 del mes actual
+        $countMA = Solicitudot::where('idEstado', '5')
+            ->whereMonth('fecha', $mesActual)
+            ->count();
+        $countCA = Solicitudot::where('idEstado', '5')
+            ->whereYear('fecha', $año_actual)
+            ->whereMonth('fecha', $mes_anterior)
+            ->count();
+
+        return view('entorno.Dash', compact('orderC', 'orderP', 'count', 'countA', 'porcentaje', 'porcentajeC', 'countCA','countMA'));
     }
 
     /**

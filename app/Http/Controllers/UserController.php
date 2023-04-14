@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public $search;
-    public function index()
+
+    public function index(Request $request)
     {
-        $users = User::where('name', 'LIKE','%'.$this->search.'%')->paginate();
+        $search = $request->get('searchD');
+
+        $users = User::where('name', 'LIKE', '%' . $search . '%' )->paginate();
         return view('entorno.usuarios', compact('users'));
     }
 

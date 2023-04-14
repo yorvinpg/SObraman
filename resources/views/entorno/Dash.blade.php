@@ -107,58 +107,18 @@
                     <div class="row">
                         <div class="col-md-8">
                             <p class="text-center">
-                                <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+
+                                <strong>AÑO
+                                    <?php echo date('Y'); ?>
+                                </strong>
                             </p>
 
                             <div class="chart">
                                 <!-- Sales Chart Canvas -->
-                                <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
+                                <canvas id="myChart" height="180" style="height: 180px;"></canvas>
                             </div>
                             <!-- /.chart-responsive -->
                         </div>
-                        <!-- /.col -->
-                        <div class="col-md-4">
-                            <p class="text-center">
-                                <strong>Goal Completion</strong>
-                            </p>
-
-                            <div class="progress-group">
-                                Add Products to Cart
-                                <span class="float-right"><b>160</b>/200</span>
-                                <div class="progress progress-sm">
-                                    <div class="progress-bar bg-primary" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-
-                            <div class="progress-group">
-                                Complete Purchase
-                                <span class="float-right"><b>310</b>/400</span>
-                                <div class="progress progress-sm">
-                                    <div class="progress-bar bg-danger" style="width: 75%"></div>
-                                </div>
-                            </div>
-
-                            <!-- /.progress-group -->
-                            <div class="progress-group">
-                                <span class="progress-text">Visit Premium Page</span>
-                                <span class="float-right"><b>480</b>/800</span>
-                                <div class="progress progress-sm">
-                                    <div class="progress-bar bg-success" style="width: 60%"></div>
-                                </div>
-                            </div>
-
-                            <!-- /.progress-group -->
-                            <div class="progress-group">
-                                Send Inquiries
-                                <span class="float-right"><b>250</b>/500</span>
-                                <div class="progress progress-sm">
-                                    <div class="progress-bar bg-warning" style="width: 50%"></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                        </div>
-                        <!-- /.col -->
                     </div>
                     <!-- /.row -->
                 </div>
@@ -168,9 +128,9 @@
                         <div class="col-sm-3 col-6">
                             <div class="description-block border-right">
                                 <span class="description-percentage text-success"><i class="fas fa-caret-up"></i>
-                                    17%</span>
-                                <h5 class="description-header">$35,210.43</h5>
-                                <span class="description-text">TOTAL REVENUE</span>
+                                    {{$countCA}}</span>
+                                </br>
+                                <span class="description-text">MARZO</span>
                             </div>
                             <!-- /.description-block -->
                         </div>
@@ -178,29 +138,9 @@
                         <div class="col-sm-3 col-6">
                             <div class="description-block border-right">
                                 <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i>
-                                    0%</span>
-                                <h5 class="description-header">$10,390.90</h5>
-                                <span class="description-text">TOTAL COST</span>
-                            </div>
-                            <!-- /.description-block -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-3 col-6">
-                            <div class="description-block border-right">
-                                <span class="description-percentage text-success"><i class="fas fa-caret-up"></i>
-                                    20%</span>
-                                <h5 class="description-header">$24,813.53</h5>
-                                <span class="description-text">TOTAL PROFIT</span>
-                            </div>
-                            <!-- /.description-block -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-3 col-6">
-                            <div class="description-block">
-                                <span class="description-percentage text-danger"><i class="fas fa-caret-down"></i>
-                                    18%</span>
-                                <h5 class="description-header">1200</h5>
-                                <span class="description-text">GOAL COMPLETIONS</span>
+                                    {{$countMA}}</span>
+                                </br>
+                                <span class="description-text">ABRIL</span>
                             </div>
                             <!-- /.description-block -->
                         </div>
@@ -316,6 +256,48 @@
 @stop
 
 @section('js')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Marzo', 'Abril'],
+            datasets: [{
+                label: 'Solicitudes Cerradas',
+                data: [1, 3 ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
 <script>
     console.log('Hi!');
 </script>

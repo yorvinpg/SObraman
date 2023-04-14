@@ -11,8 +11,12 @@
 <h1 class="text-center bg-info text white">LISTA DE USUARIOS</h1>
 
 <div class="card-header">
-    <input wire:model='search' class="form-control" placeholder="Ingrese Usuario"/>
+    <form>
+        <input  class="form-control" placeholder="Ingrese Usuario" />
+    </form>
+
 </div>
+
 @stop
 @section('content')
 
@@ -32,7 +36,7 @@
             <td>{{$item->name}}</td>
             <td>{{$item->username}}</td>
             <td>
-                <a class="btn btn-primary" >Rol</a>
+                <a class="btn btn-primary">Rol</a>
             </td>
         </tr>
 
