@@ -27,13 +27,15 @@
             <td>{{$item->id}}</td>
             <td>{{$item->name}}</td>
             <td>{{$item->username}}</td>
-            <td></td>
+            <td>
+                <a class="btn btn-primary" >Rol</a>
+            </td>
         </tr>
 
         @endforeach
     </tbody>
 </table>
-{{--  {{$solicitudes->links()}}  --}}
+{{$users->links()}}
 
 @stop
 

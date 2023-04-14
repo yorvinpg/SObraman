@@ -105,7 +105,7 @@ class OTController extends Controller
         $entornos->referencia = $request->get('referencia');
         $entornos->descripcion = $request->get('descripcion');
         $entornos->detalle = $request->get('detalle');
-        $entornos->idEstado = 3;
+        $entornos->idEstado = 1;
         $entornos->idArea = $request->get('area');
         $entornos->idEncarg = $request->get('responsable');
 
