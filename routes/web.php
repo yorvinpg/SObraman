@@ -5,6 +5,7 @@ use App\Http\Controllers\DashController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\OTController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::get('admin/dashboard',[DashController::class, 'index'])->name('dash.index
 Route::put('/solicitudot/{id}/cambiar-estado', [OTController::class, 'update'])->name('solicitudot.cambiarEstado');
 
 Route::get('entorno/anulado',[AnulaController::class, 'index'])->name('entorno.anulado');
+Route::get('users',[UserController::class, 'index'])->name('admin.users');
 
 Route::get('/', function () {
     return view('auth.login');

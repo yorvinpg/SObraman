@@ -323,6 +323,11 @@ return [
             'icon' => 'nav-icon fas fa-tachometer-alt',
             'url' => 'admin/dashboard'
         ],
+        [
+            'text' => 'Usuarios',
+            'icon' => 'nav-icon  fas fa-users fa-fu',
+            'route' => 'admin.users'
+        ],
         ['header' => 'ENTORNO'],
         [
             'text'    => ' AVISOS',

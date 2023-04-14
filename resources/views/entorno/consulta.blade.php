@@ -124,11 +124,11 @@
 <table class="table mt-4 table-bordered">
     <thead class="table-info">
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">SOLICITANTE</th>
-            <th scope="col">EMAIL</th>
-            <th scope="col">TIPO</th>
-            <th scope="col">CRITICIDAD</th>
+            <th scope="col">OT</th>
+            <th scope="col">FECHA</th>
+            <th scope="col">RESPONSABLE</th>
+            <th scope="col">UBICACION</th>
+            <th scope="col">ESTADO</th>
             <th scope="col"></th>
             <th scope="col"></th>
             <th scope="col"></th>
@@ -139,13 +139,17 @@
         @foreach ($solicitudes as $item)
         <tr>
             <td>{{$item->idsolicitudOT }}</td>
-            <td>{{$item->solicitante }}</td>
-            <td>{{$item->email }}</td>
-            <td>{{$item->t_trabajo->nom_trab }}</td>
-            <td>{{$item->criticidad->tipoC }}</td>
+            <td>{{$item->fecha->format('Y-m-d')}}</td>
+            <td>{{$item->encargado->nom_E }}</td>
+            <td>{{$item->ubicacion->nom_ubi }}</td>
+            <td>{{$item->estado->nombrE }}</td>
             <td>
                 <button data-toggle="modal" data-target="#Modal" class="btn btn-success btn-ver-detalle"
-                    data-id="{{$item->idsolicitudOT}}"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                    data-id="{{$item->idsolicitudOT}}" data-esp="{{$item->especialidad->nom_espe}}"
+                    data-area="{{$item->area->nombreA}}" data-det="{{$item->detalle}}" data-des="{{$item->descripcion}}"
+                    data-trabajo="{{$item->t_trabajo->nom_trab}}" data-criticidad="{{$item->criticidad->tipoC}}"
+                    data-solicitante="{{$item->solicitante}}" data-email="{{$item->email}}">
+                    <i class="fa fa-eye" aria-hidden="true"></i></button>
             </td>
             <td>
                 <button data-toggle="modal" data-target="#ModalE" class="btn btn-info"><i class="fa fa-check"
@@ -174,34 +178,38 @@
 @stop
 
 @section('js')
-<script> //script modal view detalles.
+<script>
+    //script modal view detalles.
     $('.btn-ver-detalle').on('click', function() {
-        var id = $(this).closest('tr').find('td:eq(0)').text();// Obtener el id de la solicitud
-        var solicitante = $(this).closest('tr').find('td:eq(1)').text(); // Obtener el solicitante
-        var email = $(this).closest('tr').find('td:eq(2)').text(); // Obtener el email
-        var trabajo = $(this).closest('tr').find('td:eq(3)').text(); // Obtener el trabajo
-        var criticidad = $(this).closest('tr').find('td:eq(4)').text(); // Obtener la criticidad
-        var fecha = "{{$item->fecha->format('Y-m-d')}}"; // Obtener la criticidadid
-        var ubicacion = "{{$item->ubicacion->nom_ubi}}"; // Obtener el nombre de la ubicación
-        var esp = "{{$item->especialidad->nom_espe}}"; // Obtener el nombre de la especialidad
-        var area = "{{$item->area->nombreA}}"; // Obtener el nombre del area
-        var det = "{{$item->detalle}}"; // Obtener el nombre del detalle
-        var des = "{{$item->descripcion}}"; // Obtener descripcion
-        var est = "{{$item->estado->nombrE}}"; // Obtener estado
+        var id = $(this).data('id');
+        var fecha = $(this).closest('tr').find('td:eq(1)').text();
+        var resp = $(this).closest('tr').find('td:eq(2)').text();
+        var ubicacion = $(this).closest('tr').find('td:eq(3)').text();
+        var est = $(this).closest('tr').find('td:eq(4)').text();
+        var esp = $(this).data('esp');
+        var area = $(this).data('area');
+        var det = $(this).data('det');
+        var des = $(this).data('des');
+        var trabajo = $(this).data('trabajo');
+        var criticidad = $(this).data('criticidad');
+        var solicitante = $(this).data('solicitante');
+        var email = $(this).data('email');
+
 
         // Asignar los datos obtenidos a los campos del modal
-        $('#modal-id').text(id);
-        $('#modal-solicitante').text(solicitante);
-        $('#modal-email').text(email);
-        $('#modal-trabajo').text(trabajo);
-        $('#modal-criticidad').text(criticidad);
-        $('#modal-fecha').text(fecha);
-        $('#modal-ubicacion').text(ubicacion);
-        $('#modal-especialidad').text(esp);
-        $('#modal-area').text(area);
-        $('#modal-detalle').text(det);
-        $('#modal-descripcion').text(des);
-        $('#modal-estado').text(est);
+            $('#modal-id').text(id);
+            $('#modal-fecha').text(fecha);
+            $('#modal-resp').text(resp);
+            $('#modal-ubicacion').text(ubicacion);
+            $('#modal-estado').text(est);
+            $('#modal-especialidad').text(esp);
+            $('#modal-area').text(area);
+            $('#modal-detalle').text(det);
+            $('#modal-descripcion').text(des);
+            $('#modal-trabajo').text(trabajo);
+            $('#modal-criticidad').text(criticidad);
+            $('#modal-solicitante').text(solicitante);
+            $('#modal-email').text(email);
 
     });
 </script>
