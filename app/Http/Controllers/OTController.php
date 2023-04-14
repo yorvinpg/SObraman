@@ -9,6 +9,7 @@ use App\Models\Encargado;
 use App\Models\Especialidad;
 use App\Models\Estado;
 use App\Models\Solicitudot;
+use App\Models\Tecnico;
 use App\Models\TTrabajo;
 use App\Models\Ubicacion;
 use App\Models\User;
@@ -31,6 +32,7 @@ class OTController extends Controller
         $filtroF = $request->get('fecha');
 
         $est = Estado::all();
+        $tec = Tecnico::all();
         $solicitudes = Solicitudot::orderBy('idsolicitudOT', 'desc')
             ->whereNotIn('idEstado', [6]); // te trae todo la data de solicitud en 5, de manera descendente, te muestra todo menos los anulados.
         //si devuelve null te muestra toda la data completa pero si no solo te muestra lo filtrado.
@@ -66,9 +68,9 @@ class OTController extends Controller
             $solicitudes = $solicitudes
                 ->whereDate('fecha', 'like', '%' . $filtroF . '%');
         }
-        $solicitudes = $solicitudes->paginate(5); // te trae todo la data de solicitud en 5, de manera descendente
-
-        return view('entorno.consulta', compact('solicitudes', 'est', 'filtro', 'filtroE', 'filtroU', 'filtroT', 'filtroEp', 'filtroF'));
+        $solicitudes = $solicitudes->paginate(5);
+        // te trae todo la data de solicitud en 5, de manera descendente
+        return view('entorno.consulta', compact('solicitudes', 'est', 'filtro', 'filtroE', 'filtroU', 'filtroT', 'filtroEp', 'filtroF', 'tec'));
     }
 
     public function create()
@@ -108,6 +110,8 @@ class OTController extends Controller
         $entornos->idEstado = 1;
         $entornos->idArea = $request->get('area');
         $entornos->idEncarg = $request->get('responsable');
+        $entornos->tecnico = 4;
+        $entornos->detallSP = 'vacio';
 
         $entornos->save();
         return redirect()->route('entorno.index');
@@ -119,10 +123,26 @@ class OTController extends Controller
     }
     public function edit($id)
     {
-        //
+        $solicitudot = Solicitudot::findOrFail($id);
+        $est = Estado::all();
+        $tec = Tecnico::all();
+        return view('entorno.consulta', compact('solicitudot', 'est', 'tec'));
     }
 
     public function update(Request $request, $id)
+    {
+        $id = $request->input('id');
+        $estado = $request->input('estado');
+        $tecnico = $request->input('tecnico');
+
+        // Actualizar fila correspondiente en la base de datos
+        Solicitudot::where('id', $id)
+        ->update(['estado' => $estado, 'tecnico' => $tecnico]);
+
+        return redirect()->back();
+    }
+
+    public function destroy($id)
     {
         $solicitud = Solicitudot::find($id); // cambiar  a estado anulado  6 = Anulado -> ojo
         if (!$solicitud) {
@@ -134,15 +154,21 @@ class OTController extends Controller
         return redirect()->back()->with('success', 'Estado de solicitud actualizado exitosamente');
     }
 
-    public function destroy($id)
-    {
-        //
-    }
-
     public function exportExcel(Request $request)
     {
 
         // Descargar el archivo Excel con un nombre y extensión específicos
         return Excel::download(new SolictExport, 'solicitudes.xlsx');
+    }
+
+    public function imprimirFactura()
+    {
+        // $solicit = Solicitudot::orderBy('idsolicitudOT', 'desc')
+        //     ->whereNotIn('idEstado', [6]); // Puedes pasar datos a tu vista si los necesitas
+        // $pdf = PDF::loadView('factura', $solicit); // Crear el PDF usando la librería Dompdf
+
+        // return response($pdf->output(), 200)
+        //     ->header('Content-Type', 'application/pdf')
+        //     ->header('Content-Disposition', 'attachment; filename=factura.pdf');
     }
 }

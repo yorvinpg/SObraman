@@ -24,8 +24,10 @@ Route::post('admin/entorno/consulta',[OTController::class, 'store'])->name('ento
 Route::get('admin/entorno/create',[OTController::class, 'create'])->name('entorno.create');
 Route::get('admin/entorno/{sol}',[OTController::class, 'show'])->name('entorno.show');
 Route::get('export-entorno',[OTController::class, 'exportExcel'])->name('entorno.exportExcel');
+Route::get('imprimir-entorno', [OTController::class, 'imprimirFactura'])->name('entorno.imprimir');
 Route::get('admin/dashboard',[DashController::class, 'index'])->name('dash.index');
-Route::put('/solicitudot/{id}/cambiar-estado', [OTController::class, 'update'])->name('solicitudot.cambiarEstado');
+Route::put('/solicitudot/{id}/cambiar-estado', [OTController::class, 'destroy'])->name('solicitudot.cambiarEstado');
+Route::put('/solicitudot/{id}/edit', [OTController::class, 'update'])->name('solicitudot.edit');
 
 Route::get('entorno/anulado',[AnulaController::class, 'index'])->name('entorno.anulado');
 Route::get('users',[UserController::class, 'index'])->name('admin.users');

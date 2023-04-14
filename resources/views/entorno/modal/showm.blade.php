@@ -22,6 +22,7 @@
                     <p><strong>Criticidad:</strong> <span id="modal-criticidad"></span></p>
                     <p><strong>Solicitante:</strong> <span id="modal-solicitante"></span></p>
                     <p><strong>Email:</strong> <span id="modal-email"></span></p>
+                    <p><strong>Tecnico:</strong> <span id="modal-tecnico"></span></p>
 
                 </div>
             </div>

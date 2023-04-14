@@ -107,8 +107,9 @@
                         <div class="form-group">
                             <tr>
                                 <th colspan="3">
-                                    <a class="btn btn-outline-secondary btn-lg float-end bi bi-printer-fill"
-                                        href="{{ route('entorno.exportExcel') }}"></a>
+                                    <a class="btn btn-outline-secondary btn-lg  bi bi-printer-fill"
+                                        href="{{ route('entorno.imprimir') }}"></a>
+                                        &nbsp;
                                 </th>
                             </tr>
                         </div>
@@ -148,11 +149,11 @@
                     data-id="{{$item->idsolicitudOT}}" data-esp="{{$item->especialidad->nom_espe}}"
                     data-area="{{$item->area->nombreA}}" data-det="{{$item->detalle}}" data-des="{{$item->descripcion}}"
                     data-trabajo="{{$item->t_trabajo->nom_trab}}" data-criticidad="{{$item->criticidad->tipoC}}"
-                    data-solicitante="{{$item->solicitante}}" data-email="{{$item->email}}">
+                    data-solicitante="{{$item->solicitante}}" data-email="{{$item->email}}" data-tecnico="{{$item->tecnico->nombre_tec}}">
                     <i class="fa fa-eye" aria-hidden="true"></i></button>
             </td>
             <td>
-                <button data-toggle="modal" data-target="#ModalE" class="btn btn-info"><i class="fa fa-check"
+                <button data-toggle="modal" data-target="#ModalE"  data-id="{{ $item->idsolicitudOT }}" class="btn btn-info"><i class="fa fa-check"
                         aria-hidden="true"></i></button>
             </td>
 
@@ -168,7 +169,7 @@
         @endforeach
     </tbody>
 </table>
-{{$solicitudes->links()}}
+{{--  {{$solicitudes->links()}}  --}}
 @include('entorno.modal.showm')
 @include('entorno.modal.Edit')
 @stop
@@ -194,6 +195,7 @@
         var criticidad = $(this).data('criticidad');
         var solicitante = $(this).data('solicitante');
         var email = $(this).data('email');
+        var tecnico = $(this).data('tecnico')
 
 
         // Asignar los datos obtenidos a los campos del modal
@@ -210,6 +212,7 @@
             $('#modal-criticidad').text(criticidad);
             $('#modal-solicitante').text(solicitante);
             $('#modal-email').text(email);
+            $('#modal-tecnico').text(tecnico);
 
     });
 </script>
