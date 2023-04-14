@@ -141,32 +141,8 @@ class OTController extends Controller
 
     public function exportExcel(Request $request)
     {
-        // Obtener los parámetros del filtro
-        $filtro = $request->input('filtro');
-        $filtroE = $request->input('filtroE');
-        $filtroU = $request->input('filtroU');
-
-        // Hacer la consulta a la base de datos con los filtros
-        $ret = Solicitudot::orderBy('idsolicitudOT', 'desc')
-            ->join('ubicacion', "ubicacion.idubicacion", "=", "solicitudot.idUbi")
-            ->join('encargado', "encargado.idencargado", "=", "solicitudot.idEncarg")
-            ->when($filtro, function ($query, $filtro) {
-                return $query->where('idsolicitudOT', $filtro);
-            })
-            ->when($filtroE, function ($query, $filtroE) {
-                return $query->where('encargado.nom_E', 'like', '%' . $filtroE . '%');
-            })
-            ->when($filtroU, function ($query, $filtroU) {
-                return $query->where('ubicacion.nom_ubi', 'like', '%' . $filtroU . '%');
-            })
-            ->get();
-        $array = $ret->toArray();
-        $solicitudes = new Solicitudot($array);
-
-        // Llamar la clase SolicitudesExport y pasar los datos de la consulta
-        $export = new Solicitudot($solicitudes->getCollection()); // Pasamos la colección obtenida del paginador
 
         // Descargar el archivo Excel con un nombre y extensión específicos
-        return Excel::download($export, 'solicitudes.xlsx');
+        return Excel::download(new SolictExport, 'solicitudes.xlsx');
     }
 }
