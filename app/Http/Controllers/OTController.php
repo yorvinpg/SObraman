@@ -36,8 +36,10 @@ class OTController extends Controller
         $UB = Ubicacion::all();
         $est = Estado::all();
         $tec = Tecnico::all();
+
         $solicitudes = Solicitudot::orderBy('idsolicitudOT', 'desc')
             ->whereNotIn('idEstado', [6]); // te trae todo la data de solicitud en 5, de manera descendente, te muestra todo menos los anulados.
+            
         //si devuelve null te muestra toda la data completa pero si no solo te muestra lo filtrado.
         if (isset($filtro) && !empty($filtro)) {
             $solicitudes = $solicitudes->where('idsolicitudOT', "=", $filtro);

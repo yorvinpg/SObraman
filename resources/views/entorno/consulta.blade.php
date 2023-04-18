@@ -43,8 +43,7 @@
                             <div class="col-sm-6">
                                 <form id="search-R" method="GET" action="{{ route('entorno.index') }}">
                                     <select type="search" class="form-select form-control" value="{{$filtroE}}"
-                                        name="enc" aria-label="Default select example" id="resp"
-                                        style="width: 175px;">
+                                        name="enc" aria-label="Default select example" id="resp" style="width: 175px;">
                                         <option selected>Seleccione Encargado</option>
                                         @foreach ($rr as $r )
                                         <option value="{{$r['idencargado'] }}">{{$r['nom_E']}}</option>
@@ -246,7 +245,7 @@
     });
 </script>
 <script>
-      //filtro automatico...... select
+    //filtro automatico...... select
     function handleSelectChange(selectId, formId, currentVal) {
         $('#' + selectId).on('change', function() {
           var newVal = $(this).val();
