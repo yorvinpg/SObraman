@@ -98,20 +98,21 @@
         var email = $(this).data('email');
 
 
-        // Asignar los datos obtenidos a los campos del modal
-            $('#modal-id').text(id);
-            $('#modal-fecha').text(fecha);
-            $('#modal-resp').text(resp);
-            $('#modal-ubicacion').text(ubicacion);
-            $('#modal-estado').text(est);
-            $('#modal-especialidad').text(esp);
-            $('#modal-area').text(area);
-            $('#modal-detalle').text(det);
-            $('#modal-descripcion').text(des);
-            $('#modal-trabajo').text(trabajo);
-            $('#modal-criticidad').text(criticidad);
-            $('#modal-solicitante').text(solicitante);
-            $('#modal-email').text(email);
+       // Asignar los datos obtenidos a los campos del modal
+       $('#modal-id').val(id);
+       $('#modal-fecha').val(fecha);
+       $('#modal-resp').val(resp);
+       $('#modal-ubicacion').val(ubicacion);
+       $('#modal-estado').val(est);
+       $('#modal-especialidad').val(esp);
+       $('#modal-area').val(area);
+       $('#modal-detalle').val(det);
+       $('#modal-descripcion').val(des);
+       $('#modal-trabajo').val(trabajo);
+       $('#modal-criticidad').val(criticidad);
+       $('#modal-solicitante').val(solicitante);
+       $('#modal-email').val(email);
+       $('#modal-tecnico').val(tecnico);
 
     });
 </script>

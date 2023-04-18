@@ -36,7 +36,7 @@
             <td>{{$item->name}}</td>
             <td>{{$item->username}}</td>
             <td>
-                <a class="btn btn-primary">Rol</a>
+                <a class="btn btn-primary" >Rol</a>
             </td>
         </tr>
 

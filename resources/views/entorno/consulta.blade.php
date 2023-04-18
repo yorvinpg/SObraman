@@ -30,28 +30,34 @@
                     {{-- ot---encargado---fecha --}}
                     <div class="col-sm-4">
                         <div class="form-group row">
-                            <label for="" class="col-md-4 col-form-label"> N° O.T </label>
+                            <label for="" class="col-md-5 col-form-label"> N° O.T </label>
                             <div class="col-sm-6">
-                                <form>
+                                <form id="search-f">
                                     <input type="search" class="form-control" id="ID" name="ID" value="{{ $filtro }}" />
                                 </form>
                             </div>
                         </div>
                         <!-- /.form-group -->
                         <div class="form-group row">
-                            <label for="fechA" class="col-md-4 col-form-label"> Encargado </label>
+                            <label for="fechA" class="col-md-5 col-form-label"> Responsable </label>
                             <div class="col-sm-6">
-                                <form>
-                                    <input type="search" class="form-control" id="enc&&" name="enc"
-                                        value="{{$filtroE}}" />
+                                <form id="search-R" method="GET" action="{{ route('entorno.index') }}">
+                                    <select type="search" class="form-select form-control" value="{{$filtroE}}"
+                                        name="enc" aria-label="Default select example" id="resp"
+                                        style="width: 175px;">
+                                        <option selected>Seleccione Encargado</option>
+                                        @foreach ($rr as $r )
+                                        <option value="{{$r['idencargado'] }}">{{$r['nom_E']}}</option>
+                                        @endforeach
+                                    </select>
                                 </form>
                             </div>
                         </div>
                         <!-- /.form-group -->
                         <div class="form-group row">
-                            <label for="fechA" class="col-md-4 col-form-label"> Fecha </label>
+                            <label for="fechA" class="col-md-5 col-form-label"> Fecha </label>
                             <div class="col-sm-6">
-                                <form>
+                                <form id="search-fh">
                                     <input type="text" id="fecha" name="fecha" class="form-control"
                                         value="{{$filtroF}}">
                                 </form>
@@ -60,14 +66,20 @@
                     </div>
                     {{-- fin ot-encargado--fecha --}}
                     <!-- /.col -->
-                    {{-- ubicacion---ttrabajo--especialidad --}}
+                    {{-- ubicacion---ttrabajo--estado --}}
                     <div class="col-6">
                         <div class="form-group row">
                             <label for="fechA" class="col-md-4 col-form-label"> Ubicación </label>
                             <div class="col-sm-4">
-                                <form>
-                                    <input type="search" class="form-control" id="ubi" name="ubi"
-                                        value="{{ $filtroU }}" />
+                                <form id="search-U" method="GET" action="{{ route('entorno.index') }}">
+                                    <select type="search" class="form-select form-control" value="{{$filtroU}}"
+                                        name="ubi" aria-label="Default select example" id="ubicacion"
+                                        style="width: 225px;">
+                                        <option selected>Seleccione una Ubicacion</option>
+                                        @foreach ($UB as $u )
+                                        <option value="{{$u['idubicacion'] }}">{{$u['nom_ubi']}}</option>
+                                        @endforeach
+                                    </select>
                                 </form>
                             </div>
                         </div>
@@ -75,24 +87,36 @@
                         <div class="form-group row">
                             <label for="fechA" class="col-md-4 col-form-label"> Tipo Trabajo </label>
                             <div class="col-sm-4">
-                                <form>
-                                    <input type="search" class="form-control" id="enc&&" name="ttrabajo"
-                                        value="{{$filtroT}}" />
+                                <form id="search-T" method="GET" action="{{ route('entorno.index') }}">
+                                    <select type="search" class="form-select form-control" value="{{$filtroT}}"
+                                        name="ttrabajo" aria-label="Default select example" id="trabajo"
+                                        style="width: 225px;">
+                                        <option selected>Seleccione Tipo</option>
+                                        @foreach ($TT as $T )
+                                        <option value="{{$T['idtrabajo'] }}">{{$T['nom_trab']}}</option>
+                                        @endforeach
+                                    </select>
                                 </form>
                             </div>
                         </div>
                         <!-- /.form-group -->
                         <div class="form-group row">
-                            <label for="fechA" class="col-md-4 col-form-label"> Especialidad </label>
+                            <label for="fechA" class="col-md-4 col-form-label"> Estado </label>
                             <div class="col-sm-4">
-                                <form>
-                                    <input type="search" class="form-control" id="enc&&" name="esp"
-                                        value="{{$filtroEp}}" />
+                                <form id="search-form" method="GET" action="{{ route('entorno.index') }}">
+                                    <select type="search" class="form-select form-control" value="{{$filtroEs}}"
+                                        name="est" aria-label="Default select example" id="estado"
+                                        style="width: 225px;">
+                                        <option selected>Seleccione un Estado</option>
+                                        @foreach ($est as $es )
+                                        <option value="{{$es['idestado'] }}">{{$es['nombrE']}}</option>
+                                        @endforeach
+                                    </select>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    {{-- ubbi--ttrabajo--especialidad --}}
+                    {{-- ubbi--ttrabajo--estado --}}
                     <div class="col">
                         <div class="form-group">
                             <tr>
@@ -107,14 +131,13 @@
                         <div class="form-group">
                             <tr>
                                 <th colspan="3">
-                                    <a class="btn btn-outline-secondary btn-lg  bi bi-printer-fill"
+                                    <a class="btn btn-outline-secondary btn-lg bi bi-printer-fill"
                                         href="{{ route('entorno.imprimir') }}"></a>
-                                        &nbsp;
+                                    &nbsp;
                                 </th>
                             </tr>
                         </div>
                     </div>
-
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->
@@ -149,12 +172,13 @@
                     data-id="{{$item->idsolicitudOT}}" data-esp="{{$item->especialidad->nom_espe}}"
                     data-area="{{$item->area->nombreA}}" data-det="{{$item->detalle}}" data-des="{{$item->descripcion}}"
                     data-trabajo="{{$item->t_trabajo->nom_trab}}" data-criticidad="{{$item->criticidad->tipoC}}"
-                    data-solicitante="{{$item->solicitante}}" data-email="{{$item->email}}" data-tecnico="{{$item->tecnico->nombre_tec}}">
+                    data-solicitante="{{$item->solicitante}}" data-email="{{$item->email}}"
+                    data-tecnico="{{$item->tecnico->nombre_tec}}">
                     <i class="fa fa-eye" aria-hidden="true"></i></button>
             </td>
             <td>
-                <button data-toggle="modal" data-target="#ModalE"  data-id="{{ $item->idsolicitudOT }}" class="btn btn-info"><i class="fa fa-check"
-                        aria-hidden="true"></i></button>
+                <button data-toggle="modal" data-target="#ModalE" data-id="{{ $item->idsolicitudOT }}"
+                    class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></button>
             </td>
 
             <form action="{{ route('solicitudot.cambiarEstado', ['id' => $item->idsolicitudOT]) }}" method="POST">
@@ -169,7 +193,7 @@
         @endforeach
     </tbody>
 </table>
-{{--  {{$solicitudes->links()}}  --}}
+{{-- {{$solicitudes->links()}} --}}
 @include('entorno.modal.showm')
 @include('entorno.modal.Edit')
 @stop
@@ -199,20 +223,20 @@
 
 
         // Asignar los datos obtenidos a los campos del modal
-            $('#modal-id').text(id);
-            $('#modal-fecha').text(fecha);
-            $('#modal-resp').text(resp);
-            $('#modal-ubicacion').text(ubicacion);
-            $('#modal-estado').text(est);
-            $('#modal-especialidad').text(esp);
-            $('#modal-area').text(area);
-            $('#modal-detalle').text(det);
-            $('#modal-descripcion').text(des);
-            $('#modal-trabajo').text(trabajo);
-            $('#modal-criticidad').text(criticidad);
-            $('#modal-solicitante').text(solicitante);
-            $('#modal-email').text(email);
-            $('#modal-tecnico').text(tecnico);
+            $('#modal-id').val(id);
+            $('#modal-fecha').val(fecha);
+            $('#modal-resp').val(resp);
+            $('#modal-ubicacion').val(ubicacion);
+            $('#modal-estado').val(est);
+            $('#modal-especialidad').val(esp);
+            $('#modal-area').val(area);
+            $('#modal-detalle').val(det);
+            $('#modal-descripcion').val(des);
+            $('#modal-trabajo').val(trabajo);
+            $('#modal-criticidad').val(criticidad);
+            $('#modal-solicitante').val(solicitante);
+            $('#modal-email').val(email);
+            $('#modal-tecnico').val(tecnico);
 
     });
 </script>
@@ -220,5 +244,49 @@
     flatpickr("#fecha", {
         dateFormat: "Y-m-d" // Formato de fecha
     });
+</script>
+<script>
+      //filtro automatico...... select
+    function handleSelectChange(selectId, formId, currentVal) {
+        $('#' + selectId).on('change', function() {
+          var newVal = $(this).val();
+          if (newVal !== currentVal) {
+            $('#' + formId).submit();
+          }
+          currentVal = newVal;
+        });
+      }
+
+      var currentEstado = $('#estado').val();
+      handleSelectChange('estado', 'search-form', currentEstado);
+
+      var currentU = $('#ubicacion').val();
+      handleSelectChange('ubicacion', 'search-U', currentU);
+
+      var currentT = $('#trabajo').val();
+      handleSelectChange('trabajo', 'search-T', currentT);
+
+      var currentR = $('#resp').val();
+      handleSelectChange('resp', 'search-R', currentR);
+
+</script>
+<script>
+    //filtro automatico......
+    function handleInputChange(inputId, formId, currentValue) {
+        var currentVal = currentValue;
+        $('#' + inputId).on('change', function() {
+          var newVal = $(this).val();
+          if (newVal !== currentVal) {
+            $('#' + formId).submit();
+          }
+          currentVal = newVal;
+        });
+      }
+
+      handleInputChange('ID', 'search-f', $('#ID').val());
+      handleInputChange('resp', 'search-r', $('#resp').val());
+      handleInputChange('fecha', 'search-fh', $('#fecha').val());
+
+
 </script>
 @stop

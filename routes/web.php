@@ -32,6 +32,7 @@ Route::put('/solicitudot/{id}/edit', [OTController::class, 'update'])->name('sol
 Route::get('entorno/anulado',[AnulaController::class, 'index'])->name('entorno.anulado');
 Route::get('users',[UserController::class, 'index'])->name('admin.users');
 
+
 Route::get('/', function () {
     return view('auth.login');
 });

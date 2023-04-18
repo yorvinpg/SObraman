@@ -28,9 +28,12 @@ class OTController extends Controller
         $filtroE = $request->get('enc');
         $filtroU = $request->get('ubi');
         $filtroT = $request->get('ttrabajo');
-        $filtroEp = $request->get('esp');
+        $filtroEs = $request->get('est');
         $filtroF = $request->get('fecha');
 
+        $rr = Encargado::all();
+        $TT = TTrabajo::all();
+        $UB = Ubicacion::all();
         $est = Estado::all();
         $tec = Tecnico::all();
         $solicitudes = Solicitudot::orderBy('idsolicitudOT', 'desc')
@@ -42,35 +45,38 @@ class OTController extends Controller
 
         if (isset($filtroE) && !empty($filtroE)) {
             $solicitudes = $solicitudes
-                ->join('encargado', "encargado.idencargado", "=", "solicitudot.idEncarg")
-                ->where('encargado.nom_E', 'like', '%' . $filtroE . '%');
+            ->where('solicitudot.idEncarg', 'like', '%' . $filtroE . '%');
         }
+        // ->join('encargado', "encargado.idencargado", "=", "solicitudot.idEncarg")
 
         if (isset($filtroU) && !empty($filtroU)) {
             $solicitudes = $solicitudes
-                ->join('ubicacion', "ubicacion.idubicacion", "=", "solicitudot.idUbi")
-                ->where('ubicacion.nom_ubi', 'like', '%' . $filtroU . '%');
+                ->where('solicitudot.idUbi', 'like', '%' . $filtroU . '%');
         }
-
+        // ->join('ubicacion', "ubicacion.idubicacion", "=", "solicitudot.idUbi")
         if (isset($filtroT) && !empty($filtroT)) {
             $solicitudes = $solicitudes
-                ->join('t_trabajo', "t_trabajo.idtrabajo", "=", "solicitudot.idTipo")
-                ->where('t_trabajo.nom_trab', 'like', '%' . $filtroT . '%');
+            ->where('solicitudot.idTipo', 'like', '%' . $filtroT . '%');
+        }
+        // ->join('t_trabajo', "t_trabajo.idtrabajo", "=", "solicitudot.idTipo")
+
+        if (isset($filtroEs) && !empty($filtroEs)) {
+            $solicitudes = $solicitudes
+                ->where('solicitudot.idEstado', 'like', '%' . $filtroEs . '%');
         }
 
-        if (isset($filtroEp) && !empty($filtroEp)) {
-            $solicitudes = $solicitudes
-                ->join('especialidad', "especialidad.idespecialidad", "=", "solicitudot.idEsp")
-                ->where('especialidad.nom_espe', 'like', '%' . $filtroEp . '%');
+        if (isset($filtroF)) {
+            if (!empty($filtroF)) {
+                $solicitudes = $solicitudes
+                    ->whereDate('fecha', 'like', '%' . $filtroF . '%');
+            }
+        } else {
+            $solicitudes; // Si el filtro no está seteado, no se aplica ninguna restricción y se muestra la tabla completa
         }
 
-        if (isset($filtroF) && !empty($filtroF)) {
-            $solicitudes = $solicitudes
-                ->whereDate('fecha', 'like', '%' . $filtroF . '%');
-        }
         $solicitudes = $solicitudes->paginate(5);
         // te trae todo la data de solicitud en 5, de manera descendente
-        return view('entorno.consulta', compact('solicitudes', 'est', 'filtro', 'filtroE', 'filtroU', 'filtroT', 'filtroEp', 'filtroF', 'tec'));
+        return view('entorno.consulta', compact('solicitudes', 'est', 'UB','TT','rr', 'filtro', 'filtroE', 'filtroU', 'filtroT', 'filtroEs', 'filtroF', 'tec'));
     }
 
     public function create()
@@ -137,7 +143,7 @@ class OTController extends Controller
 
         // Actualizar fila correspondiente en la base de datos
         Solicitudot::where('idsolicitudOT', $id)
-        ->update(['idEstado' => $estado, 'idTec' => $tecnico]);
+            ->update(['idEstado' => $estado, 'idTec' => $tecnico]);
 
         return redirect()->back();
     }

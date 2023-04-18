@@ -1,29 +1,112 @@
 <form action="" method="post" enctype="multipart/form-data">
-    <div class="modal fade text-left" id="Modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="text-left modal fade" id="Modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">VISTA</h4>
+                <div class="modal-header bg-info ">
+                    <h5 class="text-center modal-title">DETALLE O.T</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p><strong>OT:</strong> <span id="modal-id"></span></p>
-                    <p><strong>Fecha:</strong> <span id="modal-fecha"></span></p>
-                    <p><strong>Responsable:</strong> <span id="modal-resp"></span></p>
-                    <p><strong>Ubicacion:</strong> <span id="modal-ubicacion"></span></p>
-                    <p><strong>Estado:</strong> <span id="modal-estado"></span></p>
-                    <p><strong>Especialidad:</strong> <span id="modal-especialidad"></span></p>
-                    <p><strong>Area:</strong> <span id="modal-area"></span></p>
-                    <p><strong>Detalle:</strong> <span id="modal-detalle"></span></p>
-                    <p><strong>Descripcion:</strong> <span id="modal-descripcion"></span></p>
-                    <p><strong>Trabajo:</strong> <span id="modal-trabajo"></span></p>
-                    <p><strong>Criticidad:</strong> <span id="modal-criticidad"></span></p>
-                    <p><strong>Solicitante:</strong> <span id="modal-solicitante"></span></p>
-                    <p><strong>Email:</strong> <span id="modal-email"></span></p>
-                    <p><strong>Tecnico:</strong> <span id="modal-tecnico"></span></p>
-
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="" class="col-md-5 col-form-label"> O.T : </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="modal-id" disabled>
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group row">
+                                <label for="fechA" class="col-md-5 col-form-label"> Fecha : </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="modal-fecha" disabled>
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group row">
+                                <label for="fechA" class="col-md-5 col-form-label"> Responsable: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="modal-resp" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group row">
+                                <label for="fechA" class="col-md-4 col-form-label"> Ubicación: </label>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" id="modal-ubicacion" disabled>
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group row">
+                                <label for="fechA" class="col-md-4 col-form-label"> Estado: </label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="modal-estado" disabled>
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group row">
+                                <label for="fechA" class="col-md-4 col-form-label"> Especialidad:</label>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" id="modal-especialidad" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="" class="col-md-5 col-form-label"> Area: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="modal-area" disabled>
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group row">
+                                <label for="fechA" class="col-md-5 col-form-label"> Detalle:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="modal-detalle" disabled>
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group row">
+                                <label for="fechA" class="col-md-5 col-form-label"> Descripcion: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="modal-descripcion" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group row">
+                                <label for="fechA" class="col-md-4 col-form-label"> Criticidad: </label>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" id="modal-criticidad" disabled>
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group row">
+                                <label for="fechA" class="col-md-4 col-form-label"> Solicitante: </label>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" id="modal-solicitante" disabled>
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group row">
+                                <label for="fechA" class="col-md-4 col-form-label"> Email:</label>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" id="modal-email" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="fechA" class="col-md-4 col-form-label">Tecnico:</label>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" id="modal-tecnico" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
