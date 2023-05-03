@@ -26,7 +26,7 @@ Route::get('admin/entorno/{sol}',[OTController::class, 'show'])->name('entorno.s
 Route::get('export-entorno',[OTController::class, 'exportExcel'])->name('entorno.exportExcel');
 Route::get('imprimir-entorno', [OTController::class, 'imprimirFactura'])->name('entorno.imprimir');
 Route::get('admin/dashboard',[DashController::class, 'index'])->name('dash.index');
-Route::get('/solicitudot/{id}/cambiar-estado', [OTController::class, 'destroy'])->name('solicitudot.cambiarEstado');
+Route::put('/solicitudot/{id}/cambiar-estado', [OTController::class, 'destroy'])->name('solicitudot.cambiarEstado');
 
 Route::get('/solicitudot/{id}/edit', [OTController::class, 'edit'])->name('solicitud.edit');
 Route::put('/solicitudot/{id}', [OTController::class, 'update'])->name('solicitud.update');

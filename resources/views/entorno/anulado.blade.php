@@ -8,6 +8,11 @@
 @stop
 
 @section('content')
+@if(session('success'))
+<div  id="success-alert"  class="alert alert-danger" role="success">
+    {{session('success')}}
+</div>
+@endif
 <section class="content">
     <div class="container-fluid" style="background: #adadad10">
         <div class="card card-default" style="background: #EAECEE">
@@ -118,5 +123,10 @@
 </script>
 <script>
     console.log('Hi!');
+</script>
+<script>
+    setTimeout(function() {
+        $('#success-alert').fadeOut('fast');
+    }, 3000); // la alerta se ocultará después de 3 segundos (3000 milisegundos)
 </script>
 @stop

@@ -158,14 +158,15 @@ class OTController extends Controller
 
     public function destroy($id)
     {
+    
         $solicitud = Solicitudot::find($id); // cambiar  a estado anulado  6 = Anulado -> ojo
         if (!$solicitud) {
-            return redirect()->back()->with('error', 'Solicitud no encontrada');
+            return redirect()->route('entorno.index')->with('sucess', 'Solicitud no encontrada');
         }
         $solicitud->idEstado = 6;
         $solicitud->save();
 
-        return redirect()->back()->with('success', 'Estado de solicitud actualizado exitosamente');
+        return redirect()->route('entorno.anulado')->with('success', 'Anulado exitosamente');
     }
 
     public function exportExcel(Request $request)
