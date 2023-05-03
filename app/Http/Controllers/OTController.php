@@ -39,7 +39,7 @@ class OTController extends Controller
 
         $solicitudes = Solicitudot::orderBy('idsolicitudOT', 'desc')
             ->whereNotIn('idEstado', [6]); // te trae todo la data de solicitud en 5, de manera descendente, te muestra todo menos los anulados.
-            
+
         //si devuelve null te muestra toda la data completa pero si no solo te muestra lo filtrado.
         if (isset($filtro) && !empty($filtro)) {
             $solicitudes = $solicitudes->where('idsolicitudOT', "=", $filtro);
@@ -47,7 +47,7 @@ class OTController extends Controller
 
         if (isset($filtroE) && !empty($filtroE)) {
             $solicitudes = $solicitudes
-            ->where('solicitudot.idEncarg', 'like', '%' . $filtroE . '%');
+                ->where('solicitudot.idEncarg', 'like', '%' . $filtroE . '%');
         }
         // ->join('encargado', "encargado.idencargado", "=", "solicitudot.idEncarg")
 
@@ -58,7 +58,7 @@ class OTController extends Controller
         // ->join('ubicacion', "ubicacion.idubicacion", "=", "solicitudot.idUbi")
         if (isset($filtroT) && !empty($filtroT)) {
             $solicitudes = $solicitudes
-            ->where('solicitudot.idTipo', 'like', '%' . $filtroT . '%');
+                ->where('solicitudot.idTipo', 'like', '%' . $filtroT . '%');
         }
         // ->join('t_trabajo', "t_trabajo.idtrabajo", "=", "solicitudot.idTipo")
 
@@ -78,7 +78,7 @@ class OTController extends Controller
 
         $solicitudes = $solicitudes->paginate(5);
         // te trae todo la data de solicitud en 5, de manera descendente
-        return view('entorno.consulta', compact('solicitudes', 'est', 'UB','TT','rr', 'filtro', 'filtroE', 'filtroU', 'filtroT', 'filtroEs', 'filtroF', 'tec'));
+        return view('entorno.consulta', compact('solicitudes', 'est', 'UB', 'TT', 'rr', 'filtro', 'filtroE', 'filtroU', 'filtroT', 'filtroEs', 'filtroF', 'tec'));
     }
 
     public function create()
@@ -118,7 +118,7 @@ class OTController extends Controller
         $entornos->idEstado = 1;
         $entornos->idArea = $request->get('area');
         $entornos->idEncarg = $request->get('responsable');
-        $entornos->tecnico = 4;
+        $entornos->idTec = 4;
         $entornos->detallSP = 'vacio';
 
         $entornos->save();
@@ -129,25 +129,31 @@ class OTController extends Controller
         $sol = Solicitudot::findOrFail($id);
         return view('entorno.show', compact('sol'));
     }
-    public function edit($id)
+    public function edit(Solicitudot $id)
     {
-        $solicitudot = Solicitudot::findOrFail($id);
         $est = Estado::all();
         $tec = Tecnico::all();
-        return view('entorno.consulta', compact('solicitudot', 'est', 'tec'));
+        return view('entorno.editar', compact('id', 'est', 'tec'));
     }
 
     public function update(Request $request, $id)
     {
-        $id = $request->input('id');
-        $estado = $request->input('estado');
-        $tecnico = $request->input('tecnico');
+        $sol = Solicitudot::findOrFail($id);
+        $sol->idEstado = $request->estado; // Asignar el valor seleccionado del select al estado de la solicitud OT
+        $sol->idTec = $request->tecnico;
+        $sol->detallSP = $request->input('detalle');
+        if (trim($request->tecnico)=='') {
+            # code...
+            $sol=$request->except('tecnico');
+        }else {
+            # code...
+            $sol->save();
+        }
+        $sol->save();
+        // $data = $request->only('idEstado', 'idTecnico', 'detalle');
 
-        // Actualizar fila correspondiente en la base de datos
-        Solicitudot::where('idsolicitudOT', $id)
-            ->update(['idEstado' => $estado, 'idTec' => $tecnico]);
-
-        return redirect()->back();
+        // $sol->update($data);
+        return redirect()->route('entorno.index')->with('success', 'O.T actualizado correctamente');
     }
 
     public function destroy($id)

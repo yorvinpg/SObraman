@@ -77,6 +77,13 @@
                                     <input type="text" class="form-control" id="modal-descripcion" disabled>
                                 </div>
                             </div>
+                              <!-- /.form-group -->
+                              <div class="form-group row">
+                                <label for="fechA" class="col-md-5 col-form-label"> Detalle-Tecnico:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="modal-spt" disabled>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group row">

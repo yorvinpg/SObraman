@@ -1,7 +1,6 @@
 <form  method="POST" id="formActualizar"
     enctype="multipart/form-data">
     @csrf
-    @method('PUT')
     <input type="hidden" name="id" id="id">
     <div class="text-left modal fade" id="ModalE" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
