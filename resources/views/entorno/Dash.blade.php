@@ -144,6 +144,15 @@
                             </div>
                             <!-- /.description-block -->
                         </div>
+                        <div class="col-sm-3 col-6">
+                            <div class="description-block border-right">
+                                <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i>
+                                    {{$countM}}</span>
+                                </br>
+                                <span class="description-text">MAYO</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
                     </div>
                     <!-- /.row -->
                 </div>
@@ -262,10 +271,10 @@
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Marzo', 'Abril'],
+            labels: ['Marzo', 'Abril','Mayo'],
             datasets: [{
                 label: 'Solicitudes Cerradas',
-                data: [1, 3 ],
+                data: [1, 3 , 18],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',

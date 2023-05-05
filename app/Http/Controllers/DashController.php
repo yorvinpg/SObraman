@@ -25,7 +25,8 @@ class DashController extends Controller
             ->get();
 
         $total = Solicitudot::count();
-        $count = Solicitudot::count();
+        $count = Solicitudot::where('idEstado', '<>', 6)->count();
+        // $count = Solicitudot::count();
         $countA = Solicitudot::where('idEstado', '6')
             ->count();
 
@@ -53,11 +54,16 @@ class DashController extends Controller
             ->whereMonth('fecha', $mesActual)
             ->count();
         $countCA = Solicitudot::where('idEstado', '5')
-            ->whereYear('fecha', $año_actual)
+            
             ->whereMonth('fecha', $mes_anterior)
             ->count();
 
-        return view('entorno.Dash', compact('orderC', 'orderP', 'count', 'countA', 'porcentaje', 'porcentajeC', 'countCA','countMA'));
+        $countM = Solicitudot::where('idEstado', '5')
+            ->whereYear('fecha', $año_actual)
+            ->whereMonth('fecha', $mesActual)
+            ->count();
+
+        return view('entorno.Dash', compact('orderC', 'orderP', 'count', 'countA', 'porcentaje', 'porcentajeC', 'countCA', 'countMA', 'countM'));
     }
 
     /**

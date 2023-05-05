@@ -183,7 +183,7 @@
         @endforeach
     </tbody>
 </table>
-{{-- {{$solicitudes->links()}} --}}
+{{$solicitudes->links()}} 
 @include('entorno.modal.showm')
 @include('entorno.modal.Edit')
 @stop

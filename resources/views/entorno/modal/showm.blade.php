@@ -67,21 +67,21 @@
                             <div class="form-group row">
                                 <label for="fechA" class="col-md-5 col-form-label"> Detalle:</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="modal-detalle" disabled>
+                                    <textarea class="form-control" type="text" name="detalle" id="modal-detalle" value="" style="width: 205px;" disabled> </textarea>
                                 </div>
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group row">
                                 <label for="fechA" class="col-md-5 col-form-label"> Descripcion: </label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="modal-descripcion" disabled>
+                                    <textarea class="form-control" type="text" name="detalle" id="modal-descripcion" value="" style="width: 205px;" disabled> </textarea>
                                 </div>
                             </div>
-                              <!-- /.form-group -->
-                              <div class="form-group row">
+                            <!-- /.form-group -->
+                            <div class="form-group row">
                                 <label for="fechA" class="col-md-5 col-form-label"> Detalle-Tecnico:</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="modal-spt" disabled>
+                                    <textarea class="form-control" type="text" name="detalle" id="modal-spt" value="" style="width: 205px;" disabled> </textarea>
                                 </div>
                             </div>
                         </div>

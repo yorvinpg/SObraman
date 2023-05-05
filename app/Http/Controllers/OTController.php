@@ -122,7 +122,7 @@ class OTController extends Controller
         $entornos->detallSP = 'vacio';
 
         $entornos->save();
-        return redirect()->route('entorno.index');
+        return redirect()->route('entorno.index')->with('success', 'OT creado exitosamente');
     }
     public function show($id)
     {
@@ -136,9 +136,9 @@ class OTController extends Controller
         return view('entorno.editar', compact('id', 'est', 'tec'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $tem)
     {
-        $sol = Solicitudot::findOrFail($id);
+        $sol = Solicitudot::findOrFail($tem);
         $sol->idEstado = $request->estado; // Asignar el valor seleccionado del select al estado de la solicitud OT
         $sol->idTec = $request->tecnico;
         $sol->detallSP = $request->input('detalle');
