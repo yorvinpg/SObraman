@@ -12,7 +12,7 @@
 @stop
 @section('content')
 @if(session('success'))
-<div  id="success-alert"  class="alert alert-success" role="success">
+<div id="success-alert" class="alert alert-success" role="success">
     {{session('success')}}
 </div>
 @endif
@@ -162,13 +162,12 @@
             <td>{{$item->ubicacion->nom_ubi }}</td>
             <td>{{$item->estado->nombrE }}</td>
             <td>
-                <button data-toggle="modal" data-target="#Modal" class="btn btn-success btn-ver-detalle" data-id="{{$item->idsolicitudOT}}" data-esp="{{$item->especialidad->nom_espe}}" data-area="{{$item->area->nombreA}}" data-det="{{$item->detalle}}" data-des="{{$item->descripcion}}" data-trabajo="{{$item->t_trabajo->nom_trab}}" data-criticidad="{{$item->criticidad->tipoC}}" data-solicitante="{{$item->solicitante}}" data-email="{{$item->email}}" data-tecnico="{{$item->tecnico->nombre_tec}}" data-spt="{{$item->detallSP}}" >
+                <button data-toggle="modal" data-target="#Modal" class="btn btn-success btn-ver-detalle" data-id="{{$item->idsolicitudOT}}" data-esp="{{$item->especialidad->nom_espe}}" data-area="{{$item->area->nombreA}}" data-det="{{$item->detalle}}" data-des="{{$item->descripcion}}" data-trabajo="{{$item->t_trabajo->nom_trab}}" data-criticidad="{{$item->criticidad->tipoC}}" data-solicitante="{{$item->solicitante}}" data-email="{{$item->email}}" data-tecnico="{{$item->tecnico->nombre_tec}}" data-spt="{{$item->detallSP}}">
                     <i class="fa fa-eye" aria-hidden="true"></i></button>
             </td>
             <td>
-                <a href="{{route('solicitud.edit',$item->idsolicitudOT)}}" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></a>
-                <!-- <button data-toggle="modal" data-target="#ModalE" data-id="{{ $item->idsolicitudOT }}"
-                    class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></button> -->
+                <!-- <a href="{{route('solicitud.edit',$item->idsolicitudOT)}}" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></a> -->
+                <button data-toggle="modal" data-target="#ModalE" data-id="{{ $item->idsolicitudOT }}" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></button>
             </td>
 
             <form action="{{ route('solicitudot.cambiarEstado', ['id' => $item->idsolicitudOT]) }}" method="POST">
@@ -183,7 +182,7 @@
         @endforeach
     </tbody>
 </table>
-{{$solicitudes->links()}} 
+{{$solicitudes->links()}}
 @include('entorno.modal.showm')
 @include('entorno.modal.Edit')
 @stop
