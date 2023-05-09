@@ -21,10 +21,12 @@ class SolictExport implements FromCollection, WithHeadings, ShouldAutoSize
      */
     public function collection(): Collection
     {
-        $data = Solicitudot::select("idsolicitudOT", "solicitante", "nom_E", "nom_ubi", DB::raw("DATE(fecha) as fecha"), "nombrE", "detalle")
+        $data = Solicitudot::select("idsolicitudOT", "solicitante", "nom_E", "nom_ubi", DB::raw("DATE(fecha) as fecha"), "nombrE", "tipoC", "nom_espe", "detalle", "detallSP")
             ->join('encargado', "encargado.idencargado", "=", "solicitudot.idEncarg")
             ->join('ubicacion', "ubicacion.idubicacion", "=", "solicitudot.idUbi")
             ->join('estado', "estado.idestado", "=", "solicitudot.idEstado")
+            ->join('criticidad', "criticidad.idcriticidad", "solicitudot.idCriti")
+            ->join('especialidad', "especialidad.idespecialidad", "=", "solicitudot.idEsp")
             ->get();
 
         //sdd($data);
@@ -34,6 +36,6 @@ class SolictExport implements FromCollection, WithHeadings, ShouldAutoSize
 
     public function headings(): array
     {
-        return ["ID", "SOLICITANTE", "RESPONSABLE", "UBICACIÓN", "FECHA", "ESTADO", "DETALLE"];
+        return ["ID", "SOLICITANTE", "RESPONSABLE", "UBICACIÓN", "FECHA", "ESTADO", "CRITICIDAD", "ESPECIALIDAD", "DETALLE", "DETALLE_SOLUCION"];
     }
 }

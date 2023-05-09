@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-4 col-form-label">Descripción</label>
+                                <label for="inputPassword" class="col-sm-4 col-form-label">Observacion</label>
                                 <div class="col-auto">
                                     <textarea class="form-control" name="descripcion" id="descripcion" value=""
                                         style="width: 225px;"> </textarea>

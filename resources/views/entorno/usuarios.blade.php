@@ -26,7 +26,7 @@
             <th scope="col">ID</th>
             <th scope="col">NOMBRE</th>
             <th scope="col">USUARIO</th>
-            <th></th>
+            <th scope="col">ROL</th>
         </tr>
     </thead>
     <tbody class="table-dark">
