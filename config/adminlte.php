@@ -321,7 +321,7 @@ return [
         [
             'text' => 'Tablero Principal',
             'icon' => 'nav-icon fas fa-tachometer-alt',
-            'url' => 'admin/dashboard'
+            'route' => 'dash.index'
         ],
         [
             'text' => 'Usuarios',

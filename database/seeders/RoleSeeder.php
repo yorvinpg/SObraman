@@ -16,15 +16,13 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        // Crear un rol
-        $role1 = Role::create(['name' => 'SuperAdmin']);
-        $role2 = Role::create(['name' => 'Admin']);
-        $role3 = Role::create(['name' => 'Tecnico']);
+        /* SPA = SuperAdmin -> ALL
+           AD = Administrador -> ver listados de tecnicos y operaciones normales
+           TEC = Tecnicos  -> se limita algunas opcines     */
+        $sa = Role::create(['name' => 'SPA']);
+        $ad = Role::create(['name' => 'AD']);
+        $tec = Role::create(['name' => 'TEC']);
 
-        // Crear un permiso
-        $permission = Permission::create(['name' => 'dash.index']);
-
-        // Asignar el permiso al rol
-        $role1 ->givePermissionTo($permission);
+        Permission::create(['name' => 'admin/dashboard'])->syncRoles($sa);
     }
 }
