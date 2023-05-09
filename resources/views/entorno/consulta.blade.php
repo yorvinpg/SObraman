@@ -170,7 +170,7 @@
                 <button data-toggle="modal" data-target="#ModalE" data-id="{{ $item->idsolicitudOT }}" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></button>
             </td>
 
-            <form action="{{ route('solicitudot.cambiarEstado', ['id' => $item->idsolicitudOT]) }}" method="POST">
+            <form action="{{ route('solicitudot.cambiarEstado', ['id' => $item->idsolicitudOT]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar?')">
                 @csrf
                 @method('PUT')
                 <td>
