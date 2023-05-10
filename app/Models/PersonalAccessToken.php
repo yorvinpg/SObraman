@@ -31,8 +31,8 @@ class PersonalAccessToken extends Model
 
 	protected $casts = [
 		'tokenable_id' => 'int',
-		'last_used_at' => 'date',
-		'expires_at' => 'date'
+		'last_used_at' => 'datetime',
+		'expires_at' => 'datetime'
 	];
 
 	protected $hidden = [
