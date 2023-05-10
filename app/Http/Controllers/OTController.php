@@ -45,11 +45,16 @@ class OTController extends Controller
             $solicitudes = $solicitudes->where('idsolicitudOT', "=", $filtro);
         }
 
+        // if (isset($filtroE) && !empty($filtroE)) {
+        //     $solicitudes = $solicitudes
+        //         ->where('solicitudot.idEncarg', 'like', '%' . $filtroE . '%');
+        // }
+
         if (isset($filtroE) && !empty($filtroE)) {
-            $solicitudes = $solicitudes
-                ->where('solicitudot.idEncarg', 'like', '%' . $filtroE . '%');
-        }
-        // ->join('encargado', "encargado.idencargado", "=", "solicitudot.idEncarg")
+            $solicitudes = $solicitudes->where('solicitudot.idEncarg', 'like', '%' . $filtroE . '%');
+        } else {
+            $solicitudes = $solicitudes = Solicitudot::orderBy('idsolicitudOT', 'desc');
+        } // ->join('encargado', "encargado.idencargado", "=", "solicitudot.idEncarg")
 
         if (isset($filtroU) && !empty($filtroU)) {
             $solicitudes = $solicitudes
@@ -131,21 +136,22 @@ class OTController extends Controller
     }
     public function edit(Solicitudot $id)
     {
+       
         $est = Estado::all();
         $tec = Tecnico::all();
         return view('entorno.editar', compact('id', 'est', 'tec'));
     }
 
-    public function update(Request $request, $tem)
+    public function update(Request $request, $id)
     {
-        $sol = Solicitudot::findOrFail($tem);
+        $sol = Solicitudot::findOrFail($id);
         $sol->idEstado = $request->estado; // Asignar el valor seleccionado del select al estado de la solicitud OT
         $sol->idTec = $request->tecnico;
         $sol->detallSP = $request->input('detalle');
-        if (trim($request->tecnico)=='') {
+        if (trim($request->tecnico) == '') {
             # code...
-            $sol=$request->except('tecnico');
-        }else {
+            $sol = $request->except('tecnico');
+        } else {
             # code...
             $sol->save();
         }
@@ -158,7 +164,7 @@ class OTController extends Controller
 
     public function destroy($id)
     {
-    
+
         $solicitud = Solicitudot::find($id); // cambiar  a estado anulado  6 = Anulado -> ojo
         if (!$solicitud) {
             return redirect()->route('entorno.index')->with('sucess', 'Solicitud no encontrada');
