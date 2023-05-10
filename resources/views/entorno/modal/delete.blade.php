@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-floating">
-                    <textarea class="form-control" id="detalle" name="detalle"></textarea>
+                    <textarea class="form-control" id="detalle" name="Anu" name="detalle"></textarea>
                 </div>
             </div>
 

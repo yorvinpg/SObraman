@@ -29,7 +29,15 @@
                                         <option value="{{$es['idestado'] }}">{{$es['nombrE']}}</option>
                                         @endforeach
                                     </select>
+                                    <br>
+                                    <div class="col-auto">
+                                    <div id="fecha-wrapper" style="display: none;">
+                                        <label for="fecha">Fecha Cierre:</label>
+                                        <input type="date" name="fecha" id="fecha">
+                                    </div>
                                 </div>
+                                </div>
+                              
                             </div>
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-4 col-form-label">Tecnico</label>
@@ -50,8 +58,8 @@
                             <button type="submit" class="btn btn-info">Guardar</button>
                         </div>
                     </form>
-                    </div>
                 </div>
+            </div>
         </div>
     </div>
     </div>
@@ -65,6 +73,18 @@
 <script>
     flatpickr("#fecha", {
         dateFormat: "Y-m-d" // Formato de fecha
+    });
+</script>
+<script>
+    var estadoSelect = document.getElementById("estado");
+    var fechaWrapper = document.getElementById("fecha-wrapper");
+
+    estadoSelect.addEventListener("change", function() {
+        if (estadoSelect.value == "5") {
+            fechaWrapper.style.display = "block";
+        } else {
+            fechaWrapper.style.display = "none";
+        }
     });
 </script>
 

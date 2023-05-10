@@ -143,6 +143,7 @@ class OTController extends Controller
         $sol->idEstado = $request->estado; // Asignar el valor seleccionado del select al estado de la solicitud OT
         $sol->idTec = $request->tecnico;
         $sol->detallSP = $request->input('detalle');
+        $sol->fechaCierre = $request->input('fecha');
         if (trim($request->tecnico) == '') {
             # code...
             $sol = $request->except('tecnico');
@@ -159,11 +160,12 @@ class OTController extends Controller
 
     public function destroy($id)
     {
-
+     
         $solicitud = Solicitudot::find($id); // cambiar  a estado anulado  6 = Anulado -> ojo
         if (!$solicitud) {
             return redirect()->route('entorno.index')->with('sucess', 'Solicitud no encontrada');
         }
+        
         $solicitud->idEstado = 6;
         $solicitud->save();
 
