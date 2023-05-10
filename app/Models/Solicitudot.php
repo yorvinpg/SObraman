@@ -48,7 +48,7 @@ class Solicitudot extends Model
 	public $timestamps = false;
 
 	protected $casts = [
-		'fecha' => 'date',
+		'fecha' => 'datetime:Y-m-d',
 		'telefono' => 'int',
 		'idTipo' => 'int',
 		'idEsp' => 'int',
