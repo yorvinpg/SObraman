@@ -162,7 +162,7 @@
             <td>{{$item->ubicacion->nom_ubi }}</td>
             <td>{{$item->estado->nombrE }}</td>
             <td>
-                <button data-toggle="modal" data-target="#Modal" class="btn btn-success btn-ver-detalle" data-id="{{$item->idsolicitudOT}}" data-esp="{{$item->especialidad->nom_espe}}" data-area="{{$item->area->nombreA}}" data-det="{{$item->detalle}}" data-des="{{$item->descripcion}}" data-trabajo="{{$item->t_trabajo->nom_trab}}" data-criticidad="{{$item->criticidad->tipoC}}" data-solicitante="{{$item->solicitante}}" data-email="{{$item->email}}" data-tecnico="{{$item->tecnico->nombre_tec}}" data-spt="{{$item->detallSP}}">
+                <button data-toggle="modal" data-target="#Modal" class="btn btn-success btn-ver-detalle" data-id="{{$item->idsolicitudOT}}" data-esp="{{$item->especialidad->nom_espe}}" data-area="{{$item->area->nombreA}}" data-det="{{$item->detalle}}" data-des="{{$item->descripcion}}" data-trabajo="{{$item->t_trabajo->nom_trab}}" data-criticidad="{{$item->criticidad->tipoC}}" data-solicitante="{{$item->solicitante}}" data-email="{{$item->email}}" data-tecnico="{{$item->tecnico->nombre_tec}}" data-spt="{{$item->detallSP}}" data-fc="{{$item->fechaCierre}}">
                     <i class="fa fa-eye" aria-hidden="true"></i></button>
             </td>
             <td>
@@ -233,6 +233,7 @@
         var email = $(this).data('email');
         var tecnico = $(this).data('tecnico');
         var spt = $(this).data('spt');
+        var fc = $(this).data('fc');
 
 
         // Asignar los datos obtenidos a los campos del modal
@@ -251,6 +252,7 @@
         $('#modal-email').val(email);
         $('#modal-tecnico').val(tecnico);
         $('#modal-spt').val(spt);
+        $('#modal-fc').val(fc);
 
     });
 </script>

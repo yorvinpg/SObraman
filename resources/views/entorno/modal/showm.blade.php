@@ -26,6 +26,13 @@
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group row">
+                                <label for="fechA" class="col-md-5 col-form-label"> Fecha Cierre : </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="modal-fc" disabled>
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group row">
                                 <label for="fechA" class="col-md-5 col-form-label"> Responsable: </label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control" id="modal-resp" disabled>
@@ -53,6 +60,13 @@
                                     <input type="text" class="form-control" id="modal-especialidad" disabled>
                                 </div>
                             </div>
+                            <!-- /.form-group -->
+                            <div class="form-group row">
+                                <label for="fechA" class="col-md-4 col-form-label"> Detalle-Tecnico:</label>
+                                <div class="col-sm-6">
+                                    <textarea class="form-control" type="text" name="detalle" id="modal-spt" value="" style="width: 205px;" disabled> </textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -75,13 +89,6 @@
                                 <label for="fechA" class="col-md-5 col-form-label"> Observacion: </label>
                                 <div class="col-sm-6">
                                     <textarea class="form-control" type="text" name="detalle" id="modal-descripcion" value="" style="width: 205px;" disabled> </textarea>
-                                </div>
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group row">
-                                <label for="fechA" class="col-md-5 col-form-label"> Detalle-Tecnico:</label>
-                                <div class="col-sm-6">
-                                    <textarea class="form-control" type="text" name="detalle" id="modal-spt" value="" style="width: 205px;" disabled> </textarea>
                                 </div>
                             </div>
                         </div>
