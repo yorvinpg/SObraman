@@ -1,5 +1,5 @@
 <form action="{{ route('solicitud.update', $item->idsolicitudOT) }}" method="post">
-    @csrf
+    @csrf       
     @method('PUT')
     <div class="text-left modal fade" id="ModalE" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
