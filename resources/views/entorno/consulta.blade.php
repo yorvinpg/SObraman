@@ -179,28 +179,7 @@
                 <td>
                     <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#confirm-modal"><i class="fa fa-trash" aria-hidden="true"></i></button>
                 </td>
-
             </form>
-            <div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog" aria-labelledby="confirm-modal-label" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content alert alert-info " style="background-color: #17a2b8;">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="confirm-modal-label">ALERTA!</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            ¿Estás seguro de Anular esta solicitud OT?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-danger" form="delete-form-modal">ANULAR</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </tr>
         @endforeach
     </tbody>
@@ -208,6 +187,7 @@
 {{$solicitudes->links()}}
 @include('entorno.modal.showm')
 @include('entorno.modal.Edit')
+@include('entorno.modal.delete')
 @stop
 
 @section('css')

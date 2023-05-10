@@ -45,16 +45,11 @@ class OTController extends Controller
             $solicitudes = $solicitudes->where('idsolicitudOT', "=", $filtro);
         }
 
-        // if (isset($filtroE) && !empty($filtroE)) {
-        //     $solicitudes = $solicitudes
-        //         ->where('solicitudot.idEncarg', 'like', '%' . $filtroE . '%');
-        // }
-
         if (isset($filtroE) && !empty($filtroE)) {
-            $solicitudes = $solicitudes->where('solicitudot.idEncarg', 'like', '%' . $filtroE . '%');
-        } else {
-            $solicitudes = $solicitudes = Solicitudot::orderBy('idsolicitudOT', 'desc');
-        } // ->join('encargado', "encargado.idencargado", "=", "solicitudot.idEncarg")
+            $solicitudes = $solicitudes
+                ->where('solicitudot.idEncarg', 'like', '%' . $filtroE . '%');
+        }
+        // ->join('encargado', "encargado.idencargado", "=", "solicitudot.idEncarg")
 
         if (isset($filtroU) && !empty($filtroU)) {
             $solicitudes = $solicitudes
@@ -136,7 +131,7 @@ class OTController extends Controller
     }
     public function edit(Solicitudot $id)
     {
-       
+
         $est = Estado::all();
         $tec = Tecnico::all();
         return view('entorno.editar', compact('id', 'est', 'tec'));
