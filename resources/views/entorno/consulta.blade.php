@@ -6,6 +6,7 @@
 <!-- Agrega los estilos CSS de Flatpickr -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <!-- Agrega el archivo JavaScript de Flatpickr -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 <h1 class="text-center bg-info text white">CONSULTA DE ORDENES DE TRABAJO O.T</h1>
@@ -214,8 +215,8 @@
         var tecnico = $(this).data('tecnico');
         var spt = $(this).data('spt');
         var fc = $(this).data('fc');
-
-
+        var fechaCierre = fc.substring(0, 10); // Recortar la cadena de fecha para eliminar la hora y los minutos
+        var formattedDate = moment(fechaCierre, 'YYYY-MM-DD').format('YYYY-MM-DD');
         // Asignar los datos obtenidos a los campos del modal
         $('#modal-id').val(id);
         $('#modal-fecha').val(fecha);
@@ -232,7 +233,7 @@
         $('#modal-email').val(email);
         $('#modal-tecnico').val(tecnico);
         $('#modal-spt').val(spt);
-        $('#modal-fc').val(fc);
+        $('#modal-fc').val(formattedDate);
 
     });
 </script>
