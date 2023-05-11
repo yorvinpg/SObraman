@@ -33,8 +33,8 @@
                             </div>
                             <div class="form-group row">
                                 <div id="fecha-wrapper" style="display: none;">
-                                    <label for="inputPassword" class="col-auto col-form-label">Fecha:</label>
-                                        <input type="date" name="fecha" id="fecha" >            
+                                    <label for="inputPassword" class="col-auto col-form-label">Fecha Cierre</label>
+                                        <input type="date" name="fecha" id="fecha">            
                                 </div>
                             </div>
                             <div class="form-group row">
