@@ -31,10 +31,12 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <div id="fecha-wrapper" style="display: none;">
-                                    <label for="inputPassword" class="col-auto col-form-label">Fecha Cierre</label>
-                                        <input type="date" name="fecha" id="fecha">            
+                            <div id="fecha-wrapper" style="display: none;">
+                                <div class="form-group row">
+                                    <label for="inputPassword" class="col-sm-4 col-form-label">Fecha Cierre</label>
+                                    <div class="col-auto">
+                                        <input type="date" name="fecha" id="fecha" placeholder="Y-M-D">
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
