@@ -120,7 +120,7 @@ class OTController extends Controller
         $entornos->idEncarg = $request->get('responsable');
         $entornos->idTec = 1;
         $entornos->detallSP = 'vacio';
-
+        
         $entornos->save();
         return redirect()->route('entorno.index')->with('success', 'OT creado exitosamente');
     }

@@ -35,7 +35,10 @@
                                 <div class="form-group row">
                                     <label for="inputPassword" class="col-sm-4 col-form-label">Fecha Cierre</label>
                                     <div class="col-auto">
-                                        <input type="date" name="fecha" id="fecha" placeholder="Y-M-D">
+                                        <div class="input-group date" data-target-input="nearest">
+                                            <input type="text" id="fecha" name="fecha" class="form-control" placeholder="2023-00-00">
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
