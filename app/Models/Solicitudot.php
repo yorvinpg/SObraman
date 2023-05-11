@@ -61,8 +61,8 @@ class Solicitudot extends Model
 		'idArea' => 'int',
 		'idEncarg' => 'int',
 		'idTec' => 'int',
-		'fechaAnu' => 'datetime',
-		'fechaCierre' => 'datetime'
+		'fechaAnu' => 'datetime:Y-m-d',
+		'fechaCierre' => 'datetime:Y-m-d'
 	];
 
 	protected $fillable = [
