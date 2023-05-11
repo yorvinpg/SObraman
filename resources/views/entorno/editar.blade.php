@@ -29,15 +29,13 @@
                                         <option value="{{$es['idestado'] }}">{{$es['nombrE']}}</option>
                                         @endforeach
                                     </select>
-                                    <br>
-                                    <div class="col-auto">
-                                    <div id="fecha-wrapper" style="display: none;">
-                                        <label for="fecha">Fecha Cierre:</label>
-                                        <input type="date" name="fecha" id="fecha">
-                                    </div>
                                 </div>
+                            </div>
+                            <div class="form-group row">
+                                <div id="fecha-wrapper" style="display: none;">
+                                    <label for="inputPassword" class="col-auto col-form-label">Fecha:</label>
+                                        <input type="date" name="fecha" id="fecha" >            
                                 </div>
-                              
                             </div>
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-4 col-form-label">Tecnico</label>
