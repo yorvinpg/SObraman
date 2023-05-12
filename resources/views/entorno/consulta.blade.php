@@ -166,9 +166,9 @@
                 <button data-toggle="modal" data-target="#Modal" class="btn btn-success btn-ver-detalle" data-id="{{$item->idsolicitudOT}}" data-esp="{{$item->especialidad->nom_espe}}" data-area="{{$item->area->nombreA}}" data-det="{{$item->detalle}}" data-des="{{$item->descripcion}}" data-trabajo="{{$item->t_trabajo->nom_trab}}" data-criticidad="{{$item->criticidad->tipoC}}" data-solicitante="{{$item->solicitante}}" data-email="{{$item->email}}" data-tecnico="{{$item->tecnico->nombre_tec}}" data-spt="{{$item->detallSP}}" data-fc="{{$item->fechaCierre}}">
                     <i class="fa fa-eye" aria-hidden="true"></i></button>
             </td>
+            <!-- <a href="{{route('solicitud.edit',$item->idsolicitudOT)}}" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></a> -->
             <td>
-                <a href="{{route('solicitud.edit',$item->idsolicitudOT)}}" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></a>
-                <!-- <button data-toggle="modal" data-target="#ModalE" data-id="{{ $item->idsolicitudOT }}" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></button> -->
+                <button data-toggle="modal" data-target="#ModalE" data-id="{{ $item->idsolicitudOT }}" id="edit-btn-{{ $item->idsolicitudOT }}" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></button>
             </td>
             <td>
                 <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#confirm-modal" data-id="{{ $item->idsolicitudOT }}" id="delete-btn-{{ $item->idsolicitudOT }}"><i class="fa fa-trash" aria-hidden="true"></i></button>
@@ -205,6 +205,30 @@
 
         // Escucha el evento de envío del formulario del modal
         $('#delete-form-modal').on('submit', function() {
+            // Obtén el valor del atributo "action" del formulario
+            var action = $(this).attr('action');
+
+            // Imprime el valor en la consola del navegador
+            console.log('Valor del atributo "action": ' + action);
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        // Escucha el evento de clic en los botones "Anular"
+        $('button[id^="edit-btn-"]').on('click', function() {
+            // Obtén el valor del atributo "data-id" del botón
+            var id = $(this).data('id');
+
+            // Imprime el valor en la consola del navegador
+            console.log('ID del elemento: ' + id);
+
+            // Asigna el ID al atributo "action" del formulario del modal
+            $('#edit-form-modal').attr('action', '{{ route("solicitud.update", ":id") }}'.replace(':id', id));
+        });
+
+        // Escucha el evento de envío del formulario del modal
+        $('#edit-form-modal').on('submit', function() {
             // Obtén el valor del atributo "action" del formulario
             var action = $(this).attr('action');
 

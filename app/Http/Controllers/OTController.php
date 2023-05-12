@@ -150,13 +150,6 @@ class OTController extends Controller
         $sol->idTec = $request->tecnico;
         $sol->detallSP = $request->input('detalle');
         $sol->fechaCierre = $request->input('fecha');
-        if (trim($request->tecnico) == '') {
-            # code...
-            $sol = $request->except('tecnico');
-        } else {
-            # code...
-            $sol->save();
-        }
         $sol->save();
         // $data = $request->only('idEstado', 'idTecnico', 'detalle');
 
