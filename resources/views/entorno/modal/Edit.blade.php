@@ -21,7 +21,7 @@
                             </select>
                         </div>
                     </div>
-                    <div id="fecha-wrapper" style="display: none;">
+                    <div id="fechawrapper" style="display: none;">
                         <div class="form-group row">
                             <label for="inputPassword" class="col-sm-4 col-form-label">Fecha Cierre</label>
                             <div class="col-auto">
@@ -53,4 +53,22 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("#fecha", {
+            dateFormat: "Y-m-d" // Formato de fecha
+        });
+    </script>
+    <script>
+        var estadoSelect = document.getElementById("estado");
+        var fechaWrapper = document.getElementById("fecha-wrapper");
+
+        estadoSelect.addEventListener("change", function() {
+            if (estadoSelect.value == "5") {
+                fechaWrapper.style.display = "block";
+            } else {
+                fechaWrapper.style.display = "none";
+            }
+        });
+    </script>
 </form>
