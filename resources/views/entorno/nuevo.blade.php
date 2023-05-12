@@ -9,7 +9,15 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <h1 class="text-center bg-info text white">SOLICITUD DE ORDEN DE TRABAJO (O.T)</h1>
 @stop
-
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 @section('content')
 <section class="content">
     <div class="container-fluid">
@@ -24,38 +32,33 @@
                                 <label for="fechA" class="col-sm-4 col-form-label">Fecha de Aviso</label>
                                 <div class="col-auto">
                                     <div class="input-group date" data-target-input="nearest">
-                                        <input type="text" id="fecha" name="fecha" class="form-control"
-                                            value="{{$date}}">
+                                        <input type="text" id="fecha" name="fecha" class="form-control" value="{{$date}}">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Solicitante</label>
                                 <div class="col-auto">
-                                    <input type="text" class="form-control" id="nameU" name="solicitante"
-                                        value="{{$user->name}}" style="width: 225px;" />
+                                    <input type="text" class="form-control" id="nameU" name="solicitante" value="{{$user->name}}" style="width: 225px;" />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
                                 <div class="col-auto">
-                                    <input type="text" class="form-control" name="email" id="email" value=""
-                                        style="width: 225px;">
+                                    <input type="text" class="form-control" name="email" id="email" value="" style="width: 225px;">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Teléfono</label>
                                 <div class="col-auto">
-                                    <input type="number" class="form-control" name="telefono" id="telefono" value=""
-                                        style="width: 225px;">
+                                    <input type="number" class="form-control" name="telefono" id="telefono" value="" style="width: 225px;">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Area</label>
                                 <div class="col-auto">
-                                    <select class="form-select form-control" name="area"
-                                        aria-label="Default select example" id="area" style="width: 225px;">
+                                    <select class="form-select form-control" name="area" aria-label="Default select example" id="area" style="width: 225px;">
                                         @foreach ($areas as $area )
                                         <option value="{{$area['idarea'] }}">{{$area['nombreA']}}</option>
                                         @endforeach
@@ -66,8 +69,7 @@
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Responsable</label>
                                 <div class="col-auto">
-                                    <select class="form-select form-control" name="responsable"
-                                        aria-label="Default select example" id="responsable" style="width: 225px;">
+                                    <select class="form-select form-control" name="responsable" aria-label="Default select example" id="responsable" style="width: 225px;">
                                         @foreach ($respon as $respo )
                                         <option value="{{$respo['idencargado'] }}">{{$respo['nom_E']}}</option>
                                         @endforeach
@@ -77,8 +79,7 @@
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Tipo Trabajo</label>
                                 <div class="col-auto">
-                                    <select class="form-select form-control" name="tt"
-                                        aria-label="Default select example" id="tt" style="width: 225px;">
+                                    <select class="form-select form-control" name="tt" aria-label="Default select example" id="tt" style="width: 225px;">
                                         @foreach ($tts as $tt )
                                         <option value="{{$tt['idtrabajo'] }}">{{$tt['nom_trab']}}</option>
                                         @endforeach
@@ -88,8 +89,7 @@
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Especialidad</label>
                                 <div class="col-auto">
-                                    <select class="form-select form-control" name="esp"
-                                        aria-label="Default select example" id="esp" style="width: 225px;">
+                                    <select class="form-select form-control" name="esp" aria-label="Default select example" id="esp" style="width: 225px;">
                                         @foreach ($espes as $espe )
                                         <option value="{{$espe['idespecialidad'] }}">{{$espe['nom_espe']}}</option>
                                         @endforeach
@@ -100,8 +100,7 @@
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-4 col-form-label">Criticidad</label>
                                 <div class="col-auto">
-                                    <select class="form-select form-control" name="crit"
-                                        aria-label="Default select example" id="crit" style="width: 225px;">
+                                    <select class="form-select form-control" name="crit" aria-label="Default select example" id="crit" style="width: 225px;">
                                         @foreach ($crits as $crit )
                                         <option value="{{$crit['idcriticidad'] }}">{{$crit['tipoC']}}</option>
                                         @endforeach
@@ -111,8 +110,7 @@
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-4 col-form-label">Ubicación</label>
                                 <div class="col-auto">
-                                    <select class="form-select form-control" name="ubi"
-                                        aria-label="Default select example" id="ubi" style="width: 225px;">
+                                    <select class="form-select form-control" name="ubi" aria-label="Default select example" id="ubi" style="width: 225px;">
                                         @foreach ($ubis as $ubi )
                                         <option value="{{$ubi['idubicacion'] }}">{{$ubi['nom_ubi']}}</option>
                                         @endforeach
@@ -122,22 +120,19 @@
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-4 col-form-label">Referencia</label>
                                 <div class="col-auto">
-                                    <input type="text" class="form-control" name="referencia" id="referencia" value=""
-                                        style="width: 225px;">
+                                    <input type="text" class="form-control" name="referencia" id="referencia" value="" style="width: 225px;">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-4 col-form-label">Observacion</label>
                                 <div class="col-auto">
-                                    <textarea class="form-control" name="descripcion" id="descripcion" value=""
-                                        style="width: 225px;"> </textarea>
+                                    <textarea class="form-control" name="descripcion" id="descripcion" value="" style="width: 225px;"> </textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-4 col-form-label">Detalle</label>
                                 <div class="col-auto">
-                                    <textarea class="form-control" name="detalle" id="detalle" value=""
-                                        style="width: 225px;"> </textarea>
+                                    <textarea class="form-control" name="detalle" id="detalle" value="" style="width: 225px;"> </textarea>
                                 </div>
                             </div>
                             <div class="text-center">

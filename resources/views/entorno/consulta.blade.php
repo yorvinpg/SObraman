@@ -174,9 +174,6 @@
             <form id="delete-form-modal" action="{{ route('solicitudot.cambiarEstado', ['id' => $item->idsolicitudOT]) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <!-- <td>
-                    <button class="btn btn-danger" type="submit"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                </td> -->
                 <td>
                     <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#confirm-modal"><i class="fa fa-trash" aria-hidden="true"></i></button>
                 </td>
