@@ -170,14 +170,10 @@
                 <a href="{{route('solicitud.edit',$item->idsolicitudOT)}}" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></a>
                 <!-- <button data-toggle="modal" data-target="#ModalE" data-id="{{ $item->idsolicitudOT }}" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></button> -->
             </td>
+            <td>
+                <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#confirm-modal" data-id="{{ $item->idsolicitudOT }}" id="delete-btn-{{ $item->idsolicitudOT }}"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </td>
 
-            <form id="delete-form-modal" action="{{ route('solicitudot.cambiarEstado', ['id' => $item->idsolicitudOT]) }}" method="POST">
-                @csrf
-                @method('PUT')
-                <td>
-                    <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#confirm-modal"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                </td>
-            </form>
         </tr>
         @endforeach
     </tbody>
@@ -193,6 +189,31 @@
 @stop
 
 @section('js')
+<script>
+    $(document).ready(function() {
+        // Escucha el evento de clic en los botones "Anular"
+        $('button[id^="delete-btn-"]').on('click', function() {
+            // Obtén el valor del atributo "data-id" del botón
+            var id = $(this).data('id');
+
+            // Imprime el valor en la consola del navegador
+            console.log('ID del elemento: ' + id);
+
+            // Asigna el ID al atributo "action" del formulario del modal
+            $('#delete-form-modal').attr('action', '{{ route("solicitudot.cambiarEstado", ":id") }}'.replace(':id', id));
+        });
+
+        // Escucha el evento de envío del formulario del modal
+        $('#delete-form-modal').on('submit', function() {
+            // Obtén el valor del atributo "action" del formulario
+            var action = $(this).attr('action');
+
+            // Imprime el valor en la consola del navegador
+            console.log('Valor del atributo "action": ' + action);
+        });
+    });
+</script>
+
 <script>
     //script modal view detalles.
     $('.btn-ver-detalle').on('click', function() {

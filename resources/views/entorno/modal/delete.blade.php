@@ -1,6 +1,7 @@
-<form id="delete-form-modal" action="{{ route('solicitudot.cambiarEstado', ['id' => $item->idsolicitudOT]) }}" method="POST">
+<form id="delete-form-modal" method="POST">
     @csrf
     @method('PUT')
+
     <div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog" aria-labelledby="confirm-modal-label" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content alert alert-info " style="background-color: #17a2b8;">
@@ -12,12 +13,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-floating">
-                        <textarea class="form-control" id="Anu" name="Anu" name="detalle"></textarea>
+                        <textarea class="form-control" id="detalle" name="detalle_anulado"></textarea>
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger" form="delete-form-modal" onsubmit="return confirm('¿Estás seguro de eliminar esta solicitud OT?')">ANULAR</button>
+                    <button type="submit" class="btn btn-danger">ANULAR</button>
                 </div>
             </div>
         </div>
