@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-floating">
                                 <label for="floatingTextarea">Detalle de la Solución</label>
-                                <textarea class="form-control" id="detalle" value="{{$id->detallSP}}" name="detalle"></textarea>
+                                <textarea class="form-control" id="detalle" value="{{$id->detallSP}}" name="detalle" required></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
