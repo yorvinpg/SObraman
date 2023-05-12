@@ -33,21 +33,21 @@
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Solicitante</label>
                                 <div class="col-auto">
                                     <input type="text" class="form-control" id="nameU" name="solicitante"
-                                        value="{{$user->name}}" style="width: 225px;" />
+                                        value="{{$user->name}}" style="width: 225px;" required/>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
                                 <div class="col-auto">
                                     <input type="text" class="form-control" name="email" id="email" value=""
-                                        style="width: 225px;">
+                                        style="width: 225px;" required/>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Teléfono</label>
                                 <div class="col-auto">
                                     <input type="number" class="form-control" name="telefono" id="telefono" value=""
-                                        style="width: 225px;">
+                                        style="width: 225px;" required/>
                                 </div>
                             </div>
 
@@ -123,21 +123,21 @@
                                 <label for="inputPassword" class="col-sm-4 col-form-label">Referencia</label>
                                 <div class="col-auto">
                                     <input type="text" class="form-control" name="referencia" id="referencia" value=""
-                                        style="width: 225px;">
+                                        style="width: 225px;" required/>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-4 col-form-label">Observacion</label>
                                 <div class="col-auto">
                                     <textarea class="form-control" name="descripcion" id="descripcion" value=""
-                                        style="width: 225px;"> </textarea>
+                                        style="width: 225px;" required></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-4 col-form-label">Detalle</label>
                                 <div class="col-auto">
                                     <textarea class="form-control" name="detalle" id="detalle" value=""
-                                        style="width: 225px;"> </textarea>
+                                        style="width: 225px;" required></textarea>
                                 </div>
                             </div>
                             <div class="text-center">
