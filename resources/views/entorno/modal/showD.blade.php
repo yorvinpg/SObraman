@@ -1,5 +1,5 @@
 <form action="" method="post" enctype="multipart/form-data">
-    <div class="text-left modal fade" id="Modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="text-left modal fade" id="ModalD" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-info ">
@@ -26,9 +26,9 @@
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group row">
-                                <label for="fechA" class="col-md-5 col-form-label"> Fecha Cierre : </label>
+                                <label for="fechA" class="col-md-5 col-form-label"> Responsable: </label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="modal-fc" disabled>
+                                    <input type="text" class="form-control" id="modal-resp" disabled>
                                 </div>
                             </div>
                         </div>
@@ -54,17 +54,9 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <!-- /.form-group -->
-                            <div class="form-group row">
-                                <label for="fechA" class="col-md-5 col-form-label"> Responsable: </label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="modal-resp" disabled>
-                                </div>
-                            </div>
                             <div class="form-group row">
                                 <label for="" class="col-md-5 col-form-label"> Area: </label>
                                 <div class="col-sm-6">
@@ -108,16 +100,9 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="fechA" class="col-md-4 col-form-label">Tecnico:</label>
-                                <div class="col-auto">
-                                    <input type="text" class="form-control" id="modal-tecnico" disabled>
-                                </div>
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group row">
-                                <label for="fechA" class="col-md-4 col-form-label"> Detalle Tecnico:</label>
+                                <label for="fechA" class="col-md-4 col-form-label"> Detalle Anulación:</label>
                                 <div class="col-sm-6">
-                                    <textarea class="form-control" type="text" name="detalle" id="modal-spt" value="" style="width: 205px;" disabled> </textarea>
+                                    <textarea class="form-control" type="text" name="detalle" id="modal-anul" value="" style="width: 205px;" disabled> </textarea>
                                 </div>
                             </div>
                         </div>

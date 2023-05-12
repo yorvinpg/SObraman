@@ -108,7 +108,7 @@ class OTController extends Controller
         ], [
             'email.required' => 'El campo email es obligatorio'
         ]);
-        
+
         $entornos = new Solicitudot();
         $entornos->fecha = $request->get('fecha');
         $entornos->solicitante = $request->get('solicitante');
@@ -164,7 +164,7 @@ class OTController extends Controller
         return redirect()->route('entorno.index')->with('success', 'O.T actualizado correctamente');
     }
 
-    public function destroy(Request $request , $id)
+    public function destroy(Request $request, $id)
     {
 
         $solicitud = Solicitudot::find($id);
@@ -173,10 +173,13 @@ class OTController extends Controller
         }
     
         $solicitud->idEstado = 6;
-        $solicitud->detallAnu = $request->input('Anu');
+        $solicitud->detallAnu = $request->input('detalle_anulado');
         $solicitud->save();
-    
+
         return redirect()->route('entorno.anulado')->with('success', 'Anulado exitosamente');
+
+    }
+
         // $solicitud = Solicitudot::find($id); // cambiar  a estado anulado  6 = Anulado -> ojo
         // if (!$solicitud) {
         //     return redirect()->route('entorno.index')->with('sucess', 'Solicitud no encontrada');
@@ -186,8 +189,6 @@ class OTController extends Controller
         // $solicitud->save();
 
         // return redirect()->route('entorno.anulado')->with('success', 'Anulado exitosamente');
-    }
-
     public function exportExcel(Request $request)
     {
 
