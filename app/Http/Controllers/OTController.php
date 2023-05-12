@@ -171,24 +171,24 @@ class OTController extends Controller
         if (!$solicitud) {
             return redirect()->route('entorno.index')->with('sucess', 'Solicitud no encontrada');
         }
-    
+
         $solicitud->idEstado = 6;
         $solicitud->detallAnu = $request->input('detalle_anulado');
+        $solicitud->fechaAnu = now();
         $solicitud->save();
 
         return redirect()->route('entorno.anulado')->with('success', 'Anulado exitosamente');
-
     }
 
-        // $solicitud = Solicitudot::find($id); // cambiar  a estado anulado  6 = Anulado -> ojo
-        // if (!$solicitud) {
-        //     return redirect()->route('entorno.index')->with('sucess', 'Solicitud no encontrada');
-        // }
+    // $solicitud = Solicitudot::find($id); // cambiar  a estado anulado  6 = Anulado -> ojo
+    // if (!$solicitud) {
+    //     return redirect()->route('entorno.index')->with('sucess', 'Solicitud no encontrada');
+    // }
 
-        // $solicitud->idEstado = 6;
-        // $solicitud->save();
+    // $solicitud->idEstado = 6;
+    // $solicitud->save();
 
-        // return redirect()->route('entorno.anulado')->with('success', 'Anulado exitosamente');
+    // return redirect()->route('entorno.anulado')->with('success', 'Anulado exitosamente');
     public function exportExcel(Request $request)
     {
 

@@ -26,9 +26,9 @@
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group row">
-                                <label for="fechA" class="col-md-5 col-form-label"> Responsable: </label>
+                                <label for="fechA" class="col-md-5 col-form-label"> Fecha Anulado : </label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="modal-resp" disabled>
+                                    <input type="text" class="form-control" id="modal-fa" disabled>
                                 </div>
                             </div>
                         </div>
@@ -57,6 +57,13 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
+                            <!-- /.form-group -->
+                            <div class="form-group row">
+                                <label for="fechA" class="col-md-5 col-form-label"> Responsable: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="modal-resp" disabled>
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label for="" class="col-md-5 col-form-label"> Area: </label>
                                 <div class="col-sm-6">

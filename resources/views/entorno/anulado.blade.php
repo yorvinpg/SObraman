@@ -3,6 +3,8 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
+<!-- Agrega el archivo JavaScript MOMENT -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 <h1 class="text-center bg-info text white">ORDENES DE TRABAJO ANULADOS</h1>
 @stop
@@ -70,7 +72,7 @@
                     data-id="{{$item->idsolicitudOT}}" data-esp="{{$item->especialidad->nom_espe}}"
                     data-area="{{$item->area->nombreA}}" data-det="{{$item->detalle}}" data-des="{{$item->descripcion}}"
                     data-trabajo="{{$item->t_trabajo->nom_trab}}" data-criticidad="{{$item->criticidad->tipoC}}"
-                    data-solicitante="{{$item->solicitante}}" data-email="{{$item->email}}" data-anu="{{$item->detallAnu}}">
+                    data-solicitante="{{$item->solicitante}}" data-email="{{$item->email}}" data-fa="{{$item->fechaAnu}}" data-anu="{{$item->detallAnu}}">
                     <i class="fa fa-eye" aria-hidden="true"></i></button>
             </td>
         </tr>
@@ -102,7 +104,11 @@
         var solicitante = $(this).data('solicitante');
         var email = $(this).data('email');
         var anu = $(this).data('anu');
+        var fa = $(this).data('fa');
 
+        var fechaANU = fa.substring(0, 10); // Recortar la cadena de fecha para eliminar la hora y los minutos
+        var formattedDate = moment(fechaANU, 'YYYY-MM-DD').format('YYYY-MM-DD');
+        // Asignar los datos obtenidos a los campos del modal
 
        // Asignar los datos obtenidos a los campos del modal
        $('#modal-id').val(id);
@@ -119,7 +125,7 @@
        $('#modal-solicitante').val(solicitante);
        $('#modal-email').val(email);
        $('#modal-anul').val(anu);
-
+       $('#modal-fa').val(formattedDate);
     });
 </script>
 <script>
