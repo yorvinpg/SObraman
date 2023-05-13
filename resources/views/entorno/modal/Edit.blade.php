@@ -55,7 +55,7 @@
     </div>
     <script>
         var estadoSelect = document.getElementById("estado");
-        var fechaWrapper = document.getElementById("fecha-wrapper");
+        var fechaWrapper = document.getElementById("fechawrapper");
         var fecha = $("#fecha");
 
         estadoSelect.addEventListener("change", function() {
