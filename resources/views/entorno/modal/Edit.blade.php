@@ -59,13 +59,19 @@
 
         estadoSelect.addEventListener("change", function() {
             if (estadoSelect.value == "5") {
-                fechaWrapper.style.display = "block";
+                showfechaWrapper();
             } else {
-                fechaWrapper.style.display = "none";
+                hidefechaWrapper();
             }
-            console.log("Estado seleccionado: ", estadoSelect.value);
         });
 
+        function showfechaWrapper() {
+            fechaWrapper.style.display = "block";
+        }
+
+        function hidefechaWrapper() {
+            fechaWrapper.style.display = "none";
+        }
         fecha.datepicker({
             format: "yyyy-mm-dd",
             todayBtn: "linked",
