@@ -167,8 +167,8 @@
                     <i class="fa fa-eye" aria-hidden="true"></i></button>
             </td>
             <td>
-                <a href="{{route('solicitud.edit',$item->idsolicitudOT)}}" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></a>
-                <!-- <button data-toggle="modal" data-target="#ModalE" data-id="{{ $item->idsolicitudOT }}" id="edit-btn-{{ $item->idsolicitudOT }}" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></button> -->
+                <!-- <a href="{{route('solicitud.edit',$item->idsolicitudOT)}}" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></a> -->
+                <button data-toggle="modal" data-target="#ModalE" data-id="{{ $item->idsolicitudOT }}" id="edit-btn-{{ $item->idsolicitudOT }}" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></button>
             </td>
             <td>
                 <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#confirm-modal" data-id="{{ $item->idsolicitudOT }}" id="delete-btn-{{ $item->idsolicitudOT }}"><i class="fa fa-trash" aria-hidden="true"></i></button>

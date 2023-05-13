@@ -61,14 +61,21 @@
     </script>
     <script>
         var estadoSelect = document.getElementById("estado");
-        var fechaWrapper = document.getElementById("fecha-wrapper");
+        var fechaWrapper = document.getElementById("fechawrapper");
+        var fechaInput = document.getElementById("fecha");
 
         estadoSelect.addEventListener("change", function() {
             if (estadoSelect.value == "5") {
                 fechaWrapper.style.display = "block";
             } else {
                 fechaWrapper.style.display = "none";
+                fechaInput.value = ""; // Vaciar el campo de fecha
             }
+            console.log("Estado seleccionado: ", estadoSelect.value);
+        });
+
+        fechaInput.addEventListener("change", function() {
+            console.log("Fecha de cierre seleccionada: ", fechaInput.value);
         });
     </script>
 </form>
