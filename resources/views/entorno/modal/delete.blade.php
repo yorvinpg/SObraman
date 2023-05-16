@@ -13,7 +13,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-floating">
-                        <textarea class="form-control" id="detalle" name="detalle_anulado"></textarea>
+                        <textarea class="form-control" id="detalle" name="detalle_anulado" required></textarea>
                     </div>
                 </div>
 
