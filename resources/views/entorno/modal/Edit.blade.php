@@ -53,22 +53,37 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        flatpickr("#fecha", {
-            dateFormat: "Y-m-d" // Formato de fecha
-        });
-    </script>
     <script>
         var estadoSelect = document.getElementById("estado");
-        var fechaWrapper = document.getElementById("fecha-wrapper");
+        var fechaWrapper = document.getElementById("fechawrapper");
 
         estadoSelect.addEventListener("change", function() {
             if (estadoSelect.value == "5") {
-                fechaWrapper.style.display = "block";
+                showfechaWrapper();
             } else {
-                fechaWrapper.style.display = "none";
+                hidefechaWrapper();
             }
         });
+
+        function showfechaWrapper() {
+            fechaWrapper.style.display = "block";
+        }
+
+        function hidefechaWrapper() {
+            fechaWrapper.style.display = "none";
+        }
+        fecha.datepicker({
+            format: "yyyy-mm-dd",
+            todayBtn: "linked",
+            clearBtn: true,
+            language: "es",
+            autoclose: true
+        });
+
+        function mostrarFechaCierre() {
+            console.log("Fecha Cierre seleccionada: ", fecha.val());
+        }
     </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 </form>
