@@ -12,7 +12,9 @@
 
 @stop
 @section('content')
+@can('crear-user')
 <a class="btn btn-warning" href="{{ route('usuario.create') }}">Nuevo</a>
+@endcan
 <table class="table mt-4 table-bordered">
     <thead class="table-info">
         <tr>
@@ -37,11 +39,14 @@
                 @endif
             </td>
             <td>
+                @can('editar-user')
                 <a class="btn btn-info" href="{{ route('usuario.edit',$usuario->id) }}">Editar</a>
-
+                @endcan
+                @can('anular-user')
                 {!! Form::open(['method' => 'DELETE','route' => ['usuario.destroy', $usuario->id],'style'=>'display:inline']) !!}
                 {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
                 {!! Form::close() !!}
+                @endcan
             </td>
         </tr>
 

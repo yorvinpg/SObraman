@@ -331,7 +331,7 @@ return [
         [
             'text' => 'Roles',
             'icon' => 'nav-icon  fas fa-exclamation-triangle',
-            'url' => 'roles'
+            'route' => 'roles.index'
         ],
         ['header' => 'ENTORNO'],
         [
