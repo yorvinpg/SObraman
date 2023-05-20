@@ -49,10 +49,10 @@ class RolController extends Controller
 
     public function edit($id)
     {
-        $rol = Role::find($id);
+        $role = Role::find($id);
         $permission = Permission::get();
         $rolePermissions = DB::table('role_has_permissions')
-            ->where('role_has_permissions.role_id' . $id)
+            ->where('role_has_permissions.role_id' , $id)
             ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
             ->all();
 
@@ -69,7 +69,7 @@ class RolController extends Controller
 
         $role->syncPermissions($request->input('permissions'));
 
-        return redirect()->route('entorno.roles.rol');
+        return redirect()->route('roles.index');
     }
 
 
@@ -77,6 +77,6 @@ class RolController extends Controller
     {
         DB::table('roles')->where('id', $id)->delete();
 
-        return redirect()->route('entorno.roles.entorno');
+        return redirect()->route('roles.index');
     }
 }
