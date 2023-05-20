@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+//spatie
+use Spatie\Permission\Models\Permission;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,12 +16,26 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        //ROLES Y PERMISOS
-        //Usuarios base
-        
-        $this->call(RoleSeeder::class);
-        $this->call(UserSeeder::class);
+        //permisos
 
-        //$this->call(RoleSeeder::class);
+        $permisos = [
+            'ver-ot',
+            'crear-ot',
+            'editar-ot',
+            'anular-ot',
+            // rol
+            'ver-rol',
+            'crear-rol',
+            'editar-rol',
+            'anular-rol',
+            // usuario
+            'ver-user',
+            'crear-user',
+            'editar-user',
+            'anular-user',
+        ];
+        foreach ($permisos as $permiso) {
+            Permission::create(['name' => $permiso]);
+        }
     }
 }

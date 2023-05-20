@@ -328,6 +328,11 @@ return [
             'icon' => 'nav-icon  fas fa-users fa-fu',
             'route' => 'admin.users'
         ],
+        [
+            'text' => 'Roles',
+            'icon' => 'nav-icon  fas fa-exclamation-triangle',
+            'url' => 'roles'
+        ],
         ['header' => 'ENTORNO'],
         [
             'text'    => ' AVISOS',
@@ -335,7 +340,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Nuevo Aviso',
-                    'icon' =>'nav-icon fas fa-file',
+                    'icon' => 'nav-icon fas fa-file',
                     'url'  => 'admin/entorno/create  ',
                 ],
                 [

@@ -163,15 +163,21 @@
             <td>{{$item->ubicacion->nom_ubi }}</td>
             <td>{{$item->estado->nombrE }}</td>
             <td>
+
                 <button data-toggle="modal" data-target="#Modal" class="btn btn-success btn-ver-detalle" data-id="{{$item->idsolicitudOT}}" data-esp="{{$item->especialidad->nom_espe}}" data-area="{{$item->area->nombreA}}" data-det="{{$item->detalle}}" data-des="{{$item->descripcion}}" data-trabajo="{{$item->t_trabajo->nom_trab}}" data-criticidad="{{$item->criticidad->tipoC}}" data-solicitante="{{$item->solicitante}}" data-email="{{$item->email}}" data-tecnico="{{$item->tecnico->nombre_tec}}" data-spt="{{$item->detallSP}}" data-fc="{{$item->fechaCierre}}">
                     <i class="fa fa-eye" aria-hidden="true"></i></button>
+
             </td>
             <td>
+                @can('editar-ot')
                 <a href="{{route('solicitud.edit',$item->idsolicitudOT)}}" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></a>
                 <!-- <button data-toggle="modal" data-target="#ModalE" data-id="{{ $item->idsolicitudOT }}" id="edit-btn-{{ $item->idsolicitudOT }}" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i></button> -->
+                @endcan
             </td>
             <td>
+                @can('anular-ot')
                 <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#confirm-modal" data-id="{{ $item->idsolicitudOT }}" id="delete-btn-{{ $item->idsolicitudOT }}"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                @endcan
             </td>
 
         </tr>

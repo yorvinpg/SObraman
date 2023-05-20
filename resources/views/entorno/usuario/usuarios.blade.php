@@ -10,16 +10,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 <h1 class="text-center bg-info text white">LISTA DE USUARIOS</h1>
 
-<div class="card-header">
-    <form>
-        <input  class="form-control" placeholder="Ingrese Usuario" />
-    </form>
-
-</div>
-
 @stop
 @section('content')
-
+<a class="btn btn-warning" href="{{ route('usuario.create') }}">Nuevo</a>
 <table class="table mt-4 table-bordered">
     <thead class="table-info">
         <tr>
@@ -27,16 +20,28 @@
             <th scope="col">NOMBRE</th>
             <th scope="col">USUARIO</th>
             <th scope="col">ROL</th>
+            <th scopre="col">Acciones</th>
         </tr>
     </thead>
     <tbody class="table-dark">
-        @foreach ($users as $item)
+        @foreach ($users as $usuario)
         <tr>
-            <td>{{$item->id}}</td>
-            <td>{{$item->name}}</td>
-            <td>{{$item->username}}</td>
+            <td>{{$usuario->id}}</td>
+            <td>{{$usuario->name}}</td>
+            <td>{{$usuario->username}}</td>
             <td>
-                <a class="btn btn-primary" >Rol</a>
+                @if(!empty($usuario->getRoleNames()))
+                @foreach($usuario->getRoleNames() as $rolNombre)
+                <h5><span class="badge badge-dark">{{ $rolNombre }}</span></h5>
+                @endforeach
+                @endif
+            </td>
+            <td>
+                <a class="btn btn-info" href="{{ route('usuario.edit',$usuario->id) }}">Editar</a>
+
+                {!! Form::open(['method' => 'DELETE','route' => ['usuario.destroy', $usuario->id],'style'=>'display:inline']) !!}
+                {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
+                {!! Form::close() !!}
             </td>
         </tr>
 
