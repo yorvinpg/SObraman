@@ -341,7 +341,7 @@ return [
                 [
                     'text' => 'Nuevo Aviso',
                     'icon' => 'nav-icon fas fa-file',
-                    'url'  => 'admin/entorno/create  ',
+                    'route'  => 'entorno.create',
                 ],
                 [
                     'text' => 'Consulta Aviso',

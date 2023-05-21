@@ -91,7 +91,7 @@ class OTController extends Controller
 
         $solicitudes = $solicitudes->paginate(5);
         // te trae todo la data de solicitud en 5, de manera descendente
-        return view('entorno.consulta', compact('solicitudes', 'est', 'UB', 'TT', 'rr', 'filtro', 'filtroE', 'filtroU', 'filtroT', 'filtroEs', 'filtroF', 'tec'));
+        return view('entorno.ordentra.consulta', compact('solicitudes', 'est', 'UB', 'TT', 'rr', 'filtro', 'filtroE', 'filtroU', 'filtroT', 'filtroEs', 'filtroF', 'tec'));
     }
 
     public function create()
@@ -111,7 +111,7 @@ class OTController extends Controller
         $date = $date->format('Y-m-d');
 
 
-        return view('entorno.nuevo', compact('areas', 'respon', 'tts', 'espes', 'crits', 'ubis', 'user', 'date'));
+        return view('entorno.ordentra.nuevo', compact('areas', 'respon', 'tts', 'espes', 'crits', 'ubis', 'user', 'date'));
     }
 
     public function store(Request $request)
@@ -153,7 +153,7 @@ class OTController extends Controller
 
         $est = Estado::all();
         $tec = Tecnico::all();
-        return view('entorno.editar', compact('id', 'est', 'tec'));
+        return view('entorno.ordentra.editar', compact('id', 'est', 'tec'));
     }
 
     public function update(Request $request, $id)
@@ -183,7 +183,7 @@ class OTController extends Controller
         $solicitud->fechaAnu = now();
         $solicitud->save();
 
-        return redirect()->route('entorno.anulado')->with('success', 'Anulado exitosamente');
+        return redirect()->route('entorno.ordentra.anulado')->with('success', 'Anulado exitosamente');
     }
 
     // $solicitud = Solicitudot::find($id); // cambiar  a estado anulado  6 = Anulado -> ojo

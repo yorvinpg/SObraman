@@ -43,7 +43,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('anula', AnulaController::class);
     Route::resource('dash', DashController::class);
-    Route::resource('ot', OTController::class);
+    Route::resource('entorno', OTController::class);
     Route::resource('usuario', UserController::class);
     Route::resource('roles', RolController::class);
 
