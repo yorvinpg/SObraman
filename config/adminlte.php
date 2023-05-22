@@ -341,11 +341,7 @@ return [
                 [
                     'text' => 'Nuevo Aviso',
                     'icon' => 'nav-icon fas fa-file',
-<<<<<<< HEAD
                     'url'  => 'admin/entorno/create',
-=======
-                    'route'  => 'entorno.create',
->>>>>>> 5a14c7315d4cb2dcc66d9d08e2513d0c55d90d5f
                 ],
                 [
                     'text' => 'Consulta Aviso',
