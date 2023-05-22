@@ -34,7 +34,10 @@ class RolController extends Controller
     }
     public function store(Request $request)
     {
-        $this->validate($request, ['name' => 'required', 'permission' => 'required']);
+        $this->validate($request, [
+            'name' => 'required',
+            'permission' => 'required'
+        ]);
         $rol = Role::create(['name' => $request->input('name')]);
         $rol->syncPermissions($request->input('permission'));
 
@@ -52,7 +55,7 @@ class RolController extends Controller
         $role = Role::find($id);
         $permission = Permission::get();
         $rolePermissions = DB::table('role_has_permissions')
-            ->where('role_has_permissions.role_id' , $id)
+            ->where('role_has_permissions.role_id', $id)
             ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
             ->all();
 
@@ -62,7 +65,10 @@ class RolController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, ['name' => 'required', 'permission' => 'required']);
+        $this->validate($request, [
+            'name' => 'required',
+            'permission' => 'required'
+        ]);
         $role = Role::find($id);
         $role->name = $request->input('name');
         $role->save();

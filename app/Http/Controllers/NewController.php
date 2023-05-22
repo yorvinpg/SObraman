@@ -2,38 +2,53 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Solicitudot;
+use App\Models\Area;
+use App\Models\Criticidad;
+use App\Models\Encargado;
+use App\Models\Especialidad;
+use App\Models\TTrabajo;
+use App\Models\Ubicacion;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class AnulaController extends Controller
+class NewController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:ver-ot', ['only' => ['index']]);
+        $this->middleware('permission:ver-ot|crear-ot|editar-ot|anular-ot', ['only' => ['index']]);
         $this->middleware('permission:crear-ot ', ['only' => ['create', 'store']]);
         $this->middleware('permission:editar-ot ', ['only' => ['edit', 'update']]);
         $this->middleware('permission:anular-ot ', ['only' => ['destroy']]);
     }
-
-    public function index(Request $request)
-    {
-        $filtro = $request->get('ID');
-        $anu = Solicitudot::orderBy('idsolicitudOT', 'desc')
-            ->where('idEstado', [6]); // lista todo los anulados existentes en forma descendiente
-        if (isset($filtro) && !empty($filtro)) {
-            $anu = $anu->where('idsolicitudOT', "=", $filtro);
-        } else {
-            $anu = Solicitudot::orderBy('idsolicitudOT', 'desc')
-                ->where('idEstado', [6]);
-        }
-        $anu = $anu->paginate(5);
-        return view('entorno.ordentra.anulado', compact('anu', 'filtro'));
-    }
-
-
-    public function create()
+    public function index()
     {
         //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        // Primero obtenemos la información del usuario que está autentificado...
+        $user = Auth::user();
+        // Para obtener el ID:
+        $user->id;
+        $areas = Area::all();
+        $respon = Encargado::all();
+        $tts = TTrabajo::all();
+        $espes = Especialidad::all();
+        $crits = Criticidad::all();
+        $ubis =  Ubicacion::all();
+        //mostrar solo la hora
+        $date = Carbon::now();
+        $date = $date->format('Y-m-d');
+
+
+        return view('entorno.ordentra.nuevo', compact('areas', 'respon', 'tts', 'espes', 'crits', 'ubis', 'user', 'date'));
     }
 
     /**

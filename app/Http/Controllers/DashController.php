@@ -63,7 +63,7 @@ class DashController extends Controller
             ->whereMonth('fecha', $mesActual)
             ->count();
 
-        return view('entorno.Dash', compact('orderC', 'orderP', 'count', 'countA', 'porcentaje', 'porcentajeC', 'countCA', 'countMA', 'countM'));
+        return view('entorno.ordentra.Dash', compact('orderC', 'orderP', 'count', 'countA', 'porcentaje', 'porcentajeC', 'countCA', 'countMA', 'countM'));
     }
 
     /**
