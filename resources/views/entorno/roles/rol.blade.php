@@ -8,7 +8,7 @@
 <!-- Agrega el archivo JavaScript de Flatpickr -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-<h1 class="text-center bg-info text white">LISTA DE USUARIOS</h1>
+<h1 class="text-center bg-info text white">LISTA DE ROLES</h1>
 
 @stop
 @section('content')

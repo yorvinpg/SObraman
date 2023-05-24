@@ -22,7 +22,7 @@
             <th scope="col">NOMBRE</th>
             <th scope="col">USUARIO</th>
             <th scope="col">ROL</th>
-            <th scopre="col">Acciones</th>
+            <th scopre="col">ACCIONES</th>
         </tr>
     </thead>
     <tbody class="table-dark">
