@@ -140,7 +140,7 @@
         </div>
 </section>
 
-@can('crear-user')
+@can('crear-ot')
 <a class="btn btn-warning" href="{{ route('entorno.create') }}">Nuevo</a>
 @endcan
 <table class="table mt-4 table-bordered">
