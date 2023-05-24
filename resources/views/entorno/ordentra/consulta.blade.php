@@ -140,6 +140,9 @@
         </div>
 </section>
 
+@can('crear-user')
+<a class="btn btn-warning" href="{{ route('entorno.create') }}">Nuevo</a>
+@endcan
 <table class="table mt-4 table-bordered">
     <thead class="table-info">
         <tr>
@@ -336,4 +339,4 @@
         $('#success-alert').fadeOut('fast');
     }, 3000); // la alerta se ocultará después de 3 segundos (3000 milisegundos)
 </script>
-@stop
+@stop|

@@ -338,11 +338,11 @@ return [
             'text'    => ' AVISOS',
             'icon'    => 'fas fa-fw fa-folder',
             'submenu' => [
-                [
-                    'text' => 'Nuevo Aviso',
-                    'icon' => 'nav-icon fas fa-file',
-                    'url'  => 'admin/entorno/create',
-                ],
+                // [
+                //     'text' => 'Nuevo Aviso',
+                //     'icon' => 'nav-icon fas fa-file',
+                //     'url'  => 'admin/entorno/create',
+                // ],
                 [
                     'text' => 'Consulta Aviso',
                     'icon' => 'nav-icon fas fa-book',
