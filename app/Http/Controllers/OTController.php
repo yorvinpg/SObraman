@@ -183,7 +183,7 @@ class OTController extends Controller
         $solicitud->fechaAnu = now();
         $solicitud->save();
 
-        return redirect()->route('entorno.ordentra.anulado')->with('success', 'Anulado exitosamente');
+        return redirect()->route('entorno.anulado')->with('success', 'Anulado exitosamente');
     }
 
     // $solicitud = Solicitudot::find($id); // cambiar  a estado anulado  6 = Anulado -> ojo
