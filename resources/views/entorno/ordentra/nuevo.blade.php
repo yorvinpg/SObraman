@@ -20,7 +20,6 @@
 @endif
 @section('content')
 <section class="content">
-    @can('crear-ot')
     <div class="container-fluid">
         <div class="row justify-content-md-center">
             <div class="card" style="width: 59%; background: #EAECEE">
@@ -145,7 +144,6 @@
             </div>
         </div>
     </div>
-    @endcan
     <div style="text-align:center" id="copyright">Copyright&copy; 2023 - Página creada por Aaron Reynoso Lagos - Todos los derechos reservados de obraman</div>
 </section>
 @stop

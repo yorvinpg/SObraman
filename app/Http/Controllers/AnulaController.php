@@ -10,9 +10,9 @@ class AnulaController extends Controller
     function __construct()
     {
         $this->middleware('permission:ver-ot', ['only' => ['index']]);
-        $this->middleware('permission:crear-ot ', ['only' => ['create', 'store']]);
-        $this->middleware('permission:editar-ot ', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:anular-ot ', ['only' => ['destroy']]);
+        $this->middleware('permission:crear-ot', ['only' => ['create', 'store']]);
+        $this->middleware('permission:editar-ot', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:anular-ot', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)

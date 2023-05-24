@@ -15,9 +15,9 @@ class UserController extends Controller
     function __construct()
     {
         $this->middleware('permission:ver-user|crear-user|editar-user|anular-user', ['only' => ['index']]);
-        $this->middleware('permission:crear-user ', ['only' => ['create', 'store']]);
-        $this->middleware('permission:editar-user ', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:anular-user ', ['only' => ['destroy']]);
+        $this->middleware('permission:crear-user', ['only' => ['create', 'store']]);
+        $this->middleware('permission:editar-user', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:anular-user', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)
