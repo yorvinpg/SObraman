@@ -257,7 +257,7 @@
             <!-- /.card-footer --> --}}
         </div>
     </div>
-    <div style="text-align:center" id="copyright">Copyright&copy; 2023 - Página creada por Aaron Reynoso Lagos - Todos los derechos reservados de obraman</div>
+    <div style="text-align:center" id="copyright">Copyright&copy; 2023 - Página creada por Aaron Reynoso Lagos - Todos los derechos reservados de Inmobideas</div>
 </section>
 @stop
 
