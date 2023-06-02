@@ -86,11 +86,12 @@
                         </div>
                         <!-- /.form-group -->
                         <div class="form-group row">
-                            <label for="fechA" class="col-md-4 col-form-label"> Tipo Trabajo </label>
+                            <label for="fechA" class="col-md-4 col-form-label"> Area
+                            </label>
                             <div class="col-sm-4">
                                 <form id="search-T" method="GET" action="{{ route('entorno.index') }}">
                                     <select type="search" class="form-select form-control" value="{{$filtroT}}" name="ttrabajo" aria-label="Default select example" id="trabajo" style="width: 225px;">
-                                        <option selected>Seleccione Tipo</option>
+                                        <option selected>Seleccione Area</option>
                                         @foreach ($TT as $T )
                                         <option value="{{$T['idtrabajo'] }}">{{$T['nom_trab']}}</option>
                                         @endforeach
