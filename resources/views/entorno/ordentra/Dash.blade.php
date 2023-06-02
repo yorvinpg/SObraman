@@ -93,9 +93,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-info">
+                <div class="card-header bg-orange">
                     <h5 class="card-title">REPORTE MENSUAL O.T.</h5>
-
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
@@ -164,8 +163,8 @@
     </div>
     <!-- /.row -->
     <!-- TABLE: LATEST ORDERS -->
-    <div class="row">
-        <div class="card" style="margin-right: 20px;">
+    <div class="">
+        <div class="card" style="margin-right: 19px;">
             <div class="card-header border-transparent bg-success">
                 <h3 class="card-title ">Ordenes Cerradas</h3>
                 <div class="card-tools">
@@ -202,18 +201,10 @@
                 </div>
                 <!-- /.table-responsive -->
             </div>
-            {{--
-            <!-- /.card-body -->
-            <div class="card-footer clearfix">
-                <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
-                <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
-            </div>
-            <!-- /.card-footer --> --}}
         </div>
         <div class="card">
             <div class="card-header border-transparent bg-warning">
                 <h3 class="card-title">Ordenes Pendientes</h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -248,13 +239,6 @@
                 </div>
                 <!-- /.table-responsive -->
             </div>
-            {{--
-            <!-- /.card-body -->
-            <div class="card-footer clearfix">
-                <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
-                <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
-            </div>
-            <!-- /.card-footer --> --}}
         </div>
     </div>
     <div style="text-align:center" id="copyright">Copyright&copy; 2023 - Página creada por Aaron Reynoso Lagos - Todos los derechos reservados de obraman</div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use Spatie\Permission\Models\Role;
@@ -22,9 +23,12 @@ class RolController extends Controller
     public function index()
     {
         $roles = Role::paginate(5);
+        $user = User::find(1); // Suponiendo que deseas obtener el rol del usuario con ID 1
+        $role = $user->adminlte_desc();
+        echo $role;
         return view('entorno.roles.rol', compact('roles'));
     }
-
+  
 
     public function create()
     {

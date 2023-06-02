@@ -71,7 +71,9 @@ class User extends Authenticatable
 	}
 	public function adminlte_desc()
 	{
-		return 'SuperAdministrador';
+		$roles = $this->getRoleNames()->toArray();
+		// Puedes personalizar cómo deseas mostrar los roles
+		return implode(', ', $roles);
 	}
 	public function adminlte_profile_url()
 	{
