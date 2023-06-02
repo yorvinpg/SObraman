@@ -40,12 +40,13 @@ class OTController extends Controller
         $filtro = $request->get('ID');
         $filtroE = $request->get('enc');
         $filtroU = $request->get('ubi');
-        $filtroT = $request->get('ttrabajo');
+        $filtroA = $request->get('area');
         $filtroEs = $request->get('est');
         $filtroF = $request->get('fecha');
 
         $rr = Encargado::all();
         $TT = TTrabajo::all();
+        $AA = Area::all();
         $UB = Ubicacion::all();
         $est = Estado::all();
         $tec = Tecnico::all();
@@ -69,9 +70,9 @@ class OTController extends Controller
                 ->where('solicitudot.idUbi', 'like', '%' . $filtroU . '%');
         }
         // ->join('ubicacion', "ubicacion.idubicacion", "=", "solicitudot.idUbi")
-        if (isset($filtroT) && !empty($filtroT)) {
+        if (isset($filtroA) && !empty($filtroA)) {
             $solicitudes = $solicitudes
-                ->where('solicitudot.idTipo', 'like', '%' . $filtroT . '%');
+                ->where('solicitudot.idarea', 'like', '%' . $filtroA . '%');
         }
         // ->join('t_trabajo', "t_trabajo.idtrabajo", "=", "solicitudot.idTipo")
 
@@ -91,7 +92,7 @@ class OTController extends Controller
 
         $solicitudes = $solicitudes->paginate(5);
         // te trae todo la data de solicitud en 5, de manera descendente
-        return view('entorno.ordentra.consulta', compact('solicitudes', 'est', 'UB', 'TT', 'rr', 'filtro', 'filtroE', 'filtroU', 'filtroT', 'filtroEs', 'filtroF', 'tec'));
+        return view('entorno.ordentra.consulta', compact('solicitudes', 'est', 'UB', 'TT','AA', 'rr', 'filtro', 'filtroE', 'filtroU', 'filtroA', 'filtroEs', 'filtroF', 'tec'));
     }
 
     public function create()

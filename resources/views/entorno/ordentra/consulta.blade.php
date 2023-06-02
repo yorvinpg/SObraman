@@ -90,10 +90,10 @@
                             </label>
                             <div class="col-sm-4">
                                 <form id="search-T" method="GET" action="{{ route('entorno.index') }}">
-                                    <select type="search" class="form-select form-control" value="{{$filtroT}}" name="ttrabajo" aria-label="Default select example" id="trabajo" style="width: 225px;">
+                                    <select type="search" class="form-select form-control" value="{{$filtroA}}" name="area" aria-label="Default select example" id="area" style="width: 225px;">
                                         <option selected>Seleccione Area</option>
-                                        @foreach ($TT as $T )
-                                        <option value="{{$T['idtrabajo'] }}">{{$T['nom_trab']}}</option>
+                                        @foreach ($AA as $A )
+                                        <option value="{{$A['idarea'] }}">{{$A['nombreA']}}</option>
                                         @endforeach
                                     </select>
                                 </form>
@@ -312,8 +312,8 @@
     var currentU = $('#ubicacion').val();
     handleSelectChange('ubicacion', 'search-U', currentU);
 
-    var currentT = $('#trabajo').val();
-    handleSelectChange('trabajo', 'search-T', currentT);
+    var currentT = $('#area').val();
+    handleSelectChange('area', 'search-T', currentT);
 
     var currentR = $('#resp').val();
     handleSelectChange('resp', 'search-R', currentR);
