@@ -107,7 +107,9 @@
                                     <select type="search" class="form-select form-control" value="{{$filtroEs}}" name="est" aria-label="Default select example" id="estado" style="width: 225px;">
                                         <option selected>Seleccione un Estado</option>
                                         @foreach ($est as $es )
-                                        <option value="{{$es['idestado'] }}">{{$es['nombrE']}}</option>
+                                        @if ($es['nombrE'] !== 'anulado')
+                                        <option value="{{$es['idestado']}}">{{$es['nombrE']}}</option>
+                                        @endif
                                         @endforeach
                                     </select>
                                 </form>

@@ -26,7 +26,9 @@
                                 <div class="col-auto">
                                     <select class="form-select form-control" name="estado" aria-label="Default select example" id="estado" style="width: 225px;">
                                         @foreach ($est as $es )
-                                        <option value="{{$es['idestado'] }}">{{$es['nombrE']}}</option>
+                                        @if ($es['nombrE'] !== 'anulado')
+                                        <option value="{{$es['idestado']}}">{{$es['nombrE']}}</option>
+                                        @endif
                                         @endforeach
                                     </select>
                                 </div>
