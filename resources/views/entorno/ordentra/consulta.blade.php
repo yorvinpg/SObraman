@@ -149,7 +149,7 @@
 <table class="table mt-4 table-bordered">
     <thead class="table-info">
         <tr>
-            <th scope="col">MODULO</th>
+            <th scope="col">OT</th>
             <th scope="col">FECHA</th>
             <th scope="col">SOLICITANTE</th>
             <th scope="col">RESPONSABLE</th>
@@ -165,7 +165,7 @@
     <tbody class="table-dark">
         @foreach ($solicitudes as $item)
         <tr>
-            <td>{{$item->modu }}</td>
+            <td>{{$item->idsolicitudOT }}</td>
             <td>{{$item->fecha->format('Y-m-d')}}</td>
             <td>{{$item->solicitante}}</td>
             <td>{{$item->encargado->nom_E }}</td>
