@@ -165,7 +165,7 @@
     <tbody class="table-dark">
         @foreach ($solicitudes as $item)
         <tr>
-            <td>{{$item->modu . $item->idsolicitudOT  }}</td>
+            <td>{{$item->modu .'-'. $item->idsolicitudOT  }}</td>
             <td>{{$item->fecha->format('Y-m-d')}}</td>
             <td>{{$item->solicitante}}</td>
             <td>{{$item->encargado->nom_E }}</td>
