@@ -28,6 +28,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $username
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property int|null $idmod
+ * 
+ * @property Modulo|null $modulo
  *
  * @package App\Models
  */
@@ -39,7 +42,8 @@ class User extends Authenticatable
 	protected $casts = [
 		'email_verified_at' => 'datetime',
 		'two_factor_confirmed_at' => 'datetime',
-		'current_team_id' => 'int'
+		'current_team_id' => 'int',
+		'idmod' => 'int'
 	];
 
 	protected $hidden = [
@@ -59,8 +63,10 @@ class User extends Authenticatable
 		'remember_token',
 		'current_team_id',
 		'profile_photo_path',
-		'username'
+		'username',
+		'idmod'
 	];
+
 	protected $appends = [
 		'profile_photo_url',
 	];
@@ -78,5 +84,9 @@ class User extends Authenticatable
 	public function adminlte_profile_url()
 	{
 		return 'profile/username';
+	}
+	public function modulo()
+	{
+		return $this->belongsTo(Modulo::class, 'idmod');
 	}
 }

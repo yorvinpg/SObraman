@@ -37,9 +37,15 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="fechA" class="col-sm-4 col-form-label">Modulo</label>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" id="modU" name="modulo" value="{{$user->modulo->abrev ?? ''}}" style="width: 225px;" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Solicitante</label>
                                 <div class="col-auto">
-                                    <input type="text" class="form-control" id="nameU" name="solicitante" value="{{$user->name}}" style="width: 225px;" />
+                                    <input type="text" class="form-control" id="nameU" name="solicitante" value="{{$user->name}}" style="width: 225px;" readonly />
                                 </div>
                             </div>
                             <div class="form-group row">

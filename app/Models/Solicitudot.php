@@ -32,6 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $detallAnu
  * @property Carbon|null $fechaAnu
  * @property Carbon|null $fechaCierre
+ * @property string $modu
  * 
  * @property Area $area
  * @property Criticidad $criticidad
@@ -84,7 +85,8 @@ class Solicitudot extends Model
 		'detallSP',
 		'detallAnu',
 		'fechaAnu',
-		'fechaCierre'
+		'fechaCierre',
+		'modu'
 	];
 
 	public function area()

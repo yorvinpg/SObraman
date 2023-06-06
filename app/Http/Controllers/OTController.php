@@ -92,7 +92,7 @@ class OTController extends Controller
 
         $solicitudes = $solicitudes->paginate(5);
         // te trae todo la data de solicitud en 5, de manera descendente
-        return view('entorno.ordentra.consulta', compact('solicitudes', 'est', 'UB', 'TT','AA', 'rr', 'filtro', 'filtroE', 'filtroU', 'filtroA', 'filtroEs', 'filtroF', 'tec'));
+        return view('entorno.ordentra.consulta', compact('solicitudes', 'est', 'UB', 'TT', 'AA', 'rr', 'filtro', 'filtroE', 'filtroU', 'filtroA', 'filtroEs', 'filtroF', 'tec'));
     }
 
     public function create()
@@ -140,6 +140,7 @@ class OTController extends Controller
         $entornos->idEncarg = $request->get('responsable');
         $entornos->idTec = 1;
         $entornos->detallSP = 'vacio';
+        $entornos->modu = $request->get('modulo');
 
         $entornos->save();
         return redirect()->route('entorno.index')->with('success', 'OT creado exitosamente');
