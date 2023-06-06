@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <!-- Agrega el archivo JavaScript de Flatpickr -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<h1 class="text-center bg-info text white">SOLICITUD DE ORDEN DE TRABAJO (O.T)</h1>
+<h1 class="text-center bg-orange text white">SOLICITUD DE ORDEN DE TRABAJO (O.T)</h1>
 @stop
 @if ($errors->any())
 <div class="alert alert-danger">
@@ -23,7 +23,7 @@
     <div class="container-fluid">
         <div class="row justify-content-md-center">
             <div class="card" style="width: 59%; background: #EAECEE">
-                <h5 class="card-header bg-info"></h5>
+                <h5 class="card-header bg-orange"></h5>
                 <div class="card-body">
                     <div class="form-group">
                         <form action="{{route('entorno.store')}}" method="POST">

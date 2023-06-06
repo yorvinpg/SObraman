@@ -8,7 +8,7 @@
 <!-- Agrega el archivo JavaScript de Flatpickr -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-<h1 class="text-center bg-info text white">Crear Rol</h1>
+<h1 class="text-center bg-orange text white">Crear Rol</h1>
 @if ($errors->any())
 <div class="alert alert-dark alert-dismissible fade show" role="alert">
     <strong>¡Revise los campos!</strong>

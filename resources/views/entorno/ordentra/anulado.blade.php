@@ -6,7 +6,7 @@
 <!-- Agrega el archivo JavaScript MOMENT -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-<h1 class="text-center bg-info text white">ORDENES DE TRABAJO ANULADOS</h1>
+<h1 class="text-center bg-orange text white">ORDENES DE TRABAJO ANULADOS</h1>
 @stop
 
 @section('content')

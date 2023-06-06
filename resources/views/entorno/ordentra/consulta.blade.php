@@ -9,7 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-<h1 class="text-center bg-info text white">CONSULTA DE ORDENES DE TRABAJO O.T</h1>
+<h1 class="text-center bg-orange text white">CONSULTA DE ORDENES DE TRABAJO O.T</h1>
 @stop
 @section('content')
 @if(session('success'))
