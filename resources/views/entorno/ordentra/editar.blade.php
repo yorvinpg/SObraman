@@ -58,6 +58,10 @@
                                 <label for="floatingTextarea">Detalle de la Solución</label>
                                 <textarea class="form-control" id="detalle" value="{{$id->detallSP}}" name="detalle" required></textarea>
                             </div>
+                            <div class="form-floating">
+                                <label for="floatingTextarea">Observación Final</label>
+                                <textarea class="form-control" id="observacion" value="{{$id->obsFinal}}" name="observacion" required></textarea>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-info">Guardar</button>

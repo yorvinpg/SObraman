@@ -85,6 +85,13 @@
                                     <textarea class="form-control" type="text" name="detalle" id="modal-descripcion" value="" style="width: 205px;" disabled> </textarea>
                                 </div>
                             </div>
+                            <!-- /.form-group -->
+                            <div class="form-group row">
+                                <label for="fechA" class="col-md-5 col-form-label"> Observacion Final: </label>
+                                <div class="col-sm-6">
+                                    <textarea class="form-control" type="text" name="observacion" id="modal-obf" value="" style="width: 205px;" disabled> </textarea>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group row">

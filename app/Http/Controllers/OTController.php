@@ -165,6 +165,7 @@ class OTController extends Controller
         $sol->idTec = $request->tecnico;
         $sol->detallSP = $request->input('detalle');
         $sol->fechaCierre = $request->input('fecha');
+        $sol->obsFinal = $request->input('observacion');
         $sol->save();
         // $data = $request->only('idEstado', 'idTecnico', 'detalle');
 
