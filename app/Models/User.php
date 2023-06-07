@@ -66,7 +66,8 @@ class User extends Authenticatable
 		'username',
 		'idmod'
 	];
-	
+
+
 	protected $appends = [
 		'profile_photo_url',
 	];
@@ -89,5 +90,4 @@ class User extends Authenticatable
 	{
 		return $this->belongsTo(Modulo::class, 'idmod');
 	}
-
 }

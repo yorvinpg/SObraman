@@ -26,9 +26,9 @@
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group row">
-                                <label for="fechA" class="col-md-5 col-form-label"> Fecha Cierre : </label>
+                                <label for="fechA" class="col-md-5 col-form-label"> Fecha Entrega : </label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="modal-fc" disabled>
+                                    <input type="text" class="form-control" id="modal-fe" disabled>
                                 </div>
                             </div>
                         </div>
@@ -118,6 +118,13 @@
                                 <label for="fechA" class="col-md-4 col-form-label">Tecnico:</label>
                                 <div class="col-auto">
                                     <input type="text" class="form-control" id="modal-tecnico" disabled>
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group row">
+                                <label for="fechA" class="col-md-4 col-form-label"> Fecha Cierre : </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="modal-fc" disabled>
                                 </div>
                             </div>
                             <!-- /.form-group -->

@@ -174,7 +174,7 @@
             <td>{{$item->estado->nombrE }}</td>
             <td>
 
-                <button data-toggle="modal" data-target="#Modal" class="btn btn-success btn-ver-detalle" data-id="{{$item->idsolicitudOT}}" data-esp="{{$item->especialidad->nom_espe}}" data-area="{{$item->area->nombreA}}" data-det="{{$item->detalle}}" data-des="{{$item->descripcion}}" data-trabajo="{{$item->t_trabajo->nom_trab}}" data-criticidad="{{$item->criticidad->tipoC}}" data-solicitante="{{$item->solicitante}}" data-email="{{$item->email}}" data-tecnico="{{$item->tecnico->nombre_tec}}" data-spt="{{$item->detallSP}}" data-fc="{{$item->fechaCierre}}" data-fin="{{$item->obsFinal}}">
+                <button data-toggle="modal" data-target="#Modal" class="btn btn-success btn-ver-detalle" data-id="{{$item->idsolicitudOT}}" data-esp="{{$item->especialidad->nom_espe}}" data-area="{{$item->area->nombreA}}" data-det="{{$item->detalle}}" data-des="{{$item->descripcion}}" data-trabajo="{{$item->t_trabajo->nom_trab}}" data-criticidad="{{$item->criticidad->tipoC}}" data-solicitante="{{$item->solicitante}}" data-email="{{$item->email}}" data-tecnico="{{$item->tecnico->nombre_tec}}" data-spt="{{$item->detallSP}}" data-fc="{{$item->fechaCierre}}" data-fin="{{$item->obsFinal}}" data-fechae="{{$item->fechaEntrega}}">
                     <i class="fa fa-eye" aria-hidden="true"></i></button>
 
             </td>
@@ -274,8 +274,11 @@
         var spt = $(this).data('spt');
         var fc = $(this).data('fc');
         var obf = $(this).data('fin');
+        var fe = $(this).data('fechae');
         var fechaCierre = fc.substring(0, 10); // Recortar la cadena de fecha para eliminar la hora y los minutos
         var formattedDate = moment(fechaCierre, 'YYYY-MM-DD').format('YYYY-MM-DD');
+        var fechaEntrega = fe.substring(0, 10); // Recortar la cadena de fecha para eliminar la hora y los minutos
+        var formattedDateE = moment(fechaEntrega, 'YYYY-MM-DD').format('YYYY-MM-DD');
 
         // Asignar los datos obtenidos a los campos del modal
         $('#modal-id').val(id);
@@ -295,6 +298,7 @@
         $('#modal-spt').val(spt);
         $('#modal-fc').val(formattedDate);
         $('#modal-obf').val(obf);
+        $('#modal-fe').val(formattedDateE);
     });
 </script>
 <script>

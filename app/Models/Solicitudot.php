@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $fechaCierre
  * @property string $modu
  * @property string|null $obsFinal
+ * @property Carbon|null $fechaEntrega
  * 
  * @property Area $area
  * @property Criticidad $criticidad
@@ -64,7 +65,8 @@ class Solicitudot extends Model
 		'idEncarg' => 'int',
 		'idTec' => 'int',
 		'fechaAnu' => 'datetime:Y-m-d',
-		'fechaCierre' => 'datetime:Y-m-d'
+		'fechaCierre' => 'datetime:Y-m-d',
+		'fechaEntrega' => 'datetime:Y-m-d'
 	];
 
 	protected $fillable = [
@@ -88,7 +90,8 @@ class Solicitudot extends Model
 		'fechaAnu',
 		'fechaCierre',
 		'modu',
-		'obsFinal'
+		'obsFinal',
+		'fechaEntrega'
 	];
 
 	public function area()

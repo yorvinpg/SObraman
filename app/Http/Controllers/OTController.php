@@ -125,6 +125,7 @@ class OTController extends Controller
 
         $entornos = new Solicitudot();
         $entornos->fecha = $request->get('fecha');
+        $entornos->fechaEntrega = $request->get('fechaE');
         $entornos->solicitante = $request->get('solicitante');
         $entornos->email = $request->get('email');
         $entornos->telefono = $request->get('telefono');
