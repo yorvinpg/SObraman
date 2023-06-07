@@ -259,9 +259,9 @@
     $('.btn-ver-detalle').on('click', function() {
         var id = $(this).data('id');
         var fecha = $(this).closest('tr').find('td:eq(1)').text();
-        var resp = $(this).closest('tr').find('td:eq(2)').text();
-        var ubicacion = $(this).closest('tr').find('td:eq(3)').text();
-        var est = $(this).closest('tr').find('td:eq(4)').text();
+        var resp = $(this).closest('tr').find('td:eq(3)').text();
+        var ubicacion = $(this).closest('tr').find('td:eq(4)').text();
+        var est = $(this).closest('tr').find('td:eq(6)').text();
         var esp = $(this).data('esp');
         var area = $(this).data('area');
         var det = $(this).data('det');
