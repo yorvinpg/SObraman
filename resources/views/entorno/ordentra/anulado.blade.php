@@ -53,6 +53,7 @@
         <tr>
             <th scope="col">OT</th>
             <th scope="col">FECHA</th>
+            <th scope="col">SOLICITANTE</th>
             <th scope="col">RESPONSABLE</th>
             <th scope="col">UBICACION</th>
             <th scope="col">ESTADO</th>
@@ -64,6 +65,7 @@
         <tr>
             <td>{{$item->idsolicitudOT }}</td>
             <td>{{$item->fecha->format('Y-m-d')}}</td>
+            <td>{{$item->solicitante}}</td>
             <td>{{$item->encargado->nom_E }}</td>
             <td>{{$item->ubicacion->nom_ubi }}</td>
             <td>{{$item->estado->nombrE }}</td>
