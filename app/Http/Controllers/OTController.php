@@ -125,7 +125,7 @@ class OTController extends Controller
 
         $entornos = new Solicitudot();
         $entornos->fecha = $request->get('fecha');
-        $entornos->fechaEntrega = $request->get('fechaE');
+        // $entornos->fechaEntrega = $request->get('fechaE');
         $entornos->solicitante = $request->get('solicitante');
         $entornos->email = $request->get('email');
         $entornos->telefono = $request->get('telefono');
@@ -166,6 +166,7 @@ class OTController extends Controller
         $sol->idTec = $request->tecnico;
         $sol->detallSP = $request->input('detalle');
         $sol->fechaCierre = $request->input('fecha');
+        $sol->fechaEntrega = $request->input('fechaE');
         $sol->obsFinal = $request->input('observacion');
         $sol->save();
         // $data = $request->only('idEstado', 'idTecnico', 'detalle');

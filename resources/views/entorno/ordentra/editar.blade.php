@@ -44,6 +44,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <div style="display: none;" id="fechaEntregaContainer">
+                                <div class="form-group row">
+                                    <label for="fechE" class="col-sm-4 col-form-label">Fecha Entrega</label>
+                                    <div class="col-auto">
+                                        <div class="input-group date" data-target-input="nearest">
+                                            <input type="text" id="fechaE" name="fechaE" class="form-control" placeholder="2023-00-00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-4 col-form-label">Tecnico</label>
                                 <div class="col-auto">
@@ -83,18 +93,26 @@
     flatpickr("#fecha", {
         dateFormat: "Y-m-d" // Formato de fecha
     });
+    flatpickr("#fechaE", {
+        dateFormat: "Y-m-d" // Formato de fecha
+    });
 </script>
 <script>
     var estadoSelect = document.getElementById("estado");
     var fechaWrapper = document.getElementById("fecha-wrapper");
+    var fechaEntregaContainer = document.getElementById("fechaEntregaContainer");
 
     estadoSelect.addEventListener("change", function() {
         if (estadoSelect.value == "5") {
             fechaWrapper.style.display = "block";
+            fechaEntregaContainer.style.display = "none";
+        } else if (estadoSelect.value == "4") {
+            fechaWrapper.style.display = "none";
+            fechaEntregaContainer.style.display = "block";
         } else {
             fechaWrapper.style.display = "none";
+            fechaEntregaContainer.style.display = "none";
         }
     });
 </script>
-
 @stop

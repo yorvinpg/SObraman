@@ -36,14 +36,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row" id="fechaEntregaContainer">
-                                <label for="fechE" class="col-sm-4 col-form-label">Fecha Entrega</label>
-                                <div class="col-auto">
-                                    <div class="input-group date" data-target-input="nearest">
-                                        <input type="text" id="fechaE" name="fechaE" class="form-control" value="{{$date}}">
-                                    </div>
-                                </div>
-                            </div>
                             <div class="form-group row">
                                 <label for="fechA" class="col-sm-4 col-form-label">Modulo</label>
                                 <div class="col-auto">
@@ -174,7 +166,7 @@
         dateFormat: "Y-m-d" // Formato de fecha
     });
 </script>
-<script>
+<!-- <script>
     window.addEventListener("DOMContentLoaded", function() {
         var modulo = document.getElementById("modU");
         var fechaEntregaContainer = document.getElementById("fechaEntregaContainer");
@@ -183,6 +175,6 @@
             fechaEntregaContainer.style.display = "none";
         }
     });
-</script>
+</script> -->
 
 @stop
