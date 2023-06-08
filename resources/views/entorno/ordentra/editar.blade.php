@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <!-- Agrega el archivo JavaScript de Flatpickr -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<h1 class="text-center bg-info text white">Reporte Tecnico O.T</h1>
+<h1 class="text-center bg-orange text white">Reporte Tecnico O.T</h1>
 @stop
 
 @section('content')
@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row justify-content-md-center">
             <div class="card" style="width: 59%; background: #EAECEE">
-                <h5 class="card-header bg-info"></h5>
+                <h5 class="card-header bg-orange"></h5>
                 <div class="card-body">
                     <form action="{{ route('solicitud.update', $id->idsolicitudOT) }}" method="post">
                         @csrf
@@ -74,7 +74,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-info">Guardar</button>
+                            <button type="submit" class="btn btn-warning">Guardar</button>
                         </div>
                     </form>
                 </div>

@@ -142,7 +142,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary">GENERAR O.T</button>
+                                <button type="submit" class="btn btn-warning">GENERAR O.T</button>
                             </div>
                         </form>
                     </div>
