@@ -53,6 +53,7 @@
         <tr>
             <th scope="col">OT</th>
             <th scope="col">FECHA</th>
+            <th scope="col">SOLICITANTE</th>
             <th scope="col">RESPONSABLE</th>
             <th scope="col">UBICACION</th>
             <th scope="col">ESTADO</th>
@@ -62,8 +63,9 @@
     <tbody class="table-dark">
         @foreach ($anu as $item)
         <tr>
-            <td>{{$item->idsolicitudOT }}</td>
+            <td>{{$item->modu .'-'. $item->idsolicitudOT }}</td>
             <td>{{$item->fecha->format('Y-m-d')}}</td>
+            <td>{{$item->solicitante}}</td>
             <td>{{$item->encargado->nom_E }}</td>
             <td>{{$item->ubicacion->nom_ubi }}</td>
             <td>{{$item->estado->nombrE }}</td>
@@ -92,9 +94,9 @@
     $('.btn-ver-detalle').on('click', function() {
         var id = $(this).data('id');
         var fecha = $(this).closest('tr').find('td:eq(1)').text();
-        var resp = $(this).closest('tr').find('td:eq(2)').text();
-        var ubicacion = $(this).closest('tr').find('td:eq(3)').text();
-        var est = $(this).closest('tr').find('td:eq(4)').text();
+        var resp = $(this).closest('tr').find('td:eq(3)').text();
+        var ubicacion = $(this).closest('tr').find('td:eq(4)').text();
+        var est = $(this).closest('tr').find('td:eq(5)').text();
         var esp = $(this).data('esp');
         var area = $(this).data('area');
         var det = $(this).data('det');
