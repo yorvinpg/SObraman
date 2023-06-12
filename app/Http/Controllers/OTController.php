@@ -153,15 +153,15 @@ class OTController extends Controller
     }
     public function edit(Solicitudot $id)
     {
-
+        $sol = Solicitudot::findOrFail($id);
         $est = Estado::all();
         $tec = Tecnico::all();
-        return view('entorno.ordentra.editar', compact('id', 'est', 'tec'));
+        return view('entorno.ordentra.editar', compact('id', 'est', 'tec','sol'));
     }
 
     public function update(Request $request, $id)
     {
-        $sol = Solicitudot::findOrFail($id);
+        $sol = Solicitudot::select($id);
         $sol->idEstado = $request->estado; // Asignar el valor seleccionado del select al estado de la solicitud OT
         $sol->idTec = $request->tecnico;
         $sol->detallSP = $request->input('detalle');

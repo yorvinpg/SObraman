@@ -39,7 +39,6 @@
                                     <div class="col-auto">
                                         <div class="input-group date" data-target-input="nearest">
                                             <input type="text" id="fecha" name="fecha" class="form-control" placeholder="2023-00-00">
-
                                         </div>
                                     </div>
                                 </div>
@@ -49,7 +48,7 @@
                                     <label for="fechE" class="col-sm-4 col-form-label">Fecha Entrega</label>
                                     <div class="col-auto">
                                         <div class="input-group date" data-target-input="nearest">
-                                            <input type="text" id="fechaE" name="fechaE" class="form-control" placeholder="2023-00-00">
+                                            <input type="text" id="fechaE" name="fechaE" class="form-control" value="{{ $sol->fechaEntrega }}">
                                         </div>
                                     </div>
                                 </div>

@@ -253,7 +253,6 @@
         });
     });
 </script>
-
 <script>
     //script modal view detalles.
     $('.btn-ver-detalle').on('click', function() {
