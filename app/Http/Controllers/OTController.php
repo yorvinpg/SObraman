@@ -146,28 +146,31 @@ class OTController extends Controller
         $entornos->save();
         return redirect()->route('entorno.index')->with('success', 'OT creado exitosamente');
     }
-    public function show($id)
+    public function show(Solicitudot $id)
     {
         $sol = Solicitudot::findOrFail($id);
-        return view('entorno.show', compact('sol'));
+        return view('entorno.show', compact('sol', 'id'));
     }
     public function edit(Solicitudot $id)
     {
-        $sol = Solicitudot::findOrFail($id);
         $est = Estado::all();
         $tec = Tecnico::all();
-        return view('entorno.ordentra.editar', compact('id', 'est', 'tec','sol'));
+        return view('entorno.ordentra.editar', compact('id', 'est', 'tec'));
     }
 
     public function update(Request $request, $id)
     {
-        $sol = Solicitudot::select($id);
+
+        $sol = Solicitudot::findOrFail($id);
         $sol->idEstado = $request->estado; // Asignar el valor seleccionado del select al estado de la solicitud OT
         $sol->idTec = $request->tecnico;
         $sol->detallSP = $request->input('detalle');
-        $sol->fechaCierre = $request->input('fecha');
-        $sol->fechaEntrega = $request->input('fechaE');
+        // $sol->fechaEntrega = $request->input('fechaE');
         $sol->obsFinal = $request->input('observacion');
+        if (!empty($request->input('fechaE'))) {
+            $sol->fechaEntrega = $request->input('fechaE');
+        }
+        
         $sol->save();
         // $data = $request->only('idEstado', 'idTecnico', 'detalle');
 

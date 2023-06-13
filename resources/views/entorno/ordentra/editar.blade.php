@@ -48,7 +48,7 @@
                                     <label for="fechE" class="col-sm-4 col-form-label">Fecha Entrega</label>
                                     <div class="col-auto">
                                         <div class="input-group date" data-target-input="nearest">
-                                            <input type="text" id="fechaE" name="fechaE" class="form-control" value="{{ $sol->fechaEntrega }}">
+                                            <input type="text" id="fechaE" name="fechaE" class="form-control" >
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                             </div>
                             <div class="form-floating">
                                 <label for="floatingTextarea">Detalle de la Solución</label>
-                                <textarea class="form-control" id="detalle" value="{{$id->detallSP}}" name="detalle" required></textarea>
+                                <textarea class="form-control" id="detalle" value="{{ old('detallSP', $id->detallSP) }}" name="detalle" required></textarea>
                             </div>
                             <div class="form-floating">
                                 <label for="floatingTextarea">Observación Final</label>
