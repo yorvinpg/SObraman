@@ -165,9 +165,9 @@ class OTController extends Controller
         $sol->idEstado = $request->estado; // Asignar el valor seleccionado del select al estado de la solicitud OT
         $sol->idTec = $request->tecnico;
         $sol->detallSP = $request->input('detalle');
-        // $sol->fechaEntrega = $request->input('fechaE');
+        $sol->fechaCierre = $request->input('fecha');
         $sol->obsFinal = $request->input('observacion');
-        if (!empty($request->input('fechaE'))) {
+        if (!empty($request->input('fechaE'))) { // $sol->fechaEntrega = $request->input('fechaE');
             $sol->fechaEntrega = $request->input('fechaE');
         }
         
