@@ -24,7 +24,7 @@ class DashController extends Controller
             ->where('idEstado', '2')
             ->get();
 
-        $total = Solicitudot::count();
+        $total = Solicitudot::whereNotIn('idEstado', [6])->count();
         $count = Solicitudot::where('idEstado', '<>', 6)->count();
         // $count = Solicitudot::count();
         $countA = Solicitudot::where('idEstado', '6')
@@ -41,7 +41,7 @@ class DashController extends Controller
         $countC = Solicitudot::where('idEstado', '5')
             ->count();
         if ($total > 0) {
-            $porcentajeC =   floor(($countC / $countC) * 100);
+            $porcentajeC =   floor(($countC / $total) * 100);
         } else {
             $porcentajeC = 0;
         }
@@ -53,8 +53,8 @@ class DashController extends Controller
         $countMA = Solicitudot::where('idEstado', '5')
             ->whereMonth('fecha', $mesActual)
             ->count();
+
         $countCA = Solicitudot::where('idEstado', '5')
-            
             ->whereMonth('fecha', $mes_anterior)
             ->count();
 
