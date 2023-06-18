@@ -33,7 +33,7 @@ class DashController extends Controller
         $countP = Solicitudot::where('idEstado', '2')
             ->count();
         if ($total > 0) {
-            $porcentaje =   floor(($countP / $total) * 100);
+            $porcentaje =   ceil(($countP / $total) * 100);
         } else {
             $porcentaje = 0;
         }
@@ -41,7 +41,7 @@ class DashController extends Controller
         $countC = Solicitudot::where('idEstado', '5')
             ->count();
         if ($total > 0) {
-            $porcentajeC =   floor(($countC / $total) * 100);
+            $porcentajeC =   ceil(($countC / $total) * 100);
         } else {
             $porcentajeC = 0;
         }
