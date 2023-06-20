@@ -124,5 +124,11 @@
             event.preventDefault();
         }
     });
+    form.addEventListener("submit", function(event) {
+        if (estadoSelect.value == "4" && document.getElementById("fecha").value.trim() === "") {
+            alert("El campo de fecha está vacío");
+            event.preventDefault();
+        }
+    });
 </script>
 @stop
