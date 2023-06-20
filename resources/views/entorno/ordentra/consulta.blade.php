@@ -195,7 +195,7 @@
     </tbody>
 </table>
 <!-- {{$solicitudes->links()}} -->
-{{$solicitudes->appends(['est' => $filtroEs])->links()}}
+{{$solicitudes->appends(['est' => $filtroEs,'ID' => $filtro,'enc' => $filtroE,'ubi' => $filtroU,'area' => $filtroA,'fecha' => $filtroF,])->links()}}
 
 @include('entorno.modal.showm')
 @include('entorno.modal.Edit')
@@ -316,7 +316,6 @@
                 $('#' + formId).submit();
             }
             currentVal = newVal;
-            localStorage.setItem('currentEstado', currentVal); // Almacena el nuevo valor en el Local Storage
         });
     }
 
