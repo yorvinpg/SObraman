@@ -120,13 +120,13 @@
 
     form.addEventListener("submit", function(event) {
         if (estadoSelect.value == "5" && document.getElementById("fecha").value.trim() === "") {
-            alert("El campo de fecha está vacío");
+            alert("El campo de fecha Cierre está vacío");
             event.preventDefault();
         }
     });
     form.addEventListener("submit", function(event) {
         if (estadoSelect.value == "4" && document.getElementById("fecha").value.trim() === "") {
-            alert("El campo de fecha está vacío");
+            alert("El campo de fecha Entrega está vacío");
             event.preventDefault();
         }
     });
