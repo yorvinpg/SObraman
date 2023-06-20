@@ -17,7 +17,7 @@
             <div class="card" style="width: 59%; background: #EAECEE">
                 <h5 class="card-header bg-orange"></h5>
                 <div class="card-body">
-                    <form action="{{ route('solicitud.update', $id->idsolicitudOT) }}" method="post">
+                    <form action="{{ route('solicitud.update', $id->idsolicitudOT) }}" method="post" id="myForm">
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
@@ -38,7 +38,7 @@
                                     <label for="inputPassword" class="col-sm-4 col-form-label">Fecha Cierre</label>
                                     <div class="col-auto">
                                         <div class="input-group date" data-target-input="nearest">
-                                            <input type="text" id="fecha" name="fecha" class="form-control" placeholder="2023-00-00">
+                                            <input type="text" id="fecha" name="fecha" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@
                                     <label for="fechE" class="col-sm-4 col-form-label">Fecha Entrega</label>
                                     <div class="col-auto">
                                         <div class="input-group date" data-target-input="nearest">
-                                            <input type="text" id="fechaE" name="fechaE" class="form-control" >
+                                            <input type="text" id="fechaE" name="fechaE" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -100,17 +100,28 @@
     var estadoSelect = document.getElementById("estado");
     var fechaWrapper = document.getElementById("fecha-wrapper");
     var fechaEntregaContainer = document.getElementById("fechaEntregaContainer");
+    var form = document.getElementById("myForm");
 
     estadoSelect.addEventListener("change", function() {
         if (estadoSelect.value == "5") {
             fechaWrapper.style.display = "block";
             fechaEntregaContainer.style.display = "none";
+            document.getElementById("fecha").setAttribute("required", "required");
         } else if (estadoSelect.value == "4") {
             fechaWrapper.style.display = "none";
             fechaEntregaContainer.style.display = "block";
+            document.getElementById("fecha").removeAttribute("required");
         } else {
             fechaWrapper.style.display = "none";
             fechaEntregaContainer.style.display = "none";
+            document.getElementById("fecha").removeAttribute("required");
+        }
+    });
+
+    form.addEventListener("submit", function(event) {
+        if (estadoSelect.value == "5" && document.getElementById("fecha").value.trim() === "") {
+            alert("El campo de fecha está vacío");
+            event.preventDefault();
         }
     });
 </script>
