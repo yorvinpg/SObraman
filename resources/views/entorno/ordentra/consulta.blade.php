@@ -194,7 +194,9 @@
         @endforeach
     </tbody>
 </table>
-{{$solicitudes->links()}}
+<!-- {{$solicitudes->links()}} -->
+{{$solicitudes->appends(['est' => $filtroEs])->links()}}
+
 @include('entorno.modal.showm')
 @include('entorno.modal.Edit')
 @include('entorno.modal.delete')
@@ -314,11 +316,19 @@
                 $('#' + formId).submit();
             }
             currentVal = newVal;
+            localStorage.setItem('currentEstado', currentVal); // Almacena el nuevo valor en el Local Storage
         });
     }
 
     var currentEstado = $('#estado').val();
     handleSelectChange('estado', 'search-form', currentEstado);
+    $(document).ready(function() {
+        var currentEstado = localStorage.getItem('currentEstado'); // Obtiene el valor almacenado en el Local Storage
+        if (currentEstado) {
+            $('#estado').val(currentEstado); // Establece el valor seleccionado en el select
+        }
+        handleSelectChange('estado', 'search-form', currentEstado);
+    });
 
     var currentU = $('#ubicacion').val();
     handleSelectChange('ubicacion', 'search-U', currentU);
@@ -328,6 +338,8 @@
 
     var currentR = $('#resp').val();
     handleSelectChange('resp', 'search-R', currentR);
+
+ 
 </script>
 <script>
     //filtro automatico......
