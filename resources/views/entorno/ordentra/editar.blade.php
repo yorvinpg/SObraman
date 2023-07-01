@@ -90,10 +90,16 @@
 @section('js')
 <script>
     flatpickr("#fecha", {
-        dateFormat: "Y-m-d" // Formato de fecha
+        dateFormat: "Y-m-d", // Formato de fecha
+        onChange: function(selectedDates, dateStr, instance) {
+            document.getElementById("fecha").value = dateStr;
+        }
     });
     flatpickr("#fechaE", {
-        dateFormat: "Y-m-d" // Formato de fecha
+        dateFormat: "Y-m-d", // Formato de fecha
+        onChange: function(selectedDates, dateStr, instance) {
+            document.getElementById("fechaE").value = dateStr;
+        }
     });
 </script>
 <script>
@@ -119,13 +125,13 @@
     });
 
     form.addEventListener("submit", function(event) {
-        if (estadoSelect.value == "5" && document.getElementById("fecha").value.trim() === "") {
+        var fechaCierreValue = document.getElementById("fecha").value.trim();
+        var fechaEntregaValue = document.getElementById("fechaE").value.trim();
+
+        if (estadoSelect.value == "5" && fechaCierreValue === "") {
             alert("El campo de fecha Cierre está vacío");
             event.preventDefault();
-        }
-    });
-    form.addEventListener("submit", function(event) {
-        if (estadoSelect.value == "4" && document.getElementById("fecha").value.trim() === "") {
+        } else if (estadoSelect.value == "4" && fechaEntregaValue === "") {
             alert("El campo de fecha Entrega está vacío");
             event.preventDefault();
         }

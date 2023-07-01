@@ -195,7 +195,7 @@
     </tbody>
 </table>
 <!-- {{$solicitudes->links()}} -->
-{{$solicitudes->appends(['est' => $filtroEs,'ID' => $filtro,'enc' => $filtroE,'ubi' => $filtroU,'area' => $filtroA,'fecha' => $filtroF,])->links()}}
+{{$solicitudes->appends(['est' => $filtroEs,'ID' => $filtro,'enc' => $filtroE,'ubi' => $filtroU,'area' => $filtroA,'fecha' => $filtroF])->links()}}
 
 @include('entorno.modal.showm')
 @include('entorno.modal.Edit')
