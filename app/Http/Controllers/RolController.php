@@ -78,7 +78,7 @@ class RolController extends Controller
         $role->name = $request->input('name');
         $role->save();
 
-        $role->syncPermissions($request->input('permission'));
+        $role->syncPermissions($request->input('permissiongf'));
 
         return redirect()->route('roles.index');
     }
