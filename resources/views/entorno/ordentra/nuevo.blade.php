@@ -51,13 +51,13 @@
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
                                 <div class="col-auto">
-                                    <input type="text" class="form-control" name="email" id="email" value="" style="width: 225px;" required>
+                                    <input type="text" class="form-control" name="email" id="email" value="{{$user->email}}" style="width: 225px;" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">Teléfono</label>
                                 <div class="col-auto">
-                                    <input type="number" class="form-control" name="telefono" id="telefono" value="" style="width: 225px;" required>
+                                    <input type="number" class="form-control" name="telefono" id="telefono" value="{{$user->telefono}}" style="width: 225px;" readonly>
                                 </div>
                             </div>
 
@@ -124,13 +124,13 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-4 col-form-label">Referencia</label>
+                                <label for="inputPassword" class="col-sm-4 col-form-label">Local</label>
                                 <div class="col-auto">
                                     <input type="text" class="form-control" name="referencia" id="referencia" value="" style="width: 225px;" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-4 col-form-label">Observacion</label>
+                                <label for="inputPassword" class="col-sm-4 col-form-label">Motivo del Reclamo</label>
                                 <div class="col-auto">
                                     <textarea class="form-control" name="descripcion" id="descripcion" value="" style="width: 225px;" required></textarea>
                                 </div>

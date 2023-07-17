@@ -80,7 +80,7 @@
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group row">
-                                <label for="fechA" class="col-md-5 col-form-label"> Observacion: </label>
+                                <label for="fechA" class="col-md-5 col-form-label"> Motivo del Reclamo: </label>
                                 <div class="col-sm-6">
                                     <textarea class="form-control" type="text" name="detalle" id="modal-descripcion" value="" style="width: 205px;" disabled> </textarea>
                                 </div>
