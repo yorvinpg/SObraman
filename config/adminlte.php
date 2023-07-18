@@ -344,7 +344,7 @@ return [
                 //     'url'  => 'admin/entorno/create',
                 // ],
                 [
-                    'text' => 'Consulta de OT',
+                    'text' => 'Generar OT',
                     'icon' => 'nav-icon fas fa-book',
                     'route'  => 'entorno.index',
                 ],

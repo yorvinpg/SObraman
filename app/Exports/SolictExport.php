@@ -36,6 +36,6 @@ class SolictExport implements FromCollection, WithHeadings, ShouldAutoSize
 
     public function headings(): array
     {
-        return ["ID", "SOLICITANTE", "RESPONSABLE", "UBICACIÓN", "REFERENCIA", "FECHA", "FECHA_ENTREGA" , "FECHA_CIERRE", "ESTADO", "CRITICIDAD", "ESPECIALIDAD", "DETALLE", "DETALLE_SOLUCION"];
+        return ["ID", "SOLICITANTE", "RESPONSABLE", "UBICACIÓN", "LOCAL", "FECHA", "FECHA_ENTREGA" , "FECHA_CIERRE", "ESTADO", "CRITICIDAD", "ESPECIALIDAD", "DETALLE", "DETALLE_SOLUCION"];
     }
 }
