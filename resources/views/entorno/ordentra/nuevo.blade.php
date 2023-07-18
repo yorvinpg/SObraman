@@ -124,7 +124,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-4 col-form-label">Local</label>
+                                <label for="inputPassword" class="col-sm-4 col-form-label">N° Local/Cliente</label>
                                 <div class="col-auto">
                                     <input type="text" class="form-control" name="referencia" id="referencia" value="" style="width: 225px;" required>
                                 </div>

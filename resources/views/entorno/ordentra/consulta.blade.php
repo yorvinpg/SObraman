@@ -154,7 +154,7 @@
             <th scope="col">SOLICITANTE</th>
             <th scope="col">RESPONSABLE</th>
             <th scope="col">UBICACION</th>
-            <th scope="col">LOCAL</th>
+            <th scope="col">N° LOCAL/CLIENTE</th>
             <th scope="col">ESTADO</th>
             <th scope="col"></th>
             <th scope="col"></th>
