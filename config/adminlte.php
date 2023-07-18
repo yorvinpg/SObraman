@@ -319,7 +319,7 @@ return [
         //     'label_color' => 'success',
         // ],
         [
-            'text' => 'Tablero Principal',
+            'text' => 'Dashboard',
             'icon' => 'nav-icon fas fa-tachometer-alt',
             'route' => 'dash.index'
         ],
@@ -344,7 +344,7 @@ return [
                 //     'url'  => 'admin/entorno/create',
                 // ],
                 [
-                    'text' => 'Consulta Aviso',
+                    'text' => 'Consulta de OT',
                     'icon' => 'nav-icon fas fa-book',
                     'route'  => 'entorno.index',
                 ],
