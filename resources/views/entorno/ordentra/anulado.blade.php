@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Anulados')
 
 @section('content_header')
 <!-- Agrega el archivo JavaScript MOMENT -->

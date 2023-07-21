@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Editar OT')
 
 @section('content_header')
 <!-- Agrega los estilos CSS de Flatpickr -->
