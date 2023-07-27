@@ -196,7 +196,7 @@
 </table>
 <!-- {{$solicitudes->links()}} -->
 {{$solicitudes->appends(['est' => $filtroEs,'ID' => $filtro,'enc' => $filtroE,'ubi' => $filtroU,'area' => $filtroA,'fecha' => $filtroF])->links()}}
-
+<img src="vendor/adminlte/dist/img/LEYENDA1.JPG" alt="" width="222" height="61"/>
 @include('entorno.modal.showm')
 @include('entorno.modal.Edit')
 @include('entorno.modal.delete')
