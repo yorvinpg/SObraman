@@ -130,7 +130,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-4 col-form-label">Motivo del Reclamo</label>
+                                <label for="inputPassword" class="col-sm-4 col-form-label">Motivo del Trabajo</label>
                                 <div class="col-auto">
                                     <textarea class="form-control" name="descripcion" id="descripcion" value="" style="width: 225px;" required></textarea>
                                 </div>
